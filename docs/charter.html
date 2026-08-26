@@ -786,7 +786,7 @@ html { scroll-behavior: smooth; }
 
 <header class="masthead">
   <div class="masthead-inner">
-    <p class="eyebrow">Minima &middot; Constitution &middot; v0.5.0</p>
+    <p class="eyebrow">Minima &middot; Constitution &middot; v0.6.0</p>
     <h1>The Minima Charter</h1>
     <div class="standfirst"><p>Minima is a neutral-dominant design system. This document is its constitution:
 the decisions that are settled, the reasoning behind each one, and the process
@@ -826,6 +826,7 @@ amendment process in Article 9.</p>
       <li><a href="#a9"><span class="n">9</span><span>Generation</span></a></li>
       <li><a href="#a10"><span class="n">10</span><span>Amendment</span></a></li>
       <li><a href="#a11"><span class="n">11</span><span>Change flow</span></a></li>
+      <li><a href="#a12"><span class="n">12</span><span>Component signature</span></a></li>
     </ol>
     <div class="rail-sep"></div>
     <ol>
@@ -1698,6 +1699,68 @@ request. A rule with no runner decays; these no longer have to be remembered.</p
       </div>
     </section>
 
+    <section class="article" id="a12">
+      <div class="article-head"><span class="article-n">Art. 12</span><h2>Component signature</h2></div>
+      <div class="clause">
+        <div class="clause-id">12.1</div>
+        <div class="clause-body"><span class="tag tag-norm">Normative</span><p>Radius is keyed to element size, from the four in 5.1. A
+control takes <code>--radius-control</code>, a card or panel <code>--radius-panel</code>, an inline
+mark <code>--radius-chip</code>, a badge a full pill. No component chooses a radius
+outside that set, and no component writes a literal.</p>
+</div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">12.2</div>
+        <div class="clause-body"><span class="tag tag-norm">Normative</span><p>Control geometry comes from the density tokens. A control&#39;s
+height is <code>--control-xs|sm|md|lg</code>, never a literal — so every control resizes
+with <code>data-density</code> instead of needing a variant per density.</p>
+</div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">12.3</div>
+        <div class="clause-body"><span class="tag tag-norm">Normative</span><p>One interaction ladder. An interactive neutral surface moves
+<code>--fill</code> → <code>--fill-hover</code> → <code>--fill-active</code> across rest, hover and active; its
+border moves <code>--border-strong</code> → <code>--border-active</code>. A component does not invent
+a different treatment, and does not reach for an opacity to fake one.</p>
+</div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">12.4</div>
+        <div class="clause-body"><span class="tag tag-norm">Normative</span><p>One focus ring, from the base layer (4.5). A component never
+declares its own. Before this article the system carried seven different focus
+treatments across eight components, each individually reasonable.</p>
+</div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">12.5</div>
+        <div class="clause-body"><span class="tag tag-norm">Normative</span><p>Chrome speaks in the signal register (7.6): table headers,
+group labels, and other furniture that is scanned rather than read. The content
+inside those containers stays in the reading register.</p>
+</div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">12.6</div>
+        <div class="clause-body"><span class="tag tag-norm">Normative</span><p>Never <code>transition: all</code>. Name the properties that change.
+A component that animates everything animates things it has not thought about.</p>
+</div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">12.7</div>
+        <div class="clause-body"><span class="tag tag-rat">Rationale</span><p>None of this is decoration, and that is the point. A
+signature is not a flourish added to components — it is the same few decisions
+taken so consistently that the result reads as one hand. Every rule above was
+already implied by an earlier article; what was missing was anything making the
+components obey them.</p>
+</div>
+      </div>
+    </section>
+
     <section class="article" id="dev">
       <div class="article-head"><span class="article-n">Dev.</span><h2>Documented deviations</h2></div>
       <div class="dev-intro"><p>Places Minima knowingly departs from its own rule. Each is settled. Each is here
@@ -1785,7 +1848,7 @@ consumers currently fall back to the system stack.</li>
 </div>
 
 <footer>
-  <span>The Minima Charter &middot; v0.5.0</span>
+  <span>The Minima Charter &middot; v0.6.0</span>
   <span>github.com/phugadev/minima</span>
 </footer>
 

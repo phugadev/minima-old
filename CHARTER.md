@@ -1,6 +1,6 @@
 # The Minima Charter
 
-*v0.5.0 — the Charter carries the same version as the package; they describe the same system. Clause numbers are stable from 0.3.0 onward.*
+*v0.6.0 — the Charter carries the same version as the package; they describe the same system. Clause numbers are stable from 0.3.0 onward.*
 
 Minima is a neutral-dominant design system. This document is its constitution:
 the decisions that are settled, the reasoning behind each one, and the process
@@ -413,6 +413,41 @@ said what the values should be.
 **11.5 NORMATIVE.** Continuous integration runs the type check, the lint, the
 generated-files-in-sync check, the build and the contrast audit on every pull
 request. A rule with no runner decays; these no longer have to be remembered.
+
+---
+
+## Article 12 — Component signature
+
+**12.1 NORMATIVE.** Radius is keyed to element size, from the four in 5.1. A
+control takes `--radius-control`, a card or panel `--radius-panel`, an inline
+mark `--radius-chip`, a badge a full pill. No component chooses a radius
+outside that set, and no component writes a literal.
+
+**12.2 NORMATIVE.** Control geometry comes from the density tokens. A control's
+height is `--control-xs|sm|md|lg`, never a literal — so every control resizes
+with `data-density` instead of needing a variant per density.
+
+**12.3 NORMATIVE.** One interaction ladder. An interactive neutral surface moves
+`--fill` → `--fill-hover` → `--fill-active` across rest, hover and active; its
+border moves `--border-strong` → `--border-active`. A component does not invent
+a different treatment, and does not reach for an opacity to fake one.
+
+**12.4 NORMATIVE.** One focus ring, from the base layer (4.5). A component never
+declares its own. Before this article the system carried seven different focus
+treatments across eight components, each individually reasonable.
+
+**12.5 NORMATIVE.** Chrome speaks in the signal register (7.6): table headers,
+group labels, and other furniture that is scanned rather than read. The content
+inside those containers stays in the reading register.
+
+**12.6 NORMATIVE.** Never `transition: all`. Name the properties that change.
+A component that animates everything animates things it has not thought about.
+
+**12.7 RATIONALE.** None of this is decoration, and that is the point. A
+signature is not a flourish added to components — it is the same few decisions
+taken so consistently that the result reads as one hand. Every rule above was
+already implied by an earlier article; what was missing was anything making the
+components obey them.
 
 ---
 
