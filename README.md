@@ -34,6 +34,23 @@ npx shadcn@latest add phugadev/minima/stat
 npx shadcn@latest add phugadev/minima/code
 ```
 
+## Type
+
+Minima ships **Geist Sans** and **Geist Mono** as registry font items, because
+the signal register and every numeral depend on a mono face being present.
+
+It is a default, not an identity claim. `--font-sans` and `--font-mono` are the
+only tokens that name a family, so swapping the pair is two lines:
+
+```css
+:root {
+  --font-sans: "Your Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Your Mono", ui-monospace, monospace;
+}
+```
+
+Every typographic rule in the system holds for any pair that includes a mono.
+
 ## How it is built
 
 Three token layers, and the boundary between them is the whole discipline:

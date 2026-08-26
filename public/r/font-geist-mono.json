@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-geist-mono",
+  "title": "Geist Mono",
+  "description": "Geist Mono — wired to `--font-geist-mono`, which `--font-mono` resolves to.",
+  "type": "registry:font",
+  "font": {
+    "family": "Geist Mono",
+    "provider": "google",
+    "import": "Geist_Mono",
+    "variable": "--font-geist-mono",
+    "subsets": [
+      "latin"
+    ],
+    "dependency": "@fontsource-variable/geist-mono"
+  }
+}
