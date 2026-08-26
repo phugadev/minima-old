@@ -5,6 +5,39 @@ All notable changes to Minima are recorded here. The format follows
 [semantic versioning](https://semver.org/) — see [CONTRIBUTING.md](CONTRIBUTING.md)
 for what each bump means for a design system.
 
+## [0.6.0] — 2026-08-26
+
+### Added
+- Charter Article 12 — component signature. Six rules that were already implied
+  by earlier articles, plus the thing that was missing: components obeying them.
+
+### Changed
+- **Controls resize with density.** Button, input, select and tabs take their
+  height from `--control-xs|sm|md|lg` rather than literals, so `data-density`
+  moves them: 28 / 32 / 36px across compact, default and comfortable. They were
+  fixed at 32px before, which made the density modes half-real.
+- **Radius is keyed to element size** (Charter 5.1). Controls are 6px, cards
+  12px, badges pills. Components previously used `rounded-lg` nine times plus
+  `rounded-4xl`, `rounded-md` and two `min()` expressions — none of them the
+  four radii the system defines. The tabs trigger now derives its radius from
+  the list's padding (6 − 3 = 3px), which is Charter 5.2 applied inside a
+  component rather than only in the showcase.
+- **One interaction ladder**: `--fill` → `--fill-hover` → `--fill-active`, with
+  borders `--border-strong` → `--border-active`. Button variants previously
+  mixed `bg-muted`, a `color-mix()`, and several dark-mode-only opacities.
+- **One focus ring.** Components declared seven different focus treatments
+  while the base layer already defined one. They now all defer to it (4.5).
+- Table headers, and other chrome that is scanned rather than read, move to the
+  signal register (7.6).
+- The active tab sits on `--surface` rather than `--background`, so it is still
+  correct in the flat look where canvas and surface are identical.
+- `destructive` buttons and badges use the danger tone's six-part contract
+  rather than ad-hoc opacities of `--destructive`.
+
+### Fixed
+- `transition: all` removed from button, badge, tabs and progress, replaced by
+  named properties.
+
 ## [0.5.0] — 2026-08-26
 
 ### Added
@@ -128,6 +161,7 @@ for what each bump means for a design system.
 Initial system: neutral-dominant thesis, OKLCH ramps, the three colour jobs,
 and distribution as a GitHub-hosted shadcn registry.
 
+[0.6.0]: https://github.com/phugadev/minima/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/phugadev/minima/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/phugadev/minima/releases/tag/v0.4.0
 [0.3.1]: https://github.com/phugadev/minima/compare/v0.3.0...v0.3.1
