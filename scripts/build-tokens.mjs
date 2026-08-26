@@ -193,6 +193,235 @@ const DENSITY = {
   },
 }
 
+
+/* ── Utilities ──────────────────────────────────────────────────────────────
+   These are part of the system, not the showcase. The Charter mandates the
+   signal register (7.6), concentric nesting (5.2), the code treatment (7.8)
+   and prose (7.4) — so the registry has to ship them, or a consumer gets a
+   set of tokens and none of the rules that use them.                        */
+const UTILITIES = {
+  /* The hairline. Minima's primary separation device — used far more often
+     than shadow, and the only one the flat look has. */
+  ".hairline": { border: "1px solid var(--border)" },
+  ".hairline-t": { "border-top": "1px solid var(--border)" },
+  ".hairline-r": { "border-right": "1px solid var(--border)" },
+  ".hairline-b": { "border-bottom": "1px solid var(--border)" },
+  ".hairline-l": { "border-left": "1px solid var(--border)" },
+
+  /* Signal register — mono, uppercase, tracked. For text that is SCANNED,
+     never text that is READ. Smaller sizes take more tracking, because
+     uppercase letterforms crowd as they shrink. */
+  ".label-xs, .label-sm, .label-md, .label-eyebrow": {
+    "font-family": "var(--font-mono)",
+    "font-weight": "500",
+    "text-transform": "uppercase",
+    color: "var(--subtle-foreground)",
+  },
+  ".label-xs": {
+    "font-size": "var(--text-label-xs)",
+    "line-height": "var(--text-label-xs--line-height)",
+    "letter-spacing": "var(--tracking-label-xs)",
+  },
+  ".label-sm, .label-eyebrow": {
+    "font-size": "var(--text-label-sm)",
+    "line-height": "var(--text-label-sm--line-height)",
+    "letter-spacing": "var(--tracking-label-sm)",
+  },
+  ".label-md": {
+    "font-size": "var(--text-label-md)",
+    "line-height": "var(--text-label-md--line-height)",
+    "letter-spacing": "var(--tracking-label-md)",
+  },
+
+  ".numeric": {
+    "font-family": "var(--font-mono)",
+    "font-variant-numeric": "tabular-nums",
+  },
+
+  /* Deltas — colour here is doing the DATA job, so it is allowed. */
+  ".delta-up": { color: "var(--success-text)" },
+  ".delta-down": { color: "var(--danger-text)" },
+  ".delta-flat": { color: "var(--subtle-foreground)" },
+
+  /* Code — one treatment, both registers, never coloured. */
+  ".code": {
+    "font-family": "var(--font-mono)",
+    "font-size": "0.875em",
+    color: "var(--code-foreground)",
+    background: "var(--code-bg)",
+    border: "1px solid var(--code-border)",
+    "border-radius": "var(--radius-chip)",
+    padding: "0.1em 0.35em",
+    "white-space": "nowrap",
+  },
+  ".code-block": {
+    "font-family": "var(--font-mono)",
+    "font-size": "var(--text-sm)",
+    "line-height": "var(--leading-normal)",
+    color: "var(--code-foreground)",
+    background: "var(--code-bg)",
+    border: "1px solid var(--code-border)",
+    "border-radius": "var(--radius-panel)",
+    padding: "var(--gutter)",
+    "overflow-x": "auto",
+    "tab-size": "2",
+  },
+
+  /* Links. `.link` is the identity hue in UI context. `.link-quiet` is for
+     links inside a container that already signals interactivity — a nav, a
+     table row, a card. Charter 7.9 forbids it in running text, where an
+     undecorated link is indistinguishable from prose. */
+  ".link": {
+    color: "var(--accent-hue-text)",
+    "text-decoration": "underline",
+    "text-decoration-color": "var(--accent-hue-border)",
+    "text-underline-offset": "0.2em",
+  },
+  ".link:hover": { "text-decoration-color": "currentColor" },
+  ".link-quiet": {
+    color: "inherit",
+    "text-decoration": "none",
+    cursor: "pointer",
+  },
+  ".link-quiet:hover": { color: "var(--foreground)" },
+  ".link-quiet:focus-visible": {
+    "text-decoration": "underline",
+    "text-decoration-color": "currentColor",
+    "text-underline-offset": "0.2em",
+  },
+
+  /* Concentric nesting — inner = outer - (padding + border), one level deep.
+     `--nest-optical` adds back the pixel the eye wants at small radii. */
+  ".nest": {
+    "--nest-border": "1px",
+    "--nest-optical": "1px",
+    "border-radius": "var(--nest-r)",
+    padding: "var(--nest-p)",
+  },
+  ".nest-surface": { "--nest-r": "var(--radius-surface)", "--nest-p": "var(--gutter)" },
+  ".nest-panel": { "--nest-r": "var(--radius-panel)", "--nest-p": "var(--gutter)" },
+  ".nest-control": { "--nest-r": "var(--radius-control)", "--nest-p": "0.5rem" },
+  ".nest-inset": { "--nest-r": "var(--radius-surface)", "--nest-p": "0.25rem" },
+  ".nested": {
+    "border-radius":
+      "max(2px, calc(var(--nest-r) - var(--nest-p) - var(--nest-border) + var(--nest-optical)))",
+  },
+}
+
+/* ── Prose ──────────────────────────────────────────────────────────────────
+   Long-form reading. Body sits at the muted level so a page of text never
+   shouts; bold jumps to maximum contrast, so emphasis is the thing that does.
+   Measure is capped in ch, so it tracks the font rather than the viewport. */
+const PROSE = {
+  ".prose": {
+    color: "var(--prose-body)",
+    "font-size": "var(--text-lg)",
+    "line-height": "var(--leading-relaxed)",
+    "max-width": "68ch",
+  },
+  ".prose > * + *": { "margin-top": "1.25em" },
+  ".prose strong, .prose b": { color: "var(--prose-strong)", "font-weight": "600" },
+  ".prose h2, .prose h3, .prose h4": {
+    color: "var(--prose-heading)",
+    "font-weight": "600",
+    "letter-spacing": "var(--tracking-tight)",
+    "line-height": "var(--leading-tight)",
+    "text-wrap": "balance",
+  },
+  ".prose h2": { "font-size": "var(--text-2xl)", "margin-top": "2.5em" },
+  ".prose h3": { "font-size": "var(--text-xl)", "margin-top": "2em" },
+  ".prose h4": { "font-size": "var(--text-lg)", "margin-top": "1.75em" },
+  ".prose a": {
+    color: "var(--prose-link)",
+    "text-decoration": "underline",
+    "text-decoration-color": "var(--accent-hue-border)",
+    "text-underline-offset": "0.2em",
+  },
+  ".prose a:hover": { "text-decoration-color": "currentColor" },
+  ".prose code": {
+    color: "var(--code-foreground)",
+    background: "var(--code-bg)",
+    border: "1px solid var(--code-border)",
+    "border-radius": "var(--radius-chip)",
+    padding: "0.1em 0.35em",
+    "font-size": "0.875em",
+  },
+  ".prose pre": {
+    background: "var(--code-bg)",
+    border: "1px solid var(--code-border)",
+    "border-radius": "var(--radius-panel)",
+    padding: "var(--gutter)",
+    "overflow-x": "auto",
+    "font-size": "var(--text-sm)",
+    "line-height": "var(--leading-normal)",
+    "tab-size": "2",
+  },
+  ".prose pre code": { background: "none", border: "0", padding: "0", "font-size": "inherit" },
+  ".prose blockquote": {
+    "border-left": "2px solid var(--border-active)",
+    "padding-left": "var(--gutter)",
+    color: "var(--prose-body)",
+  },
+  ".prose ul, .prose ol": { "padding-left": "1.25em" },
+  ".prose li": { "margin-top": "0.5em" },
+  ".prose li::marker": { color: "var(--prose-marker)" },
+  ".prose hr": { border: "0", "border-top": "1px solid var(--border)", "margin-block": "2.5em" },
+  ".prose figcaption, .prose small": {
+    color: "var(--subtle-foreground)",
+    "font-size": "var(--text-sm)",
+  },
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────────
+   Rules the system owns so no component reinvents them (Charter 4.5). */
+const BASE = {
+  "code, kbd, samp, pre": {
+    "font-family": "var(--font-mono)",
+    "font-feature-settings": "'tnum', 'zero'",
+  },
+  '[disabled], [aria-disabled="true"], [data-disabled]': {
+    opacity: "var(--disabled-opacity)",
+    cursor: "not-allowed",
+  },
+  "::selection": {
+    background: "var(--accent-hue-subtle)",
+    color: "var(--accent-hue-text)",
+  },
+  ":focus-visible": { outline: "2px solid var(--ring)", "outline-offset": "2px" },
+  "[data-numeric]": {
+    "font-family": "var(--font-mono)",
+    "font-variant-numeric": "tabular-nums",
+    "font-feature-settings": "'tnum', 'zero'",
+  },
+  /* The browser paints autofilled inputs a fixed yellow that ignores every
+     token and survives both themes. An inset shadow is the only way back. */
+  "input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, select:-webkit-autofill":
+    {
+      "-webkit-text-fill-color": "var(--foreground)",
+      "-webkit-box-shadow": "0 0 0 1000px var(--surface) inset",
+      "caret-color": "var(--foreground)",
+      transition: "background-color 10000s ease-in-out 0s",
+    },
+  /* Scrollbars are chrome: thin and neutral, never the accent. */
+  html: {
+    "scrollbar-width": "thin",
+    "scrollbar-color": "var(--scrollbar-thumb) transparent",
+  },
+  "::-webkit-scrollbar": { width: "10px", height: "10px" },
+  "::-webkit-scrollbar-track": { background: "transparent" },
+  "::-webkit-scrollbar-thumb": {
+    background: "var(--scrollbar-thumb)",
+    border: "3px solid transparent",
+    "border-radius": "var(--radius-full)",
+    "background-clip": "content-box",
+  },
+  "::-webkit-scrollbar-thumb:hover": {
+    background: "var(--scrollbar-thumb-hover)",
+    "background-clip": "content-box",
+  },
+  "::-webkit-scrollbar-corner": { background: "transparent" },
+}
+
 /* ── @theme mappings ─────────────────────────────────────────────────────── */
 /* Tailwind's own numeric palette for these hues, cleared so only Minima's
    1–12 vocabulary exists. Two scales for one hue name is how drift starts. */
@@ -297,6 +526,21 @@ function themeVars() {
    listed here so they are not mistaken for custom properties. */
 const PLAIN_PROPS = new Set(["color-scheme"])
 
+/** Emit a nested block: `@layer utilities { .a { … } .b { … } }` */
+const layer = (name, groups) =>
+  `@layer ${name} {\n` +
+  Object.entries(groups)
+    .map(
+      ([sel, decls]) =>
+        `  ${sel} {\n` +
+        Object.entries(decls)
+          .map(([k, v]) => `    ${k}: ${v};`)
+          .join("\n") +
+        `\n  }`
+    )
+    .join("\n") +
+  `\n}\n`
+
 const rule = (selector, vars) =>
   `${selector} {\n` +
   Object.entries(vars)
@@ -366,7 +610,13 @@ const tokensCss =
   SECTION.density +
   rule(":root", DENSITY.default) +
   rule(':root[data-density="compact"]', DENSITY.compact) +
-  rule(':root[data-density="comfortable"]', DENSITY.comfortable)
+  rule(':root[data-density="comfortable"]', DENSITY.comfortable) +
+  "\n" +
+  layer("base", BASE) +
+  "\n" +
+  layer("utilities", UTILITIES) +
+  "\n" +
+  layer("components", PROSE)
 
 writeFileSync(new URL("../src/app/tokens.css", import.meta.url), tokensCss)
 
@@ -445,42 +695,9 @@ const registry = {
           "--surface": "var(--gray-2)",
         },
         ...densityCss,
-        "@layer base": {
-          "::selection": {
-            background: "var(--accent-hue-subtle)",
-            color: "var(--accent-hue-text)",
-          },
-          ":focus-visible": {
-            outline: "2px solid var(--ring)",
-            "outline-offset": "2px",
-          },
-          "[data-numeric]": {
-            "font-family": "var(--font-mono)",
-            "font-variant-numeric": "tabular-nums",
-            "font-feature-settings": "'tnum', 'zero'",
-          },
-        },
-        "@layer utilities": {
-          ".hairline": { border: "1px solid var(--border)" },
-          ".hairline-t": { "border-top": "1px solid var(--border)" },
-          ".hairline-r": { "border-right": "1px solid var(--border)" },
-          ".hairline-b": { "border-bottom": "1px solid var(--border)" },
-          ".hairline-l": { "border-left": "1px solid var(--border)" },
-          ".label-eyebrow": {
-            "font-size": "var(--text-2xs)",
-            "font-weight": "500",
-            "text-transform": "uppercase",
-            "letter-spacing": "var(--tracking-widest)",
-            color: "var(--subtle-foreground)",
-          },
-          ".numeric": {
-            "font-family": "var(--font-mono)",
-            "font-variant-numeric": "tabular-nums",
-          },
-          ".delta-up": { color: "var(--success-text)" },
-          ".delta-down": { color: "var(--danger-text)" },
-          ".delta-flat": { color: "var(--subtle-foreground)" },
-        },
+        "@layer base": BASE,
+        "@layer utilities": UTILITIES,
+        "@layer components": PROSE,
       },
     },
     uiItem("status", "Status", "Status pill and dot. The canonical carrier of the state colour job.", ["class-variance-authority"]),

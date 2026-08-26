@@ -10,6 +10,9 @@ on:
   push:
     branches: [main]
   pull_request:
+  # Manual trigger. Runner availability occasionally leaves a run queued for
+  # long enough that re-dispatching is faster than waiting for it.
+  workflow_dispatch:
 
 # A newer push to the same branch makes the previous run irrelevant.
 concurrency:
@@ -52,6 +55,17 @@ jobs:
             git diff --stat
             exit 1
           fi
+
+      # Charter 11.2: the version is the promise the system makes. A bump with
+      # no changelog entry is a promise nobody can read.
+      - name: Version and changelog agree
+        run: |
+          V=$(node -p "require('./package.json').version")
+          if ! grep -q "^## \[$V\]" CHANGELOG.md; then
+            echo "::error::package.json is $V but CHANGELOG.md has no '## [$V]' entry."
+            exit 1
+          fi
+          echo "version $V has a changelog entry"
 
       - name: Build
         run: npm run build

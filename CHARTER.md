@@ -1,6 +1,6 @@
 # The Minima Charter
 
-*v0.4.0 — the Charter carries the same version as the package; they describe the same system. Clause numbers are stable from 0.3.0 onward.*
+*v0.5.0 — the Charter carries the same version as the package; they describe the same system. Clause numbers are stable from 0.3.0 onward.*
 
 Minima is a neutral-dominant design system. This document is its constitution:
 the decisions that are settled, the reasoning behind each one, and the process
@@ -89,6 +89,8 @@ in the semantic layer knows which theme it is in.
 **3.1 NORMATIVE.** Thirteen ramps — `gray` plus twelve hues: red, orange, amber,
 yellow, lime, green, teal, cyan, blue, indigo, purple, pink. Twelve steps each,
 numbered `1`–`12`.
+
+<!-- ramp -->
 
 **3.2 NORMATIVE.** Step semantics are Radix's, adopted verbatim:
 
@@ -291,6 +293,12 @@ to `code`, `kbd`, `samp` and `pre` so it cannot be forgotten. Code is never
 coloured by Minima: syntax highlighting is a product concern, and a system that
 tints code has spent colour on a fourth job.
 
+**7.9 NORMATIVE.** An undecorated link (`.link-quiet`) is permitted only where
+its container already signals interactivity — a nav, a table row, a card, a
+sidebar. It is forbidden in running text, where a link with neither underline
+nor colour is indistinguishable from the prose around it. Its hover and
+focus-visible states are what make it findable at all, and both are required.
+
 ---
 
 ## Article 8 — Contrast floors
@@ -360,17 +368,17 @@ shadcn/ui takes Base UI underneath it.
 
 ## Article 10 — Amendment
 
-**10.1** A change to anything marked NORMATIVE is an amendment. It requires:
+**10.1 NORMATIVE.** A change to anything marked NORMATIVE is an amendment. It requires:
 
 1. The rule being changed, cited by article number.
 2. What breaks if it stays — a concrete failure, not a preference.
 3. The contrast audit, re-run, with no pairing below its Article 8 floor.
 4. This document, updated in the same change.
 
-**10.2** A change that does not meet 10.1 is a preference, and preferences do not
+**10.2 NORMATIVE.** A change that does not meet 10.1 is a preference, and preferences do not
 move the charter. Build the thing you want at the component layer instead.
 
-**10.3** Adding a *documented deviation* is an amendment. Removing one is also an
+**10.3 NORMATIVE.** Adding a *documented deviation* is an amendment. Removing one is also an
 amendment — they are settled, and their settledness is the point.
 
 ---

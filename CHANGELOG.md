@@ -5,6 +5,40 @@ All notable changes to Minima are recorded here. The format follows
 [semantic versioning](https://semver.org/) — see [CONTRIBUTING.md](CONTRIBUTING.md)
 for what each bump means for a design system.
 
+## [0.5.0] — 2026-08-26
+
+### Added
+- `scripts/build-charter.mjs` — `docs/charter.html` is now generated from
+  `CHARTER.md`. It had been a hand-maintained duplicate with no source, which
+  is precisely the drift Charter 9.1 forbids, sitting inside the document that
+  forbids it. The renderer refuses to write a Charter that dropped a clause.
+- Charter 7.9 — an undecorated link is permitted only where its container
+  already signals interactivity, never in running text.
+- CI checks that a version bump comes with a matching `CHANGELOG.md` entry.
+- A real `README.md`.
+
+### Changed
+- **The registry now ships the utilities the Charter mandates.** `.code`,
+  `.code-block`, `.label-xs/sm/md`, `.link`, `.link-quiet`, `.nest*`,
+  `.nested` and `.prose` existed in the app but not in the registry, so a
+  consumer installing `minima-theme` received the tokens and none of the rules
+  that use them — no signal register (7.6), no nesting (5.2), no code
+  treatment (7.8), no prose (7.4). `scripts/build-tokens.mjs` now owns them and
+  emits the same CSS to both `src/app/tokens.css` and `registry.json`.
+- `src/app/globals.css` is down to document-level setup and one showcase
+  decoration; everything the system defines is generated.
+- `.link-quiet` gains `cursor` and a `focus-visible` treatment. Without them it
+  was a link identifiable only by hovering it.
+- Article 10's clauses are tagged `NORMATIVE` like every other clause. They
+  were untagged, which made the renderer drop them silently.
+
+### Removed
+- Default `create-next-app` assets: `file.svg`, `globe.svg`, `next.svg`,
+  `vercel.svg`, `window.svg` — none referenced.
+- `src/components/ui/avatar.tsx` — no importers.
+- `.claude/settings.local.json` from version control, and `*.tsbuildinfo`
+  added to `.gitignore`.
+
 ## [0.4.0] — 2026-08-26
 
 ### Added
@@ -94,6 +128,7 @@ for what each bump means for a design system.
 Initial system: neutral-dominant thesis, OKLCH ramps, the three colour jobs,
 and distribution as a GitHub-hosted shadcn registry.
 
+[0.5.0]: https://github.com/phugadev/minima/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/phugadev/minima/releases/tag/v0.4.0
 [0.3.1]: https://github.com/phugadev/minima/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/phugadev/minima/compare/v0.2.0...v0.3.0
