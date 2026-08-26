@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "note",
+  "title": "Note",
+  "description": "A bordered callout that defaults to neutral and escalates to a state tone only when the message reports state.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "src/components/minima/note.tsx",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Note — a bordered callout.\n *\n * The default tone is neutral on purpose: most notes are not alarming,\n * and reaching for colour by reflex is how a neutral system stops being one.\n * Escalate the tone only when the message genuinely reports state.\n */\n\nconst noteVariants = cva(\n  \"flex gap-3 rounded-lg border p-3 text-sm [&_svg]:mt-0.5 [&_svg]:size-4 [&_svg]:shrink-0\",\n  {\n    variants: {\n      tone: {\n        neutral: \"border-border bg-fill text-muted-foreground [&_svg]:text-subtle-foreground\",\n        success: \"border-success-border bg-success-subtle text-success-text [&_svg]:text-success\",\n        warning: \"border-warning-border bg-warning-subtle text-warning-text [&_svg]:text-warning\",\n        danger: \"border-danger-border bg-danger-subtle text-danger-text [&_svg]:text-danger\",\n        info: \"border-info-border bg-info-subtle text-info-text [&_svg]:text-info\",\n      },\n    },\n    defaultVariants: { tone: \"neutral\" },\n  }\n)\n\nfunction Note({\n  className,\n  tone,\n  icon,\n  children,\n  ...props\n}: React.ComponentProps<\"div\"> &\n  VariantProps<typeof noteVariants> & { icon?: React.ReactNode }) {\n  return (\n    <div\n      data-slot=\"note\"\n      data-tone={tone ?? \"neutral\"}\n      className={cn(noteVariants({ tone }), className)}\n      {...props}\n    >\n      {icon}\n      <div className=\"min-w-0 flex-1 space-y-1\">{children}</div>\n    </div>\n  )\n}\n\nfunction NoteTitle({ className, ...props }: React.ComponentProps<\"p\">) {\n  return (\n    <p\n      data-slot=\"note-title\"\n      className={cn(\"font-medium text-foreground\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Note, NoteTitle, noteVariants }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

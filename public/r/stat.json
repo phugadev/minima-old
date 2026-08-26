@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stat",
+  "title": "Stat",
+  "description": "A single metric. Mono tabular value, with the delta as the only coloured element.",
+  "files": [
+    {
+      "path": "src/components/minima/stat.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\n/**\n * Stat — a single metric.\n *\n * The value is mono + tabular so that columns of figures align and digit\n * changes do not reflow. The delta is the only coloured element, and it is\n * doing the DATA job.\n */\n\nfunction Stat({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"stat\"\n      className={cn(\"flex flex-col gap-1.5\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction StatLabel({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"stat-label\"\n      className={cn(\n        \"text-2xs font-medium uppercase tracking-[0.08em] text-subtle-foreground\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction StatValue({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"stat-value\"\n      data-numeric=\"\"\n      className={cn(\n        \"text-2xl font-medium tracking-tight text-foreground\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction StatDelta({\n  className,\n  direction = \"flat\",\n  ...props\n}: React.ComponentProps<\"div\"> & { direction?: \"up\" | \"down\" | \"flat\" }) {\n  return (\n    <div\n      data-slot=\"stat-delta\"\n      data-numeric=\"\"\n      className={cn(\n        \"flex items-center gap-1 text-xs font-medium\",\n        direction === \"up\" && \"delta-up\",\n        direction === \"down\" && \"delta-down\",\n        direction === \"flat\" && \"delta-flat\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Stat, StatLabel, StatValue, StatDelta }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

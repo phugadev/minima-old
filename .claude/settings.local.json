@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd /Users/phugadev/Dev/enric-trillo-site-v6 && find node_modules/@ruskel -maxdepth 3 -type f | head -80)",
+      "Bash(lsof -iTCP:3000 -sTCP:LISTEN -n -P)",
+      "Bash(ps -p 83085 -o command=)"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status",
+  "title": "Status",
+  "description": "Status pill and dot. The canonical carrier of the state colour job.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "src/components/minima/status.tsx",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Status — the canonical carrier of Minima's STATE colour job.\n *\n * A status is the one place a hue is allowed to appear without a chart\n * axis or a link underline nearby. Everything else stays neutral.\n */\n\nconst statusDotVariants = cva(\"inline-block size-1.5 shrink-0 rounded-full\", {\n  variants: {\n    tone: {\n      neutral: \"bg-subtle-foreground\",\n      success: \"bg-success\",\n      warning: \"bg-warning\",\n      danger: \"bg-danger\",\n      info: \"bg-info\",\n    },\n    pulse: {\n      true: \"animate-pulse\",\n      false: \"\",\n    },\n  },\n  defaultVariants: { tone: \"neutral\", pulse: false },\n})\n\nfunction StatusDot({\n  className,\n  tone,\n  pulse,\n  ...props\n}: React.ComponentProps<\"span\"> & VariantProps<typeof statusDotVariants>) {\n  return (\n    <span\n      data-slot=\"status-dot\"\n      className={cn(statusDotVariants({ tone, pulse }), className)}\n      {...props}\n    />\n  )\n}\n\nconst statusVariants = cva(\n  \"inline-flex w-fit items-center gap-1.5 rounded-full border px-2 py-0.5 text-2xs font-medium whitespace-nowrap\",\n  {\n    variants: {\n      tone: {\n        neutral: \"border-border bg-muted text-muted-foreground\",\n        success: \"border-success-border bg-success-subtle text-success-text\",\n        warning: \"border-warning-border bg-warning-subtle text-warning-text\",\n        danger: \"border-danger-border bg-danger-subtle text-danger-text\",\n        info: \"border-info-border bg-info-subtle text-info-text\",\n      },\n    },\n    defaultVariants: { tone: \"neutral\" },\n  }\n)\n\nfunction Status({\n  className,\n  tone = \"neutral\",\n  dot = true,\n  pulse = false,\n  children,\n  ...props\n}: React.ComponentProps<\"span\"> &\n  VariantProps<typeof statusVariants> & { dot?: boolean; pulse?: boolean }) {\n  return (\n    <span\n      data-slot=\"status\"\n      data-tone={tone}\n      className={cn(statusVariants({ tone }), className)}\n      {...props}\n    >\n      {dot ? <StatusDot tone={tone} pulse={pulse} /> : null}\n      {children}\n    </span>\n  )\n}\n\nexport { Status, StatusDot, statusVariants, statusDotVariants }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

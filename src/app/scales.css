@@ -1,0 +1,422 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   MINIMA — SPECTRAL RAMP
+   GENERATED FILE — edit scripts/generate-scales.mjs and re-run:
+       node scripts/generate-scales.mjs
+
+   Thirteen ramps × twelve steps, in OKLCH. Step semantics are Radix's,
+   adopted verbatim rather than invented:
+
+      1  app background
+      2  subtle background
+      3  element background
+      4  hovered element background
+      5  active / selected background
+      6  subtle border
+      7  element border / focus ring
+      8  hovered element border
+      9  SOLID
+     10  hovered solid
+     11  low-contrast text
+     12  high-contrast text
+
+   Steps 1–8 and 11–12 sit on a shared lightness track, so a border or a text
+   colour weighs the same in every hue. Steps 9–10 carry a per-hue lightness
+   bias, because amber at blue's lightness is brown.
+
+   This is raw material, not a licence. Minima stays neutral-dominant: the
+   spectral ramps exist so that the state, identity and data tokens have
+   somewhere principled to come from. Reaching past those tokens into a raw
+   ramp is the exception, and it should feel like one.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── gray ──────────────────────────────────────────────────────────── */
+  --gray-1:        oklch(0.993 0 0);
+  --gray-2:        oklch(0.98 0 0);
+  --gray-3:        oklch(0.956 0 0);
+  --gray-4:        oklch(0.938 0 0);
+  --gray-5:        oklch(0.918 0 0);
+  --gray-6:        oklch(0.892 0 0);
+  --gray-7:        oklch(0.858 0 0);
+  --gray-8:        oklch(0.795 0 0);
+  --gray-9:        oklch(0.64 0 0);
+  --gray-10:       oklch(0.59 0 0);
+  --gray-11:       oklch(0.52 0 0);
+  --gray-12:       oklch(0.18 0 0);
+
+  /* ── red ───────────────────────────────────────────────────────────── */
+  --red-1:         oklch(0.99 0.0057 25);
+  --red-2:         oklch(0.977 0.012 25);
+  --red-3:         oklch(0.955 0.0231 25);
+  --red-4:         oklch(0.936 0.0352 25);
+  --red-5:         oklch(0.914 0.049 25);
+  --red-6:         oklch(0.886 0.065 25);
+  --red-7:         oklch(0.848 0.0878 25);
+  --red-8:         oklch(0.79 0.1283 25);
+  --red-9:         oklch(0.6 0.2246 25);
+  --red-10:        oklch(0.552 0.2198 25);
+  --red-11:        oklch(0.505 0.2024 25);
+  --red-12:        oklch(0.36 0.1149 25);
+  --red-on-solid: oklch(1 0 0);
+
+  /* ── orange ────────────────────────────────────────────────────────── */
+  --orange-1:      oklch(0.99 0.0068 50);
+  --orange-2:      oklch(0.977 0.0141 50);
+  --orange-3:      oklch(0.955 0.0266 50);
+  --orange-4:      oklch(0.936 0.04 50);
+  --orange-5:      oklch(0.914 0.0546 50);
+  --orange-6:      oklch(0.886 0.0709 50);
+  --orange-7:      oklch(0.848 0.0929 50);
+  --orange-8:      oklch(0.804 0.1279 50);
+  --orange-9:      oklch(0.67 0.1999 50);
+  --orange-10:     oklch(0.622 0.1934 50);
+  --orange-11:     oklch(0.505 0.1628 50);
+  --orange-12:     oklch(0.36 0.0823 50);
+  --orange-on-solid: oklch(0.18 0 0);
+
+  /* ── amber ─────────────────────────────────────────────────────────── */
+  --amber-1:       oklch(0.99 0.0078 78);
+  --amber-2:       oklch(0.977 0.0159 78);
+  --amber-3:       oklch(0.955 0.0294 78);
+  --amber-4:       oklch(0.936 0.0435 78);
+  --amber-5:       oklch(0.914 0.0581 78);
+  --amber-6:       oklch(0.886 0.0734 78);
+  --amber-7:       oklch(0.848 0.0927 78);
+  --amber-8:       oklch(0.822 0.1222 78);
+  --amber-9:       oklch(0.76 0.1789 78);
+  --amber-10:      oklch(0.712 0.171 78);
+  --amber-11:      oklch(0.505 0.1169 78);
+  --amber-12:      oklch(0.36 0.0514 78);
+  --amber-on-solid: oklch(0.18 0 0);
+
+  /* ── yellow ────────────────────────────────────────────────────────── */
+  --yellow-1:      oklch(0.99 0.0083 99);
+  --yellow-2:      oklch(0.977 0.0169 99);
+  --yellow-3:      oklch(0.955 0.0308 99);
+  --yellow-4:      oklch(0.936 0.0449 99);
+  --yellow-5:      oklch(0.914 0.0592 99);
+  --yellow-6:      oklch(0.886 0.0735 99);
+  --yellow-7:      oklch(0.848 0.0906 99);
+  --yellow-8:      oklch(0.834 0.118 99);
+  --yellow-9:      oklch(0.82 0.1725 99);
+  --yellow-10:     oklch(0.772 0.1637 99);
+  --yellow-11:     oklch(0.505 0.0917 99);
+  --yellow-12:     oklch(0.36 0.0368 99);
+  --yellow-on-solid: oklch(0.18 0 0);
+
+  /* ── lime ──────────────────────────────────────────────────────────── */
+  --lime-1:        oklch(0.99 0.0096 130);
+  --lime-2:        oklch(0.977 0.0195 130);
+  --lime-3:        oklch(0.955 0.0359 130);
+  --lime-4:        oklch(0.936 0.0526 130);
+  --lime-5:        oklch(0.914 0.0699 130);
+  --lime-6:        oklch(0.886 0.0875 130);
+  --lime-7:        oklch(0.848 0.1092 130);
+  --lime-8:        oklch(0.826 0.1427 130);
+  --lime-9:        oklch(0.78 0.207 130);
+  --lime-10:       oklch(0.732 0.1964 130);
+  --lime-11:       oklch(0.505 0.1233 130);
+  --lime-12:       oklch(0.36 0.0518 130);
+  --lime-on-solid: oklch(0.18 0 0);
+
+  /* ── green ─────────────────────────────────────────────────────────── */
+  --green-1:       oklch(0.99 0.008 150);
+  --green-2:       oklch(0.977 0.0165 150);
+  --green-3:       oklch(0.955 0.031 150);
+  --green-4:       oklch(0.936 0.0464 150);
+  --green-5:       oklch(0.914 0.0629 150);
+  --green-6:       oklch(0.886 0.0809 150);
+  --green-7:       oklch(0.848 0.1047 150);
+  --green-8:       oklch(0.804 0.1421 150);
+  --green-9:       oklch(0.67 0.2129 150);
+  --green-10:      oklch(0.622 0.2028 150);
+  --green-11:      oklch(0.505 0.1644 150);
+  --green-12:      oklch(0.36 0.0794 150);
+  --green-on-solid: oklch(0.18 0 0);
+
+  /* ── teal ──────────────────────────────────────────────────────────── */
+  --teal-1:        oklch(0.99 0.0064 180);
+  --teal-2:        oklch(0.977 0.0132 180);
+  --teal-3:        oklch(0.955 0.0247 180);
+  --teal-4:        oklch(0.936 0.0368 180);
+  --teal-5:        oklch(0.914 0.0497 180);
+  --teal-6:        oklch(0.886 0.0636 180);
+  --teal-7:        oklch(0.848 0.0819 180);
+  --teal-8:        oklch(0.802 0.1105 180);
+  --teal-9:        oklch(0.66 0.1608 180);
+  --teal-10:       oklch(0.612 0.1514 180);
+  --teal-11:       oklch(0.505 0.1217 180);
+  --teal-12:       oklch(0.36 0.0574 180);
+  --teal-on-solid: oklch(0.18 0 0);
+
+  /* ── cyan ──────────────────────────────────────────────────────────── */
+  --cyan-1:        oklch(0.99 0.0063 225);
+  --cyan-2:        oklch(0.977 0.0129 225);
+  --cyan-3:        oklch(0.955 0.0243 225);
+  --cyan-4:        oklch(0.936 0.0364 225);
+  --cyan-5:        oklch(0.914 0.0495 225);
+  --cyan-6:        oklch(0.886 0.064 225);
+  --cyan-7:        oklch(0.848 0.0834 225);
+  --cyan-8:        oklch(0.796 0.1147 225);
+  --cyan-9:        oklch(0.63 0.1716 225);
+  --cyan-10:       oklch(0.582 0.1622 225);
+  --cyan-11:       oklch(0.505 0.1383 225);
+  --cyan-12:       oklch(0.36 0.0683 225);
+  --cyan-on-solid: oklch(1 0 0);
+
+  /* ── blue ──────────────────────────────────────────────────────────── */
+  --blue-1:        oklch(0.99 0.0058 258);
+  --blue-2:        oklch(0.977 0.0122 258);
+  --blue-3:        oklch(0.955 0.0236 258);
+  --blue-4:        oklch(0.936 0.0362 258);
+  --blue-5:        oklch(0.914 0.0505 258);
+  --blue-6:        oklch(0.886 0.0673 258);
+  --blue-7:        oklch(0.848 0.0914 258);
+  --blue-8:        oklch(0.788 0.1353 258);
+  --blue-9:        oklch(0.59 0.2441 258);
+  --blue-10:       oklch(0.542 0.2398 258);
+  --blue-11:       oklch(0.505 0.2227 258);
+  --blue-12:       oklch(0.36 0.1294 258);
+  --blue-on-solid: oklch(1 0 0);
+
+  /* ── indigo ────────────────────────────────────────────────────────── */
+  --indigo-1:      oklch(0.99 0.0052 277);
+  --indigo-2:      oklch(0.977 0.0108 277);
+  --indigo-3:      oklch(0.955 0.0211 277);
+  --indigo-4:      oklch(0.936 0.0325 277);
+  --indigo-5:      oklch(0.914 0.0457 277);
+  --indigo-6:      oklch(0.886 0.0614 277);
+  --indigo-7:      oklch(0.848 0.0845 277);
+  --indigo-8:      oklch(0.786 0.1281 277);
+  --indigo-9:      oklch(0.58 0.2464 277);
+  --indigo-10:     oklch(0.532 0.2449 277);
+  --indigo-11:     oklch(0.505 0.2298 277);
+  --indigo-12:     oklch(0.36 0.1399 277);
+  --indigo-on-solid: oklch(1 0 0);
+
+  /* ── purple ────────────────────────────────────────────────────────── */
+  --purple-1:      oklch(0.99 0.0061 302);
+  --purple-2:      oklch(0.977 0.0128 302);
+  --purple-3:      oklch(0.955 0.0248 302);
+  --purple-4:      oklch(0.936 0.038 302);
+  --purple-5:      oklch(0.914 0.053 302);
+  --purple-6:      oklch(0.886 0.0709 302);
+  --purple-7:      oklch(0.848 0.0966 302);
+  --purple-8:      oklch(0.79 0.1431 302);
+  --purple-9:      oklch(0.6 0.2624 302);
+  --purple-10:     oklch(0.552 0.2597 302);
+  --purple-11:     oklch(0.505 0.2418 302);
+  --purple-12:     oklch(0.36 0.1422 302);
+  --purple-on-solid: oklch(1 0 0);
+
+  /* ── pink ──────────────────────────────────────────────────────────── */
+  --pink-1:        oklch(0.99 0.0071 353);
+  --pink-2:        oklch(0.977 0.0147 353);
+  --pink-3:        oklch(0.955 0.0282 353);
+  --pink-4:        oklch(0.936 0.0427 353);
+  --pink-5:        oklch(0.914 0.059 353);
+  --pink-6:        oklch(0.886 0.0775 353);
+  --pink-7:        oklch(0.848 0.1035 353);
+  --pink-8:        oklch(0.794 0.1476 353);
+  --pink-9:        oklch(0.62 0.245 353);
+  --pink-10:       oklch(0.572 0.2379 353);
+  --pink-11:       oklch(0.505 0.2138 353);
+  --pink-12:       oklch(0.36 0.1159 353);
+  --pink-on-solid: oklch(1 0 0);
+}
+
+.dark {
+  /* ── gray ──────────────────────────────────────────────────────────── */
+  --gray-1:        oklch(0.145 0 0);
+  --gray-2:        oklch(0.185 0 0);
+  --gray-3:        oklch(0.225 0 0);
+  --gray-4:        oklch(0.255 0 0);
+  --gray-5:        oklch(0.285 0 0);
+  --gray-6:        oklch(0.325 0 0);
+  --gray-7:        oklch(0.375 0 0);
+  --gray-8:        oklch(0.455 0 0);
+  --gray-9:        oklch(0.6 0 0);
+  --gray-10:       oklch(0.66 0 0);
+  --gray-11:       oklch(0.77 0 0);
+  --gray-12:       oklch(0.96 0 0);
+
+  /* ── red ───────────────────────────────────────────────────────────── */
+  --red-1:         oklch(0.155 0.0109 25);
+  --red-2:         oklch(0.195 0.0199 25);
+  --red-3:         oklch(0.245 0.0373 25);
+  --red-4:         oklch(0.28 0.0534 25);
+  --red-5:         oklch(0.315 0.0714 25);
+  --red-6:         oklch(0.36 0.0927 25);
+  --red-7:         oklch(0.42 0.1219 25);
+  --red-8:         oklch(0.51 0.1677 25);
+  --red-9:         oklch(0.62 0.2236 25);
+  --red-10:        oklch(0.68 0.2075 25);
+  --red-11:        oklch(0.78 0.1572 25);
+  --red-12:        oklch(0.925 0.0769 25);
+  --red-on-solid: oklch(1 0 0);
+
+  /* ── orange ────────────────────────────────────────────────────────── */
+  --orange-1:      oklch(0.155 0.0066 50);
+  --orange-2:      oklch(0.195 0.0125 50);
+  --orange-3:      oklch(0.245 0.0244 50);
+  --orange-4:      oklch(0.28 0.0359 50);
+  --orange-5:      oklch(0.315 0.0493 50);
+  --orange-6:      oklch(0.36 0.0664 50);
+  --orange-7:      oklch(0.42 0.0916 50);
+  --orange-8:      oklch(0.518 0.1369 50);
+  --orange-9:      oklch(0.662 0.1997 50);
+  --orange-10:     oklch(0.722 0.1907 50);
+  --orange-11:     oklch(0.78 0.1576 50);
+  --orange-12:     oklch(0.925 0.0865 50);
+  --orange-on-solid: oklch(0.18 0 0);
+
+  /* ── amber ─────────────────────────────────────────────────────────── */
+  --amber-1:       oklch(0.155 0.0034 78);
+  --amber-2:       oklch(0.195 0.0067 78);
+  --amber-3:       oklch(0.245 0.0137 78);
+  --amber-4:       oklch(0.28 0.0208 78);
+  --amber-5:       oklch(0.315 0.0295 78);
+  --amber-6:       oklch(0.36 0.0415 78);
+  --amber-7:       oklch(0.42 0.0606 78);
+  --amber-8:       oklch(0.529 0.102 78);
+  --amber-9:       oklch(0.716 0.175 78);
+  --amber-10:      oklch(0.776 0.1724 78);
+  --amber-11:      oklch(0.78 0.1474 78);
+  --amber-12:      oklch(0.925 0.093 78);
+  --amber-on-solid: oklch(0.18 0 0);
+
+  /* ── yellow ────────────────────────────────────────────────────────── */
+  --yellow-1:      oklch(0.155 0.0021 99);
+  --yellow-2:      oklch(0.195 0.0043 99);
+  --yellow-3:      oklch(0.245 0.0091 99);
+  --yellow-4:      oklch(0.28 0.0141 99);
+  --yellow-5:      oklch(0.315 0.0205 99);
+  --yellow-6:      oklch(0.36 0.0297 99);
+  --yellow-7:      oklch(0.42 0.045 99);
+  --yellow-8:      oklch(0.536 0.0829 99);
+  --yellow-9:      oklch(0.752 0.1639 99);
+  --yellow-10:     oklch(0.812 0.1649 99);
+  --yellow-11:     oklch(0.78 0.1379 99);
+  --yellow-12:     oklch(0.925 0.0955 99);
+  --yellow-on-solid: oklch(0.18 0 0);
+
+  /* ── lime ──────────────────────────────────────────────────────────── */
+  --lime-1:        oklch(0.155 0.0032 130);
+  --lime-2:        oklch(0.195 0.0064 130);
+  --lime-3:        oklch(0.245 0.0132 130);
+  --lime-4:        oklch(0.28 0.0204 130);
+  --lime-5:        oklch(0.315 0.0293 130);
+  --lime-6:        oklch(0.36 0.0418 130);
+  --lime-7:        oklch(0.42 0.0622 130);
+  --lime-8:        oklch(0.532 0.1091 130);
+  --lime-9:        oklch(0.728 0.1997 130);
+  --lime-10:       oklch(0.788 0.1994 130);
+  --lime-11:       oklch(0.78 0.1697 130);
+  --lime-12:       oklch(0.925 0.1122 130);
+  --lime-on-solid: oklch(0.18 0 0);
+
+  /* ── green ─────────────────────────────────────────────────────────── */
+  --green-1:       oklch(0.155 0.006 150);
+  --green-2:       oklch(0.195 0.0114 150);
+  --green-3:       oklch(0.245 0.0227 150);
+  --green-4:       oklch(0.28 0.0337 150);
+  --green-5:       oklch(0.315 0.0469 150);
+  --green-6:       oklch(0.36 0.064 150);
+  --green-7:       oklch(0.42 0.09 150);
+  --green-8:       oklch(0.518 0.1389 150);
+  --green-9:       oklch(0.662 0.2121 150);
+  --green-10:      oklch(0.722 0.2064 150);
+  --green-11:      oklch(0.78 0.1738 150);
+  --green-12:      oklch(0.925 0.1 150);
+  --green-on-solid: oklch(0.18 0 0);
+
+  /* ── teal ──────────────────────────────────────────────────────────── */
+  --teal-1:        oklch(0.155 0.0042 180);
+  --teal-2:        oklch(0.195 0.008 180);
+  --teal-3:        oklch(0.245 0.0161 180);
+  --teal-4:        oklch(0.28 0.0241 180);
+  --teal-5:        oklch(0.315 0.0336 180);
+  --teal-6:        oklch(0.36 0.0463 180);
+  --teal-7:        oklch(0.42 0.0657 180);
+  --teal-8:        oklch(0.517 0.1028 180);
+  --teal-9:        oklch(0.656 0.1604 180);
+  --teal-10:       oklch(0.716 0.158 180);
+  --teal-11:       oklch(0.78 0.1344 180);
+  --teal-12:       oklch(0.925 0.0791 180);
+  --teal-on-solid: oklch(0.18 0 0);
+
+  /* ── cyan ──────────────────────────────────────────────────────────── */
+  --cyan-1:        oklch(0.155 0.0053 225);
+  --cyan-2:        oklch(0.195 0.0101 225);
+  --cyan-3:        oklch(0.245 0.0199 225);
+  --cyan-4:        oklch(0.28 0.0294 225);
+  --cyan-5:        oklch(0.315 0.0406 225);
+  --cyan-6:        oklch(0.36 0.0551 225);
+  --cyan-7:        oklch(0.42 0.0767 225);
+  --cyan-8:        oklch(0.514 0.1157 225);
+  --cyan-9:        oklch(0.638 0.1723 225);
+  --cyan-10:       oklch(0.698 0.168 225);
+  --cyan-11:       oklch(0.78 0.1399 225);
+  --cyan-12:       oklch(0.925 0.0786 225);
+  --cyan-on-solid: oklch(1 0 0);
+
+  /* ── blue ──────────────────────────────────────────────────────────── */
+  --blue-1:        oklch(0.155 0.0127 258);
+  --blue-2:        oklch(0.195 0.023 258);
+  --blue-3:        oklch(0.245 0.0428 258);
+  --blue-4:        oklch(0.28 0.0609 258);
+  --blue-5:        oklch(0.315 0.0809 258);
+  --blue-6:        oklch(0.36 0.1044 258);
+  --blue-7:        oklch(0.42 0.1359 258);
+  --blue-8:        oklch(0.509 0.1843 258);
+  --blue-9:        oklch(0.614 0.2422 258);
+  --blue-10:       oklch(0.674 0.2233 258);
+  --blue-11:       oklch(0.78 0.1655 258);
+  --blue-12:       oklch(0.925 0.0791 258);
+  --blue-on-solid: oklch(1 0 0);
+
+  /* ── indigo ────────────────────────────────────────────────────────── */
+  --indigo-1:      oklch(0.155 0.0147 277);
+  --indigo-2:      oklch(0.195 0.0262 277);
+  --indigo-3:      oklch(0.245 0.048 277);
+  --indigo-4:      oklch(0.28 0.0675 277);
+  --indigo-5:      oklch(0.315 0.0888 277);
+  --indigo-6:      oklch(0.36 0.1128 277);
+  --indigo-7:      oklch(0.42 0.1441 277);
+  --indigo-8:      oklch(0.508 0.1899 277);
+  --indigo-9:      oklch(0.608 0.2424 277);
+  --indigo-10:     oklch(0.668 0.2199 277);
+  --indigo-11:     oklch(0.78 0.1564 277);
+  --indigo-12:     oklch(0.925 0.0713 277);
+  --indigo-on-solid: oklch(1 0 0);
+
+  /* ── purple ────────────────────────────────────────────────────────── */
+  --purple-1:      oklch(0.155 0.0142 302);
+  --purple-2:      oklch(0.195 0.0256 302);
+  --purple-3:      oklch(0.245 0.0475 302);
+  --purple-4:      oklch(0.28 0.0673 302);
+  --purple-5:      oklch(0.315 0.0892 302);
+  --purple-6:      oklch(0.36 0.1147 302);
+  --purple-7:      oklch(0.42 0.1486 302);
+  --purple-8:      oklch(0.51 0.2001 302);
+  --purple-9:      oklch(0.62 0.2599 302);
+  --purple-10:     oklch(0.68 0.2378 302);
+  --purple-11:     oklch(0.78 0.1759 302);
+  --purple-12:     oklch(0.925 0.083 302);
+  --purple-on-solid: oklch(1 0 0);
+
+  /* ── pink ──────────────────────────────────────────────────────────── */
+  --pink-1:        oklch(0.155 0.0103 353);
+  --pink-2:        oklch(0.195 0.019 353);
+  --pink-3:        oklch(0.245 0.0363 353);
+  --pink-4:        oklch(0.28 0.0525 353);
+  --pink-5:        oklch(0.315 0.0709 353);
+  --pink-6:        oklch(0.36 0.0935 353);
+  --pink-7:        oklch(0.42 0.1253 353);
+  --pink-8:        oklch(0.512 0.1778 353);
+  --pink-9:        oklch(0.632 0.2449 353);
+  --pink-10:       oklch(0.692 0.2304 353);
+  --pink-11:       oklch(0.78 0.1813 353);
+  --pink-12:       oklch(0.925 0.0929 353);
+  --pink-on-solid: oklch(1 0 0);
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "minima",
+  "title": "Minima",
+  "author": "Enric Trillo",
+  "description": "A neutral-dominant design system. Neutral carries structure; colour is spent only on state, identity and data.",
+  "registryDependencies": [
+    "minima-theme",
+    "status",
+    "note",
+    "kbd",
+    "stat",
+    "button",
+    "badge",
+    "card",
+    "input",
+    "label",
+    "select",
+    "separator",
+    "table",
+    "tabs",
+    "progress",
+    "avatar"
+  ],
+  "type": "registry:base",
+  "config": {
+    "style": "base-nova",
+    "tailwind": {
+      "baseColor": "neutral",
+      "cssVariables": true
+    },
+    "iconLibrary": "lucide"
+  }
+}
