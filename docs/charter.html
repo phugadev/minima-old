@@ -767,7 +767,7 @@ html { scroll-behavior: smooth; }
 
 <header class="masthead">
   <div class="masthead-inner">
-    <p class="eyebrow">Minima · Constitution · v0.5</p>
+    <p class="eyebrow">Minima · Constitution · v0.4.0</p>
     <h1>The Minima Charter</h1>
     <p class="standfirst">
       Minima is a neutral-dominant design system. This document is its constitution: the decisions that are settled, the reasoning behind each, and the process for changing them. It exists because a design system&rsquo;s cost is not building it &mdash; it is <strong>re-litigating it</strong>. Every time a token&rsquo;s meaning is inferred rather than looked up, the vocabulary drifts, and drift is paid for in sessions that rediscover decisions already made. This is written to be <strong>cited</strong>, not merely read.
@@ -795,6 +795,10 @@ html { scroll-behavior: smooth; }
       <li><a href="#a8"><span class="n">8</span><span>Contrast floors</span></a></li>
       <li><a href="#a9"><span class="n">9</span><span>Generation</span></a></li>
       <li><a href="#a10"><span class="n">10</span><span>Amendment</span></a></li>
+    </ol>
+    <div class="rail-sep"></div>
+    <ol>
+      <li><a href="#a11"><span class="n">11</span><span>Change flow</span></a></li>
     </ol>
     <div class="rail-sep"></div>
     <ol>
@@ -1259,6 +1263,45 @@ html { scroll-behavior: smooth; }
     </section>
 
     <!-- ── Deviations ───────────────────────────────────────────────── -->
+        <section class="article" id="a11">
+      <div class="article-head"><span class="article-n">Art. 11</span><h2>Change flow</h2></div>
+
+      <div class="clause">
+        <div class="clause-id">11.1</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Changes arrive through pull requests. <code>main</code> is not written to directly. The amendment process in 10.1 needs somewhere to be checked, and a pull request is that place.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">11.2</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>Minima follows semantic versioning, and does so although it is not published to npm. The version is the promise the system makes to anything built on it, and a renamed token breaks a consumer&rsquo;s build exactly as hard as a renamed export would.</p>
+          <div class="tw"><table>
+            <thead><tr><th>Bump</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><td>major</td><td>A consumer&rsquo;s existing usage stops working or silently changes meaning &mdash; a token removed or renamed, a token&rsquo;s meaning changed, step semantics changed</td></tr>
+              <tr><td>minor</td><td>New capability, nothing existing invalidated &mdash; a token, component or utility added; values retuned while every Article 8 floor still holds</td></tr>
+              <tr><td>patch</td><td>Behaviour did not match the Charter and now does</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">11.3</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Retuning a value is minor; changing what a token <em>means</em> is major. Making <code>--danger</code> a deeper red is minor &mdash; every consumer&rsquo;s danger button is still a danger button. Redefining <code>--danger</code> to mean &ldquo;destructive action&rdquo; and introducing <code>--error</code> for states is major, even though no value changed.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">11.4</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>A change that only fixes a mismatch between the system and its own Charter is a patch, however visible it is. The on-solid fix in 0.3.1 recoloured every state solid and was still a patch, because Article 8 had always said what the values should be.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">11.5</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Continuous integration runs the type check, the lint, the generated-files-in-sync check, the build and the contrast audit on every pull request. A rule with no runner decays; these no longer have to be remembered.</p></div>
+      </div>
+    </section>
+
     <section class="article" id="dev">
       <div class="article-head"><span class="article-n">Dev.</span><h2>Documented deviations</h2></div>
       <p style="max-width: var(--measure); margin: 0 0 1.5rem;">Places Minima knowingly departs from its own rule. Each is settled. Each is here so that nobody has to rediscover why.</p>
@@ -1313,7 +1356,7 @@ html { scroll-behavior: smooth; }
 </div>
 
 <footer>
-  <span>The Minima Charter &middot; v0.5</span>
+  <span>The Minima Charter &middot; v0.4.0</span>
   <span>github.com/phugadev/minima</span>
 </footer>
 
