@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code",
+  "title": "Code",
+  "description": "Inline code and code blocks. Always mono, never coloured — syntax highlighting is a product concern.",
+  "files": [
+    {
+      "path": "src/components/minima/code.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\n/**\n * Code — inline code and code blocks.\n *\n * Always the mono register, never coloured. Syntax highlighting is a product\n * concern: a design system that tints code has quietly spent colour on a\n * fourth job, and Article 1 says there are three.\n */\n\nfunction Code({ className, ...props }: React.ComponentProps<\"code\">) {\n  return <code data-slot=\"code\" className={cn(\"code\", className)} {...props} />\n}\n\n/**\n * A block of code, optionally labelled. The label uses the signal register —\n * it is scanned for a filename or a language, never read.\n */\nfunction CodeBlock({\n  className,\n  label,\n  children,\n  ...props\n}: React.ComponentProps<\"pre\"> & { label?: React.ReactNode }) {\n  if (!label) {\n    return (\n      <pre data-slot=\"code-block\" className={cn(\"code-block\", className)} {...props}>\n        {children}\n      </pre>\n    )\n  }\n\n  return (\n    <div\n      data-slot=\"code-block-group\"\n      className={cn(\n        \"overflow-hidden rounded-panel border border-code-border bg-code-bg\",\n        className\n      )}\n    >\n      <div className=\"flex items-center justify-between gap-3 border-b border-code-border px-3 py-1.5\">\n        <span className=\"label-xs\">{label}</span>\n      </div>\n      <pre\n        className=\"overflow-x-auto p-gutter font-mono text-sm leading-normal text-code-foreground\"\n        {...props}\n      >\n        {children}\n      </pre>\n    </div>\n  )\n}\n\nexport { Code, CodeBlock }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,5 +1,7 @@
 # The Minima Charter
 
+*v0.4 — clause numbers are stable from v0.3 onward.*
+
 Minima is a neutral-dominant design system. This document is its constitution:
 the decisions that are settled, the reasoning behind each one, and the process
 for changing them.
@@ -40,6 +42,17 @@ five things are coloured has no accent; it has decoration. The discipline is
 not aesthetic preference — it is that colour retains meaning only if it is
 scarce.
 
+**1.5 NORMATIVE.** Glow — a coloured bloom behind an element — is admitted to
+the DATA job only. It may appear on a chart line, bar, meter, sparkline endpoint
+or a live status dot: things that encode a value. It may never appear on a
+button, card, border, focus ring, panel, or any other chrome. Glow is an
+intensity channel for marks, not a surface treatment.
+
+**1.6 RATIONALE.** Glow reads as premium precisely because it is rare and it
+means something. On chrome it is decoration, which 1.2 forbids. On a value it is
+a second encoding channel alongside hue — and it is how a light-mode mark can
+read deep and radiant at the same time, which no single ramp step achieves.
+
 ---
 
 ## Article 2 — Token layers
@@ -63,7 +76,7 @@ is `--border-dark` — the second breaks the moment the theme flips.
 
 **2.4 NORMATIVE.** The semantic layer is mode-independent. Both themes read the
 same declarations; only the ramps beneath them change. A literal colour value in
-the semantic layer is a bug. The single exception is Article 6.4.
+the semantic layer is a bug. The single exception is Article 7.4.
 
 **2.5 RATIONALE.** This is the property that makes dark mode structural rather
 than a second design. Nothing is "re-derived by hand for dark" because nothing
@@ -124,6 +137,18 @@ danger → red, info → cyan. Identity is blue. These are fixed; a product that
 wants a different identity hue changes `--accent-hue` in the semantic layer, not
 the scale.
 
+**3.7 NORMATIVE.** The ramps permit product-level composition; the system does
+not encode it. A product may map hues to categories in its own domain — service
+tiers, workstreams, environments — by composing the spectral ramp in its UI.
+Minima must never ship that mapping as a token, a name, or a semantic.
+
+**3.8 RATIONALE.** A named taxonomy baked into the system turns hue into a
+fourth colour job, which 1.2 forbids, and the moment the product's categories
+change the vocabulary is wrong everywhere at once. Composed at the UI layer, the
+same idea costs nothing to revise and cannot leak into the foundation. This is
+the single most expensive mistake available to a design system: it looks like
+richness and behaves like debt.
+
 ---
 
 ## Article 4 — Canvas and surface
@@ -147,14 +172,58 @@ dialogs, menus, dropdowns. The `flat` look has no shadow available to it at all,
 which is the test: if a layout only reads in `raised`, the layout is leaning on
 elevation it has not earned.
 
+**4.5 NORMATIVE.** Interaction states that every component would otherwise
+reinvent belong to the system, applied at the base layer:
+
+| Concern | Rule |
+| --- | --- |
+| Disabled | one opacity token, on anything `[disabled]`, `[aria-disabled="true"]` or `[data-disabled]` |
+| Scrollbars | thin and neutral — chrome, never the accent |
+| Autofill | repainted to the surface token, because the browser's default ignores every token |
+| Focus | one ring, one offset, on every focusable element |
+
 ---
 
-## Article 5 — Density
+## Article 5 — Geometry
 
-**5.1 NORMATIVE.** Spacing inherits Tailwind's 4px rhythm. Minima does not
+**5.1 NORMATIVE.** Four radii, keyed to element size. Roundness is relative: a
+chip and a modal cannot share a radius and both look right.
+
+| Token | Value | Use |
+| --- | --- | --- |
+| `--radius-chip` | 4px | tags, pills, inline marks |
+| `--radius-control` | 6px | buttons, inputs, selects |
+| `--radius-panel` | 12px | cards, panels |
+| `--radius-surface` | 16px | modals, sheets, large slabs |
+
+**5.2 NORMATIVE.** When one rounded element sits inside another:
+
+```
+inner = outer − (padding + border)
+```
+
+The border counts as part of the gap, not as decoration outside it. A nested
+corner is not an independent radius placed inside another — it is the same
+corner moved inward, sharing a centre with the one outside it.
+
+**5.3 NORMATIVE.** Derivation is one level deep. With a 12px panel radius and a
+16px gutter the concentric answer is already a square corner, so a chain deeper
+than one step has nothing left to compute. **When padding exceeds the radius, a
+square inner corner is the rule working, not failing.**
+
+**5.4 RATIONALE.** Two curves that do not share a centre make the gap between
+them pinch at the corners and open along the edges. The eye reads this as an
+error well before it can name it, which is why it is worth a formula rather than
+a judgement call.
+
+---
+
+## Article 6 — Density
+
+**6.1 NORMATIVE.** Spacing inherits Tailwind's 4px rhythm. Minima does not
 define a spacing scale, because there is no reason to have two.
 
-**5.2 NORMATIVE.** Minima defines control geometry — `--control-xs|sm|md|lg` —
+**6.2 NORMATIVE.** Minima defines control geometry — `--control-xs|sm|md|lg` —
 and three rhythm tokens:
 
 | Token | Means |
@@ -163,21 +232,25 @@ and three rhythm tokens:
 | `--stack` | space between sibling blocks |
 | `--section` | space between page sections |
 
-**5.3 NORMATIVE.** Three rhythm tokens, not a dozen. If a gap is none of these,
+**6.3 NORMATIVE.** Three rhythm tokens, not a dozen. If a gap is none of these,
 the question to ask is whether the block belongs where it is.
 
-**5.4 NORMATIVE.** Density is one attribute — `data-density` on `<html>`, one of
+**6.4 NORMATIVE.** Density is one attribute — `data-density` on `<html>`, one of
 `compact` · `default` · `comfortable`. Density is never a per-component prop.
+
+**6.5 NORMATIVE.** The rhythm ladder is strictly 2× at every rung — `--gutter`
+→ `--stack` → `--section`, at every density. A gap between groups must be at
+least twice the gap inside one, or the grouping stops reading as grouping.
 
 ---
 
-## Article 6 — Typography and prose
+## Article 7 — Typography and prose
 
-**6.1 NORMATIVE.** Two registers. **UI** text is small, tight and dense — 11px
+**7.1 NORMATIVE.** Two registers. **UI** text is small, tight and dense — 11px
 to 14px, `--tracking-tight` on headings. **Prose** is larger and looser — 16px
 body at `--leading-relaxed`.
 
-**6.2 NORMATIVE.** Three text levels, no more:
+**7.2 NORMATIVE.** Three text levels, no more:
 
 | Token | Level | Use |
 | --- | --- | --- |
@@ -188,23 +261,41 @@ body at `--leading-relaxed`.
 A fourth level is a sign the layout is doing too much; reach for spacing or a
 hairline instead.
 
-**6.3 NORMATIVE.** Numbers are always mono and tabular, at every size, via the
+**7.3 NORMATIVE.** Numbers are always mono and tabular, at every size, via the
 `data-numeric` attribute. Columns must align and changing digits must not
 reflow. This is not negotiable per-context.
 
-**6.4 NORMATIVE.** Prose body sits at `--muted-foreground` in both themes, and
+**7.4 NORMATIVE.** Prose body sits at `--muted-foreground` in both themes, and
 `<strong>` jumps to `--foreground` — black on a light ground, white on a dark
 one. A page of long-form text reads calm; emphasis is then the strongest signal
 on the page rather than one of several.
 
-**6.5 NORMATIVE.** Prose measure is capped at `68ch`, not a pixel width, so it
+**7.5 NORMATIVE.** Prose measure is capped at `68ch`, not a pixel width, so it
 tracks the font rather than the viewport.
+
+**7.6 NORMATIVE.** Two registers of type, not one.
+
+| Register | Form | For |
+| --- | --- | --- |
+| **Signal** | mono, uppercase, tracked | text that is **scanned** — eyebrows, column headers, token names, metadata, keys, every numeral |
+| **Read** | sans, sentence case | text that is **read** — everything else |
+
+A sentence set in the signal register is a violation. The register exists to
+make a thing findable, not legible.
+
+**7.7 NORMATIVE.** Smaller signal sizes take more tracking, because uppercase
+letterforms crowd as they shrink: 10px/0.14em, 11px/0.10em, 12px/0.07em.
+
+**7.8 NORMATIVE.** Code is always the mono register, applied at the base layer
+to `code`, `kbd`, `samp` and `pre` so it cannot be forgotten. Code is never
+coloured by Minima: syntax highlighting is a product concern, and a system that
+tints code has spent colour on a fourth job.
 
 ---
 
-## Article 7 — Contrast floors
+## Article 8 — Contrast floors
 
-**7.1 NORMATIVE.** These are floors, not targets, and they are verified by an
+**8.1 NORMATIVE.** These are floors, not targets, and they are verified by an
 automated audit rather than by eye:
 
 | Pairing | Floor |
@@ -216,19 +307,19 @@ automated audit rather than by eye:
 | `--border` against its background | 1.15:1 |
 | `--fill` against both canvas and surface | 1.06:1 |
 
-**7.2 NORMATIVE.** A change that drops any pairing below its floor is not
+**8.2 NORMATIVE.** A change that drops any pairing below its floor is not
 shipped, regardless of how it looks.
 
-**7.3 RATIONALE.** 7.1's last two rows exist because of a real regression: an
+**8.3 RATIONALE.** 7.1's last two rows exist because of a real regression: an
 early version had `--muted` at 1.03:1 against the light canvas, which made every
 tab list and secondary button vanish in light mode while looking correct in
 dark. Structural contrast needs a floor exactly as much as text does.
 
 ---
 
-## Article 8 — Generation
+## Article 9 — Generation
 
-**8.1 NORMATIVE.** Generated files are never hand-edited:
+**9.1 NORMATIVE.** Generated files are never hand-edited:
 
 | File | Owner |
 | --- | --- |
@@ -236,14 +327,14 @@ dark. Structural contrast needs a floor exactly as much as text does.
 | `src/app/tokens.css` | `scripts/build-tokens.mjs` |
 | `registry.json` | `scripts/build-tokens.mjs` |
 
-**8.2 NORMATIVE.** The app's token layer and the registry's token layer are two
+**9.2 NORMATIVE.** The app's token layer and the registry's token layer are two
 renderings of one object graph in `scripts/build-tokens.mjs`. They cannot drift,
 because there is nothing to keep in sync.
 
-**8.3 NORMATIVE.** `npm run tokens` regenerates. `npm run registry` regenerates
+**9.3 NORMATIVE.** `npm run tokens` regenerates. `npm run registry` regenerates
 and rebuilds the registry.
 
-**8.4 NORMATIVE.** Minima is distributed as a GitHub-hosted shadcn registry. The
+**9.4 NORMATIVE.** Minima is distributed as a GitHub-hosted shadcn registry. The
 repository *is* the registry:
 
 ```
@@ -253,25 +344,25 @@ npx shadcn@latest add phugadev/minima/minima
 Pin with `#ref` (branch, tag or SHA). Private access uses `GH_TOKEN` with
 Contents: Read-only.
 
-**8.5 NORMATIVE.** Minima builds on shadcn/ui, whose current default style
+**9.5 NORMATIVE.** Minima builds on shadcn/ui, whose current default style
 (`base-nova`) is itself built on Base UI. These are one choice, not two: taking
 shadcn/ui takes Base UI underneath it.
 
 ---
 
-## Article 9 — Amendment
+## Article 10 — Amendment
 
-**9.1** A change to anything marked NORMATIVE is an amendment. It requires:
+**10.1** A change to anything marked NORMATIVE is an amendment. It requires:
 
 1. The rule being changed, cited by article number.
 2. What breaks if it stays — a concrete failure, not a preference.
-3. The contrast audit, re-run, with no pairing below its Article 7 floor.
+3. The contrast audit, re-run, with no pairing below its Article 8 floor.
 4. This document, updated in the same change.
 
-**9.2** A change that does not meet 9.1 is a preference, and preferences do not
+**10.2** A change that does not meet 10.1 is a preference, and preferences do not
 move the charter. Build the thing you want at the component layer instead.
 
-**9.3** Adding a *documented deviation* is an amendment. Removing one is also an
+**10.3** Adding a *documented deviation* is an amendment. Removing one is also an
 amendment — they are settled, and their settledness is the point.
 
 ---
@@ -282,7 +373,7 @@ Places Minima knowingly departs from its own rule. Each is settled. Each is here
 so that nobody has to rediscover why.
 
 **D1 — A third text level, sourced from step 10.**
-Article 6.2 requires three text levels; the scale defines only two text steps
+Article 7.2 requires three text levels; the scale defines only two text steps
 (11 and 12). `--subtle-foreground` is therefore drawn from step 10, which the
 scale calls "hovered solid". It clears the 3:1 floor in both themes and is never
 used for body copy. *Alternative rejected:* dropping to two text levels, which
@@ -304,6 +395,13 @@ Step 11's published contract is ≥4.5:1, so the light ramp inherits a guarantee
 rather than a measurement. *Alternative rejected:* a per-hue step choice, which
 would make the chart ramp un-reasonable-about.
 
+**D5 — The nesting formula is offset by one optical pixel.**
+Article 5.2 gives the concentric result; `--nest-optical` then adds 1px back. At
+small radii a strictly concentric inner corner reads tight, because the eye
+weighs the visible arc rather than the geometric centre. The formula gets you to
+concentric and the eye takes it the rest of the way — mathematically wrong,
+visibly right.
+
 **D4 — Tailwind's numeric palette is cleared for Minima's hue names.**
 `--color-{hue}-{50..950}` is set to `initial` in `@theme`, so only Minima's 1–12
 vocabulary exists for those hues. Two scales sharing one hue name is precisely
@@ -316,6 +414,8 @@ how vocabulary drift starts.
 Named here so their absence reads as a decision rather than an oversight.
 
 - **Motion** — duration and easing tokens exist; named transitions do not.
+- **Glow** — the boundary is settled in 1.5, but nothing implements it yet.
+  There are no chart components for it to live on.
 - **Components beyond the four originals** — `Status`, `Note`, `Kbd`, `Stat`.
   Everything else is stock shadcn/ui, re-tuned entirely through tokens.
 - **A `registry:font` item** — fonts are wired in `layout.tsx` only, so registry

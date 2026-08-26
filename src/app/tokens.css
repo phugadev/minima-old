@@ -352,6 +352,11 @@
   --color-accent-hue-subtle: var(--accent-hue-subtle);
   --color-accent-hue-border: var(--accent-hue-border);
   --color-ring: var(--ring);
+  --color-code-foreground: var(--code-foreground);
+  --color-code-bg: var(--code-bg);
+  --color-code-border: var(--code-border);
+  --color-scrollbar-thumb: var(--scrollbar-thumb);
+  --color-scrollbar-thumb-hover: var(--scrollbar-thumb-hover);
   --color-prose-body: var(--prose-body);
   --color-prose-strong: var(--prose-strong);
   --color-prose-heading: var(--prose-heading);
@@ -416,6 +421,15 @@
   --text-3xl--line-height: 2.375rem;
   --text-4xl: 2.5rem;
   --text-4xl--line-height: 2.875rem;
+  --text-label-xs: 0.625rem;
+  --text-label-xs--line-height: 0.875rem;
+  --text-label-sm: 0.6875rem;
+  --text-label-sm--line-height: 1rem;
+  --text-label-md: 0.75rem;
+  --text-label-md--line-height: 1.125rem;
+  --tracking-label-xs: 0.14em;
+  --tracking-label-sm: 0.10em;
+  --tracking-label-md: 0.07em;
   --tracking-tighter: -0.03em;
   --tracking-tight: -0.015em;
   --tracking-normal: 0em;
@@ -437,6 +451,10 @@
   --radius-xl: 12px;
   --radius-2xl: 16px;
   --radius-full: 9999px;
+  --radius-chip: var(--radius-sm);
+  --radius-control: var(--radius-md);
+  --radius-panel: var(--radius-xl);
+  --radius-surface: var(--radius-2xl);
   --shadow-xs: var(--elevation-xs);
   --shadow-sm: var(--elevation-sm);
   --shadow-md: var(--elevation-md);
@@ -485,11 +503,17 @@
   --accent-hue-subtle: var(--blue-3);
   --accent-hue-border: var(--blue-6);
   --ring: var(--blue-9);
+  --code-foreground: var(--foreground);
+  --code-bg: var(--fill);
+  --code-border: var(--border);
+  --disabled-opacity: 0.5;
+  --scrollbar-thumb: var(--border-active);
+  --scrollbar-thumb-hover: var(--subtle-foreground);
   --prose-body: var(--muted-foreground);
   --prose-strong: var(--foreground);
   --prose-heading: var(--foreground);
   --prose-link: var(--accent-hue-text);
-  --prose-code: var(--foreground);
+  --prose-code: var(--code-foreground);
   --prose-marker: var(--subtle-foreground);
   --sidebar: var(--surface);
   --sidebar-foreground: var(--foreground);
@@ -589,8 +613,8 @@
   --control-md: 2rem;
   --control-lg: 2.25rem;
   --gutter: 1rem;
-  --stack: 1.5rem;
-  --section: 3.5rem;
+  --stack: 2rem;
+  --section: 4rem;
 }
 :root[data-density="compact"] {
   --control-xs: 1.25rem;
@@ -598,8 +622,8 @@
   --control-md: 1.75rem;
   --control-lg: 2rem;
   --gutter: 0.75rem;
-  --stack: 1rem;
-  --section: 2.5rem;
+  --stack: 1.5rem;
+  --section: 3rem;
 }
 :root[data-density="comfortable"] {
   --control-xs: 1.75rem;
@@ -607,6 +631,6 @@
   --control-md: 2.25rem;
   --control-lg: 2.5rem;
   --gutter: 1.25rem;
-  --stack: 2rem;
-  --section: 4.5rem;
+  --stack: 2.5rem;
+  --section: 5rem;
 }

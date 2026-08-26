@@ -70,13 +70,25 @@ const SEMANTIC = {
   "accent-hue-border": "var(--blue-6)",
   ring: "var(--blue-9)",
 
+  /* Code — one treatment, used in both registers. Code is never coloured by
+     Minima: syntax highlighting is a product concern, and a system that tints
+     code has quietly spent colour on a fourth job. */
+  "code-foreground": "var(--foreground)",
+  "code-bg": "var(--fill)",
+  "code-border": "var(--border)",
+
+  /* Interaction states that every component would otherwise reinvent. */
+  "disabled-opacity": "0.5",
+  "scrollbar-thumb": "var(--border-active)",
+  "scrollbar-thumb-hover": "var(--subtle-foreground)",
+
   /* Prose — body sits at the muted level so a page of text never shouts;
      bold jumps to maximum contrast, so emphasis is the thing that does. */
   "prose-body": "var(--muted-foreground)",
   "prose-strong": "var(--foreground)",
   "prose-heading": "var(--foreground)",
   "prose-link": "var(--accent-hue-text)",
-  "prose-code": "var(--foreground)",
+  "prose-code": "var(--code-foreground)",
   "prose-marker": "var(--subtle-foreground)",
 
   sidebar: "var(--surface)",
@@ -145,34 +157,39 @@ const CANVAS_DARK = {
 /* ── Density ────────────────────────────────────────────────────────────────
    Spacing inherits Tailwind's 4px rhythm. What Minima adds is control
    geometry and three rhythm tokens, so density is one attribute rather than
-   a thousand call-site decisions.                                            */
+   a thousand call-site decisions.
+
+   The ladder is strictly 2x at every rung — gutter, stack, section. A gap
+   between groups must be at least twice the gap inside one, or the grouping
+   stops reading as grouping. Holding the ratio at exactly 2 makes that
+   legible at every density.                                                  */
 const DENSITY = {
   default: {
     "control-xs": "1.5rem",
     "control-sm": "1.75rem",
     "control-md": "2rem",
     "control-lg": "2.25rem",
-    gutter: "1rem",
-    stack: "1.5rem",
-    section: "3.5rem",
+    gutter: "1rem",     /* 16 */
+    stack: "2rem",      /* 32 */
+    section: "4rem",    /* 64 */
   },
   compact: {
     "control-xs": "1.25rem",
     "control-sm": "1.5rem",
     "control-md": "1.75rem",
     "control-lg": "2rem",
-    gutter: "0.75rem",
-    stack: "1rem",
-    section: "2.5rem",
+    gutter: "0.75rem",  /* 12 */
+    stack: "1.5rem",    /* 24 */
+    section: "3rem",    /* 48 */
   },
   comfortable: {
     "control-xs": "1.75rem",
     "control-sm": "2rem",
     "control-md": "2.25rem",
     "control-lg": "2.5rem",
-    gutter: "1.25rem",
-    stack: "2rem",
-    section: "4.5rem",
+    gutter: "1.25rem",  /* 20 */
+    stack: "2.5rem",    /* 40 */
+    section: "5rem",    /* 80 */
   },
 }
 
@@ -200,6 +217,18 @@ const TYPE = {
   "--text-3xl--line-height": "2.375rem",
   "--text-4xl": "2.5rem",
   "--text-4xl--line-height": "2.875rem",
+  /* Signal register — mono, uppercase, for scanning. Smaller sizes take more
+     tracking, because uppercase letterforms crowd as they shrink. */
+  "--text-label-xs": "0.625rem",
+  "--text-label-xs--line-height": "0.875rem",
+  "--text-label-sm": "0.6875rem",
+  "--text-label-sm--line-height": "1rem",
+  "--text-label-md": "0.75rem",
+  "--text-label-md--line-height": "1.125rem",
+  "--tracking-label-xs": "0.14em",
+  "--tracking-label-sm": "0.10em",
+  "--tracking-label-md": "0.07em",
+
   "--tracking-tighter": "-0.03em",
   "--tracking-tight": "-0.015em",
   "--tracking-normal": "0em",
@@ -221,6 +250,13 @@ const TYPE = {
   "--radius-xl": "12px",
   "--radius-2xl": "16px",
   "--radius-full": "9999px",
+
+  /* Radius by element size. Roundness is relative: a chip and a modal cannot
+     share a radius and both look right. These are the four that exist. */
+  "--radius-chip": "var(--radius-sm)",      /* tags, pills, inline marks   */
+  "--radius-control": "var(--radius-md)",   /* buttons, inputs, selects    */
+  "--radius-panel": "var(--radius-xl)",     /* cards, panels               */
+  "--radius-surface": "var(--radius-2xl)",  /* modals, sheets, large slabs */
   "--shadow-xs": "var(--elevation-xs)",
   "--shadow-sm": "var(--elevation-sm)",
   "--shadow-md": "var(--elevation-md)",
@@ -242,8 +278,11 @@ function themeVars() {
     if (name !== "gray") t[`--color-${name}-on-solid`] = `var(--${name}-on-solid)`
   }
 
+  /* Semantics that are not colours, and so get no --color-* utility. */
+  const NOT_COLOUR = new Set(["radius", "disabled-opacity"])
+
   const roles = [
-    ...Object.keys(SEMANTIC).filter((k) => k !== "radius"),
+    ...Object.keys(SEMANTIC).filter((k) => !NOT_COLOUR.has(k)),
     "canvas",
     "surface",
     "chart-1", "chart-2", "chart-3", "chart-4", "chart-5", "chart-6",
@@ -369,7 +408,7 @@ const registry = {
       },
       registryDependencies: [
         "minima-theme",
-        "status", "note", "kbd", "stat",
+        "status", "note", "kbd", "stat", "code",
         "button", "badge", "card", "input", "label", "select",
         "separator", "table", "tabs", "progress", "avatar",
       ],
@@ -448,6 +487,7 @@ const registry = {
     uiItem("note", "Note", "A bordered callout that defaults to neutral and escalates to a state tone only when the message reports state.", ["class-variance-authority"]),
     uiItem("kbd", "Kbd", "A keyboard key. Always neutral — a shortcut is not a state."),
     uiItem("stat", "Stat", "A single metric. Mono tabular value, with the delta as the only coloured element."),
+    uiItem("code", "Code", "Inline code and code blocks. Always mono, never coloured — syntax highlighting is a product concern."),
   ],
 }
 

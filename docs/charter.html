@@ -1,0 +1,1321 @@
+<title>The Minima Charter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* ── Minima's own ramps, generated from scripts/generate-scales.mjs ─────── */
+:root {
+    --gray-1: oklch(0.993 0 0);
+    --gray-2: oklch(0.98 0 0);
+    --gray-3: oklch(0.956 0 0);
+    --gray-4: oklch(0.938 0 0);
+    --gray-5: oklch(0.918 0 0);
+    --gray-6: oklch(0.892 0 0);
+    --gray-7: oklch(0.858 0 0);
+    --gray-8: oklch(0.795 0 0);
+    --gray-9: oklch(0.64 0 0);
+    --gray-10: oklch(0.59 0 0);
+    --gray-11: oklch(0.52 0 0);
+    --gray-12: oklch(0.18 0 0);
+    --red-1: oklch(0.99 0.0057 25);
+    --red-2: oklch(0.977 0.012 25);
+    --red-3: oklch(0.955 0.0231 25);
+    --red-4: oklch(0.936 0.0352 25);
+    --red-5: oklch(0.914 0.049 25);
+    --red-6: oklch(0.886 0.065 25);
+    --red-7: oklch(0.848 0.0878 25);
+    --red-8: oklch(0.79 0.1283 25);
+    --red-9: oklch(0.6 0.2246 25);
+    --red-10: oklch(0.552 0.2198 25);
+    --red-11: oklch(0.505 0.2024 25);
+    --red-12: oklch(0.36 0.1149 25);
+    --red-on-solid: oklch(1 0 0);
+    --orange-1: oklch(0.99 0.0068 50);
+    --orange-2: oklch(0.977 0.0141 50);
+    --orange-3: oklch(0.955 0.0266 50);
+    --orange-4: oklch(0.936 0.04 50);
+    --orange-5: oklch(0.914 0.0546 50);
+    --orange-6: oklch(0.886 0.0709 50);
+    --orange-7: oklch(0.848 0.0929 50);
+    --orange-8: oklch(0.804 0.1279 50);
+    --orange-9: oklch(0.67 0.1999 50);
+    --orange-10: oklch(0.622 0.1934 50);
+    --orange-11: oklch(0.505 0.1628 50);
+    --orange-12: oklch(0.36 0.0823 50);
+    --orange-on-solid: oklch(0.18 0 0);
+    --amber-1: oklch(0.99 0.0078 78);
+    --amber-2: oklch(0.977 0.0159 78);
+    --amber-3: oklch(0.955 0.0294 78);
+    --amber-4: oklch(0.936 0.0435 78);
+    --amber-5: oklch(0.914 0.0581 78);
+    --amber-6: oklch(0.886 0.0734 78);
+    --amber-7: oklch(0.848 0.0927 78);
+    --amber-8: oklch(0.822 0.1222 78);
+    --amber-9: oklch(0.76 0.1789 78);
+    --amber-10: oklch(0.712 0.171 78);
+    --amber-11: oklch(0.505 0.1169 78);
+    --amber-12: oklch(0.36 0.0514 78);
+    --amber-on-solid: oklch(0.18 0 0);
+    --yellow-1: oklch(0.99 0.0083 99);
+    --yellow-2: oklch(0.977 0.0169 99);
+    --yellow-3: oklch(0.955 0.0308 99);
+    --yellow-4: oklch(0.936 0.0449 99);
+    --yellow-5: oklch(0.914 0.0592 99);
+    --yellow-6: oklch(0.886 0.0735 99);
+    --yellow-7: oklch(0.848 0.0906 99);
+    --yellow-8: oklch(0.834 0.118 99);
+    --yellow-9: oklch(0.82 0.1725 99);
+    --yellow-10: oklch(0.772 0.1637 99);
+    --yellow-11: oklch(0.505 0.0917 99);
+    --yellow-12: oklch(0.36 0.0368 99);
+    --yellow-on-solid: oklch(0.18 0 0);
+    --lime-1: oklch(0.99 0.0096 130);
+    --lime-2: oklch(0.977 0.0195 130);
+    --lime-3: oklch(0.955 0.0359 130);
+    --lime-4: oklch(0.936 0.0526 130);
+    --lime-5: oklch(0.914 0.0699 130);
+    --lime-6: oklch(0.886 0.0875 130);
+    --lime-7: oklch(0.848 0.1092 130);
+    --lime-8: oklch(0.826 0.1427 130);
+    --lime-9: oklch(0.78 0.207 130);
+    --lime-10: oklch(0.732 0.1964 130);
+    --lime-11: oklch(0.505 0.1233 130);
+    --lime-12: oklch(0.36 0.0518 130);
+    --lime-on-solid: oklch(0.18 0 0);
+    --green-1: oklch(0.99 0.008 150);
+    --green-2: oklch(0.977 0.0165 150);
+    --green-3: oklch(0.955 0.031 150);
+    --green-4: oklch(0.936 0.0464 150);
+    --green-5: oklch(0.914 0.0629 150);
+    --green-6: oklch(0.886 0.0809 150);
+    --green-7: oklch(0.848 0.1047 150);
+    --green-8: oklch(0.804 0.1421 150);
+    --green-9: oklch(0.67 0.2129 150);
+    --green-10: oklch(0.622 0.2028 150);
+    --green-11: oklch(0.505 0.1644 150);
+    --green-12: oklch(0.36 0.0794 150);
+    --green-on-solid: oklch(0.18 0 0);
+    --teal-1: oklch(0.99 0.0064 180);
+    --teal-2: oklch(0.977 0.0132 180);
+    --teal-3: oklch(0.955 0.0247 180);
+    --teal-4: oklch(0.936 0.0368 180);
+    --teal-5: oklch(0.914 0.0497 180);
+    --teal-6: oklch(0.886 0.0636 180);
+    --teal-7: oklch(0.848 0.0819 180);
+    --teal-8: oklch(0.802 0.1105 180);
+    --teal-9: oklch(0.66 0.1608 180);
+    --teal-10: oklch(0.612 0.1514 180);
+    --teal-11: oklch(0.505 0.1217 180);
+    --teal-12: oklch(0.36 0.0574 180);
+    --teal-on-solid: oklch(0.18 0 0);
+    --cyan-1: oklch(0.99 0.0063 225);
+    --cyan-2: oklch(0.977 0.0129 225);
+    --cyan-3: oklch(0.955 0.0243 225);
+    --cyan-4: oklch(0.936 0.0364 225);
+    --cyan-5: oklch(0.914 0.0495 225);
+    --cyan-6: oklch(0.886 0.064 225);
+    --cyan-7: oklch(0.848 0.0834 225);
+    --cyan-8: oklch(0.796 0.1147 225);
+    --cyan-9: oklch(0.63 0.1716 225);
+    --cyan-10: oklch(0.582 0.1622 225);
+    --cyan-11: oklch(0.505 0.1383 225);
+    --cyan-12: oklch(0.36 0.0683 225);
+    --cyan-on-solid: oklch(1 0 0);
+    --blue-1: oklch(0.99 0.0058 258);
+    --blue-2: oklch(0.977 0.0122 258);
+    --blue-3: oklch(0.955 0.0236 258);
+    --blue-4: oklch(0.936 0.0362 258);
+    --blue-5: oklch(0.914 0.0505 258);
+    --blue-6: oklch(0.886 0.0673 258);
+    --blue-7: oklch(0.848 0.0914 258);
+    --blue-8: oklch(0.788 0.1353 258);
+    --blue-9: oklch(0.59 0.2441 258);
+    --blue-10: oklch(0.542 0.2398 258);
+    --blue-11: oklch(0.505 0.2227 258);
+    --blue-12: oklch(0.36 0.1294 258);
+    --blue-on-solid: oklch(1 0 0);
+    --indigo-1: oklch(0.99 0.0052 277);
+    --indigo-2: oklch(0.977 0.0108 277);
+    --indigo-3: oklch(0.955 0.0211 277);
+    --indigo-4: oklch(0.936 0.0325 277);
+    --indigo-5: oklch(0.914 0.0457 277);
+    --indigo-6: oklch(0.886 0.0614 277);
+    --indigo-7: oklch(0.848 0.0845 277);
+    --indigo-8: oklch(0.786 0.1281 277);
+    --indigo-9: oklch(0.58 0.2464 277);
+    --indigo-10: oklch(0.532 0.2449 277);
+    --indigo-11: oklch(0.505 0.2298 277);
+    --indigo-12: oklch(0.36 0.1399 277);
+    --indigo-on-solid: oklch(1 0 0);
+    --purple-1: oklch(0.99 0.0061 302);
+    --purple-2: oklch(0.977 0.0128 302);
+    --purple-3: oklch(0.955 0.0248 302);
+    --purple-4: oklch(0.936 0.038 302);
+    --purple-5: oklch(0.914 0.053 302);
+    --purple-6: oklch(0.886 0.0709 302);
+    --purple-7: oklch(0.848 0.0966 302);
+    --purple-8: oklch(0.79 0.1431 302);
+    --purple-9: oklch(0.6 0.2624 302);
+    --purple-10: oklch(0.552 0.2597 302);
+    --purple-11: oklch(0.505 0.2418 302);
+    --purple-12: oklch(0.36 0.1422 302);
+    --purple-on-solid: oklch(1 0 0);
+    --pink-1: oklch(0.99 0.0071 353);
+    --pink-2: oklch(0.977 0.0147 353);
+    --pink-3: oklch(0.955 0.0282 353);
+    --pink-4: oklch(0.936 0.0427 353);
+    --pink-5: oklch(0.914 0.059 353);
+    --pink-6: oklch(0.886 0.0775 353);
+    --pink-7: oklch(0.848 0.1035 353);
+    --pink-8: oklch(0.794 0.1476 353);
+    --pink-9: oklch(0.62 0.245 353);
+    --pink-10: oklch(0.572 0.2379 353);
+    --pink-11: oklch(0.505 0.2138 353);
+    --pink-12: oklch(0.36 0.1159 353);
+    --pink-on-solid: oklch(1 0 0);
+  }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --gray-1: oklch(0.145 0 0);
+    --gray-2: oklch(0.185 0 0);
+    --gray-3: oklch(0.225 0 0);
+    --gray-4: oklch(0.255 0 0);
+    --gray-5: oklch(0.285 0 0);
+    --gray-6: oklch(0.325 0 0);
+    --gray-7: oklch(0.375 0 0);
+    --gray-8: oklch(0.455 0 0);
+    --gray-9: oklch(0.6 0 0);
+    --gray-10: oklch(0.66 0 0);
+    --gray-11: oklch(0.77 0 0);
+    --gray-12: oklch(0.96 0 0);
+    --red-1: oklch(0.155 0.0109 25);
+    --red-2: oklch(0.195 0.0199 25);
+    --red-3: oklch(0.245 0.0373 25);
+    --red-4: oklch(0.28 0.0534 25);
+    --red-5: oklch(0.315 0.0714 25);
+    --red-6: oklch(0.36 0.0927 25);
+    --red-7: oklch(0.42 0.1219 25);
+    --red-8: oklch(0.51 0.1677 25);
+    --red-9: oklch(0.62 0.2236 25);
+    --red-10: oklch(0.68 0.2075 25);
+    --red-11: oklch(0.78 0.1572 25);
+    --red-12: oklch(0.925 0.0769 25);
+    --red-on-solid: oklch(1 0 0);
+    --orange-1: oklch(0.155 0.0066 50);
+    --orange-2: oklch(0.195 0.0125 50);
+    --orange-3: oklch(0.245 0.0244 50);
+    --orange-4: oklch(0.28 0.0359 50);
+    --orange-5: oklch(0.315 0.0493 50);
+    --orange-6: oklch(0.36 0.0664 50);
+    --orange-7: oklch(0.42 0.0916 50);
+    --orange-8: oklch(0.518 0.1369 50);
+    --orange-9: oklch(0.662 0.1997 50);
+    --orange-10: oklch(0.722 0.1907 50);
+    --orange-11: oklch(0.78 0.1576 50);
+    --orange-12: oklch(0.925 0.0865 50);
+    --orange-on-solid: oklch(0.18 0 0);
+    --amber-1: oklch(0.155 0.0034 78);
+    --amber-2: oklch(0.195 0.0067 78);
+    --amber-3: oklch(0.245 0.0137 78);
+    --amber-4: oklch(0.28 0.0208 78);
+    --amber-5: oklch(0.315 0.0295 78);
+    --amber-6: oklch(0.36 0.0415 78);
+    --amber-7: oklch(0.42 0.0606 78);
+    --amber-8: oklch(0.529 0.102 78);
+    --amber-9: oklch(0.716 0.175 78);
+    --amber-10: oklch(0.776 0.1724 78);
+    --amber-11: oklch(0.78 0.1474 78);
+    --amber-12: oklch(0.925 0.093 78);
+    --amber-on-solid: oklch(0.18 0 0);
+    --yellow-1: oklch(0.155 0.0021 99);
+    --yellow-2: oklch(0.195 0.0043 99);
+    --yellow-3: oklch(0.245 0.0091 99);
+    --yellow-4: oklch(0.28 0.0141 99);
+    --yellow-5: oklch(0.315 0.0205 99);
+    --yellow-6: oklch(0.36 0.0297 99);
+    --yellow-7: oklch(0.42 0.045 99);
+    --yellow-8: oklch(0.536 0.0829 99);
+    --yellow-9: oklch(0.752 0.1639 99);
+    --yellow-10: oklch(0.812 0.1649 99);
+    --yellow-11: oklch(0.78 0.1379 99);
+    --yellow-12: oklch(0.925 0.0955 99);
+    --yellow-on-solid: oklch(0.18 0 0);
+    --lime-1: oklch(0.155 0.0032 130);
+    --lime-2: oklch(0.195 0.0064 130);
+    --lime-3: oklch(0.245 0.0132 130);
+    --lime-4: oklch(0.28 0.0204 130);
+    --lime-5: oklch(0.315 0.0293 130);
+    --lime-6: oklch(0.36 0.0418 130);
+    --lime-7: oklch(0.42 0.0622 130);
+    --lime-8: oklch(0.532 0.1091 130);
+    --lime-9: oklch(0.728 0.1997 130);
+    --lime-10: oklch(0.788 0.1994 130);
+    --lime-11: oklch(0.78 0.1697 130);
+    --lime-12: oklch(0.925 0.1122 130);
+    --lime-on-solid: oklch(0.18 0 0);
+    --green-1: oklch(0.155 0.006 150);
+    --green-2: oklch(0.195 0.0114 150);
+    --green-3: oklch(0.245 0.0227 150);
+    --green-4: oklch(0.28 0.0337 150);
+    --green-5: oklch(0.315 0.0469 150);
+    --green-6: oklch(0.36 0.064 150);
+    --green-7: oklch(0.42 0.09 150);
+    --green-8: oklch(0.518 0.1389 150);
+    --green-9: oklch(0.662 0.2121 150);
+    --green-10: oklch(0.722 0.2064 150);
+    --green-11: oklch(0.78 0.1738 150);
+    --green-12: oklch(0.925 0.1 150);
+    --green-on-solid: oklch(0.18 0 0);
+    --teal-1: oklch(0.155 0.0042 180);
+    --teal-2: oklch(0.195 0.008 180);
+    --teal-3: oklch(0.245 0.0161 180);
+    --teal-4: oklch(0.28 0.0241 180);
+    --teal-5: oklch(0.315 0.0336 180);
+    --teal-6: oklch(0.36 0.0463 180);
+    --teal-7: oklch(0.42 0.0657 180);
+    --teal-8: oklch(0.517 0.1028 180);
+    --teal-9: oklch(0.656 0.1604 180);
+    --teal-10: oklch(0.716 0.158 180);
+    --teal-11: oklch(0.78 0.1344 180);
+    --teal-12: oklch(0.925 0.0791 180);
+    --teal-on-solid: oklch(0.18 0 0);
+    --cyan-1: oklch(0.155 0.0053 225);
+    --cyan-2: oklch(0.195 0.0101 225);
+    --cyan-3: oklch(0.245 0.0199 225);
+    --cyan-4: oklch(0.28 0.0294 225);
+    --cyan-5: oklch(0.315 0.0406 225);
+    --cyan-6: oklch(0.36 0.0551 225);
+    --cyan-7: oklch(0.42 0.0767 225);
+    --cyan-8: oklch(0.514 0.1157 225);
+    --cyan-9: oklch(0.638 0.1723 225);
+    --cyan-10: oklch(0.698 0.168 225);
+    --cyan-11: oklch(0.78 0.1399 225);
+    --cyan-12: oklch(0.925 0.0786 225);
+    --cyan-on-solid: oklch(1 0 0);
+    --blue-1: oklch(0.155 0.0127 258);
+    --blue-2: oklch(0.195 0.023 258);
+    --blue-3: oklch(0.245 0.0428 258);
+    --blue-4: oklch(0.28 0.0609 258);
+    --blue-5: oklch(0.315 0.0809 258);
+    --blue-6: oklch(0.36 0.1044 258);
+    --blue-7: oklch(0.42 0.1359 258);
+    --blue-8: oklch(0.509 0.1843 258);
+    --blue-9: oklch(0.614 0.2422 258);
+    --blue-10: oklch(0.674 0.2233 258);
+    --blue-11: oklch(0.78 0.1655 258);
+    --blue-12: oklch(0.925 0.0791 258);
+    --blue-on-solid: oklch(1 0 0);
+    --indigo-1: oklch(0.155 0.0147 277);
+    --indigo-2: oklch(0.195 0.0262 277);
+    --indigo-3: oklch(0.245 0.048 277);
+    --indigo-4: oklch(0.28 0.0675 277);
+    --indigo-5: oklch(0.315 0.0888 277);
+    --indigo-6: oklch(0.36 0.1128 277);
+    --indigo-7: oklch(0.42 0.1441 277);
+    --indigo-8: oklch(0.508 0.1899 277);
+    --indigo-9: oklch(0.608 0.2424 277);
+    --indigo-10: oklch(0.668 0.2199 277);
+    --indigo-11: oklch(0.78 0.1564 277);
+    --indigo-12: oklch(0.925 0.0713 277);
+    --indigo-on-solid: oklch(1 0 0);
+    --purple-1: oklch(0.155 0.0142 302);
+    --purple-2: oklch(0.195 0.0256 302);
+    --purple-3: oklch(0.245 0.0475 302);
+    --purple-4: oklch(0.28 0.0673 302);
+    --purple-5: oklch(0.315 0.0892 302);
+    --purple-6: oklch(0.36 0.1147 302);
+    --purple-7: oklch(0.42 0.1486 302);
+    --purple-8: oklch(0.51 0.2001 302);
+    --purple-9: oklch(0.62 0.2599 302);
+    --purple-10: oklch(0.68 0.2378 302);
+    --purple-11: oklch(0.78 0.1759 302);
+    --purple-12: oklch(0.925 0.083 302);
+    --purple-on-solid: oklch(1 0 0);
+    --pink-1: oklch(0.155 0.0103 353);
+    --pink-2: oklch(0.195 0.019 353);
+    --pink-3: oklch(0.245 0.0363 353);
+    --pink-4: oklch(0.28 0.0525 353);
+    --pink-5: oklch(0.315 0.0709 353);
+    --pink-6: oklch(0.36 0.0935 353);
+    --pink-7: oklch(0.42 0.1253 353);
+    --pink-8: oklch(0.512 0.1778 353);
+    --pink-9: oklch(0.632 0.2449 353);
+    --pink-10: oklch(0.692 0.2304 353);
+    --pink-11: oklch(0.78 0.1813 353);
+    --pink-12: oklch(0.925 0.0929 353);
+    --pink-on-solid: oklch(1 0 0);
+  }
+}
+
+:root[data-theme="dark"] {
+    --gray-1: oklch(0.145 0 0);
+    --gray-2: oklch(0.185 0 0);
+    --gray-3: oklch(0.225 0 0);
+    --gray-4: oklch(0.255 0 0);
+    --gray-5: oklch(0.285 0 0);
+    --gray-6: oklch(0.325 0 0);
+    --gray-7: oklch(0.375 0 0);
+    --gray-8: oklch(0.455 0 0);
+    --gray-9: oklch(0.6 0 0);
+    --gray-10: oklch(0.66 0 0);
+    --gray-11: oklch(0.77 0 0);
+    --gray-12: oklch(0.96 0 0);
+    --red-1: oklch(0.155 0.0109 25);
+    --red-2: oklch(0.195 0.0199 25);
+    --red-3: oklch(0.245 0.0373 25);
+    --red-4: oklch(0.28 0.0534 25);
+    --red-5: oklch(0.315 0.0714 25);
+    --red-6: oklch(0.36 0.0927 25);
+    --red-7: oklch(0.42 0.1219 25);
+    --red-8: oklch(0.51 0.1677 25);
+    --red-9: oklch(0.62 0.2236 25);
+    --red-10: oklch(0.68 0.2075 25);
+    --red-11: oklch(0.78 0.1572 25);
+    --red-12: oklch(0.925 0.0769 25);
+    --red-on-solid: oklch(1 0 0);
+    --orange-1: oklch(0.155 0.0066 50);
+    --orange-2: oklch(0.195 0.0125 50);
+    --orange-3: oklch(0.245 0.0244 50);
+    --orange-4: oklch(0.28 0.0359 50);
+    --orange-5: oklch(0.315 0.0493 50);
+    --orange-6: oklch(0.36 0.0664 50);
+    --orange-7: oklch(0.42 0.0916 50);
+    --orange-8: oklch(0.518 0.1369 50);
+    --orange-9: oklch(0.662 0.1997 50);
+    --orange-10: oklch(0.722 0.1907 50);
+    --orange-11: oklch(0.78 0.1576 50);
+    --orange-12: oklch(0.925 0.0865 50);
+    --orange-on-solid: oklch(0.18 0 0);
+    --amber-1: oklch(0.155 0.0034 78);
+    --amber-2: oklch(0.195 0.0067 78);
+    --amber-3: oklch(0.245 0.0137 78);
+    --amber-4: oklch(0.28 0.0208 78);
+    --amber-5: oklch(0.315 0.0295 78);
+    --amber-6: oklch(0.36 0.0415 78);
+    --amber-7: oklch(0.42 0.0606 78);
+    --amber-8: oklch(0.529 0.102 78);
+    --amber-9: oklch(0.716 0.175 78);
+    --amber-10: oklch(0.776 0.1724 78);
+    --amber-11: oklch(0.78 0.1474 78);
+    --amber-12: oklch(0.925 0.093 78);
+    --amber-on-solid: oklch(0.18 0 0);
+    --yellow-1: oklch(0.155 0.0021 99);
+    --yellow-2: oklch(0.195 0.0043 99);
+    --yellow-3: oklch(0.245 0.0091 99);
+    --yellow-4: oklch(0.28 0.0141 99);
+    --yellow-5: oklch(0.315 0.0205 99);
+    --yellow-6: oklch(0.36 0.0297 99);
+    --yellow-7: oklch(0.42 0.045 99);
+    --yellow-8: oklch(0.536 0.0829 99);
+    --yellow-9: oklch(0.752 0.1639 99);
+    --yellow-10: oklch(0.812 0.1649 99);
+    --yellow-11: oklch(0.78 0.1379 99);
+    --yellow-12: oklch(0.925 0.0955 99);
+    --yellow-on-solid: oklch(0.18 0 0);
+    --lime-1: oklch(0.155 0.0032 130);
+    --lime-2: oklch(0.195 0.0064 130);
+    --lime-3: oklch(0.245 0.0132 130);
+    --lime-4: oklch(0.28 0.0204 130);
+    --lime-5: oklch(0.315 0.0293 130);
+    --lime-6: oklch(0.36 0.0418 130);
+    --lime-7: oklch(0.42 0.0622 130);
+    --lime-8: oklch(0.532 0.1091 130);
+    --lime-9: oklch(0.728 0.1997 130);
+    --lime-10: oklch(0.788 0.1994 130);
+    --lime-11: oklch(0.78 0.1697 130);
+    --lime-12: oklch(0.925 0.1122 130);
+    --lime-on-solid: oklch(0.18 0 0);
+    --green-1: oklch(0.155 0.006 150);
+    --green-2: oklch(0.195 0.0114 150);
+    --green-3: oklch(0.245 0.0227 150);
+    --green-4: oklch(0.28 0.0337 150);
+    --green-5: oklch(0.315 0.0469 150);
+    --green-6: oklch(0.36 0.064 150);
+    --green-7: oklch(0.42 0.09 150);
+    --green-8: oklch(0.518 0.1389 150);
+    --green-9: oklch(0.662 0.2121 150);
+    --green-10: oklch(0.722 0.2064 150);
+    --green-11: oklch(0.78 0.1738 150);
+    --green-12: oklch(0.925 0.1 150);
+    --green-on-solid: oklch(0.18 0 0);
+    --teal-1: oklch(0.155 0.0042 180);
+    --teal-2: oklch(0.195 0.008 180);
+    --teal-3: oklch(0.245 0.0161 180);
+    --teal-4: oklch(0.28 0.0241 180);
+    --teal-5: oklch(0.315 0.0336 180);
+    --teal-6: oklch(0.36 0.0463 180);
+    --teal-7: oklch(0.42 0.0657 180);
+    --teal-8: oklch(0.517 0.1028 180);
+    --teal-9: oklch(0.656 0.1604 180);
+    --teal-10: oklch(0.716 0.158 180);
+    --teal-11: oklch(0.78 0.1344 180);
+    --teal-12: oklch(0.925 0.0791 180);
+    --teal-on-solid: oklch(0.18 0 0);
+    --cyan-1: oklch(0.155 0.0053 225);
+    --cyan-2: oklch(0.195 0.0101 225);
+    --cyan-3: oklch(0.245 0.0199 225);
+    --cyan-4: oklch(0.28 0.0294 225);
+    --cyan-5: oklch(0.315 0.0406 225);
+    --cyan-6: oklch(0.36 0.0551 225);
+    --cyan-7: oklch(0.42 0.0767 225);
+    --cyan-8: oklch(0.514 0.1157 225);
+    --cyan-9: oklch(0.638 0.1723 225);
+    --cyan-10: oklch(0.698 0.168 225);
+    --cyan-11: oklch(0.78 0.1399 225);
+    --cyan-12: oklch(0.925 0.0786 225);
+    --cyan-on-solid: oklch(1 0 0);
+    --blue-1: oklch(0.155 0.0127 258);
+    --blue-2: oklch(0.195 0.023 258);
+    --blue-3: oklch(0.245 0.0428 258);
+    --blue-4: oklch(0.28 0.0609 258);
+    --blue-5: oklch(0.315 0.0809 258);
+    --blue-6: oklch(0.36 0.1044 258);
+    --blue-7: oklch(0.42 0.1359 258);
+    --blue-8: oklch(0.509 0.1843 258);
+    --blue-9: oklch(0.614 0.2422 258);
+    --blue-10: oklch(0.674 0.2233 258);
+    --blue-11: oklch(0.78 0.1655 258);
+    --blue-12: oklch(0.925 0.0791 258);
+    --blue-on-solid: oklch(1 0 0);
+    --indigo-1: oklch(0.155 0.0147 277);
+    --indigo-2: oklch(0.195 0.0262 277);
+    --indigo-3: oklch(0.245 0.048 277);
+    --indigo-4: oklch(0.28 0.0675 277);
+    --indigo-5: oklch(0.315 0.0888 277);
+    --indigo-6: oklch(0.36 0.1128 277);
+    --indigo-7: oklch(0.42 0.1441 277);
+    --indigo-8: oklch(0.508 0.1899 277);
+    --indigo-9: oklch(0.608 0.2424 277);
+    --indigo-10: oklch(0.668 0.2199 277);
+    --indigo-11: oklch(0.78 0.1564 277);
+    --indigo-12: oklch(0.925 0.0713 277);
+    --indigo-on-solid: oklch(1 0 0);
+    --purple-1: oklch(0.155 0.0142 302);
+    --purple-2: oklch(0.195 0.0256 302);
+    --purple-3: oklch(0.245 0.0475 302);
+    --purple-4: oklch(0.28 0.0673 302);
+    --purple-5: oklch(0.315 0.0892 302);
+    --purple-6: oklch(0.36 0.1147 302);
+    --purple-7: oklch(0.42 0.1486 302);
+    --purple-8: oklch(0.51 0.2001 302);
+    --purple-9: oklch(0.62 0.2599 302);
+    --purple-10: oklch(0.68 0.2378 302);
+    --purple-11: oklch(0.78 0.1759 302);
+    --purple-12: oklch(0.925 0.083 302);
+    --purple-on-solid: oklch(1 0 0);
+    --pink-1: oklch(0.155 0.0103 353);
+    --pink-2: oklch(0.195 0.019 353);
+    --pink-3: oklch(0.245 0.0363 353);
+    --pink-4: oklch(0.28 0.0525 353);
+    --pink-5: oklch(0.315 0.0709 353);
+    --pink-6: oklch(0.36 0.0935 353);
+    --pink-7: oklch(0.42 0.1253 353);
+    --pink-8: oklch(0.512 0.1778 353);
+    --pink-9: oklch(0.632 0.2449 353);
+    --pink-10: oklch(0.692 0.2304 353);
+    --pink-11: oklch(0.78 0.1813 353);
+    --pink-12: oklch(0.925 0.0929 353);
+    --pink-on-solid: oklch(1 0 0);
+}
+
+/* ── Semantic layer — the same roles the system defines ────────────────── */
+:root {
+  --canvas: var(--gray-2);
+  --surface: var(--gray-1);
+  --fill: var(--gray-3);
+  --ink: var(--gray-12);
+  --muted: var(--gray-11);
+  --subtle: var(--gray-10);
+  --line: var(--gray-6);
+  --line-strong: var(--gray-7);
+  --accent: var(--blue-11);
+  --accent-solid: var(--blue-9);
+  --accent-subtle: var(--blue-3);
+  --accent-line: var(--blue-6);
+  --norm: var(--red-11);
+  --norm-subtle: var(--red-3);
+  --norm-line: var(--red-6);
+  --rat: var(--gray-11);
+
+  --measure: 68ch;
+  --rail: 15rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas: var(--gray-1);
+    --surface: var(--gray-2);
+  }
+}
+:root[data-theme="dark"] {
+  --canvas: var(--gray-1);
+  --surface: var(--gray-2);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--canvas);
+  color: var(--muted);
+  font-family: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+code, .mono { font-family: "Geist Mono", ui-monospace, "SF Mono", monospace; }
+
+a { color: var(--accent); text-decoration: underline; text-decoration-color: var(--accent-line); text-underline-offset: 0.2em; }
+a:hover { text-decoration-color: currentColor; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-solid); outline-offset: 3px; border-radius: 2px; }
+
+/* ── Shell ─────────────────────────────────────────────────────────────── */
+.shell {
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  gap: 3.5rem;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 0 2rem 8rem;
+}
+@media (max-width: 62rem) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .rail { position: static; border-right: 0; border-bottom: 1px solid var(--line); padding-bottom: 2rem; margin-bottom: 2rem; }
+}
+
+/* ── Masthead ──────────────────────────────────────────────────────────── */
+.masthead {
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 3.5rem;
+}
+.masthead-inner {
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 5.5rem 2rem 3rem;
+}
+.eyebrow {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--subtle);
+  margin: 0 0 1.25rem;
+}
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+}
+.standfirst {
+  max-width: var(--measure);
+  margin: 1.75rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+.standfirst strong { color: var(--ink); font-weight: 600; }
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1px;
+  margin-top: 2.75rem;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.status-cell { background: var(--surface); padding: 0.875rem 1rem; }
+.status-cell dt {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--subtle); margin: 0 0 0.35rem;
+}
+.status-cell dd { margin: 0; font-size: 0.8125rem; color: var(--ink); }
+
+/* ── Rail ──────────────────────────────────────────────────────────────── */
+.rail { position: sticky; top: 2rem; align-self: start; max-height: calc(100dvh - 4rem); overflow-y: auto; }
+.rail-title {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.625rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--subtle); margin: 0 0 0.875rem;
+}
+.rail ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.125rem; }
+.rail a {
+  display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.5rem;
+  padding: 0.3rem 0.5rem; border-radius: 5px;
+  font-size: 0.8125rem; color: var(--muted); text-decoration: none;
+}
+.rail a:hover { background: var(--fill); color: var(--ink); }
+.rail a .n { font-family: "Geist Mono", ui-monospace, monospace; font-size: 0.6875rem; color: var(--subtle); }
+.rail-sep { height: 1px; background: var(--line); margin: 0.75rem 0.5rem; }
+
+/* ── Articles ──────────────────────────────────────────────────────────── */
+.article { scroll-margin-top: 2rem; padding-block: 2.75rem; border-top: 1px solid var(--line); }
+.article:first-of-type { border-top: 0; padding-top: 0; }
+.article-head { display: flex; align-items: baseline; gap: 0.875rem; margin-bottom: 1.5rem; }
+.article-n {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.75rem; color: var(--subtle);
+  border: 1px solid var(--line); border-radius: 4px;
+  padding: 0.1rem 0.4rem; flex-shrink: 0;
+}
+.article h2 {
+  font-size: 1.375rem; font-weight: 600; letter-spacing: -0.02em;
+  color: var(--ink); margin: 0; text-wrap: balance;
+}
+
+.clause { display: grid; grid-template-columns: 3.25rem minmax(0, 1fr); gap: 1rem; margin-bottom: 1.125rem; }
+.clause-id {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.75rem; color: var(--subtle); padding-top: 0.2rem;
+  font-variant-numeric: tabular-nums;
+}
+.clause-body { max-width: var(--measure); }
+.clause-body > :first-child { margin-top: 0; }
+.clause-body > :last-child { margin-bottom: 0; }
+.clause-body p { margin: 0 0 0.75rem; }
+.clause-body strong { color: var(--ink); font-weight: 600; }
+
+.tag {
+  display: inline-block;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.5625rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.1rem 0.35rem; border-radius: 3px; border: 1px solid;
+  vertical-align: 0.15em; margin-right: 0.5rem;
+}
+.tag-norm { color: var(--norm); border-color: var(--norm-line); background: var(--norm-subtle); }
+.tag-rat { color: var(--rat); border-color: var(--line-strong); background: var(--fill); }
+
+/* ── Tables ────────────────────────────────────────────────────────────── */
+.tw { overflow-x: auto; margin: 1rem 0 1.25rem; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.8125rem; }
+th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+th {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.625rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--subtle); font-weight: 500; background: var(--fill);
+}
+td { color: var(--muted); }
+td:first-child { color: var(--ink); }
+td code, .clause-body code {
+  font-size: 0.8125em; background: var(--fill);
+  border: 1px solid var(--line); border-radius: 3px; padding: 0.05em 0.3em;
+  color: var(--ink);
+}
+.num { font-variant-numeric: tabular-nums; }
+
+/* ── Ramp ──────────────────────────────────────────────────────────────── */
+.ramp-wrap { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); padding: 1rem; margin: 1rem 0 1.25rem; overflow-x: auto; }
+.ramp-grid { display: grid; grid-template-columns: 3.25rem repeat(12, minmax(1.5rem, 1fr)); gap: 2px; min-width: 34rem; }
+.ramp-head {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.5625rem; color: var(--subtle); text-align: center;
+  font-variant-numeric: tabular-nums; padding-bottom: 0.25rem;
+}
+.ramp-name { font-size: 0.625rem; color: var(--muted); display: flex; align-items: center; padding-right: 0.5rem; }
+.sw { height: 1.375rem; border-radius: 3px; border: 1px solid color-mix(in oklch, var(--ink) 10%, transparent); }
+
+/* ── Deviations ────────────────────────────────────────────────────────── */
+.dev {
+  border: 1px solid var(--line); border-left: 2px solid var(--norm-line);
+  border-radius: 0 8px 8px 0; background: var(--surface);
+  padding: 1rem 1.25rem; margin-bottom: 0.875rem; max-width: var(--measure);
+}
+.dev h3 {
+  font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin: 0 0 0.5rem;
+  display: flex; align-items: baseline; gap: 0.625rem;
+}
+.dev h3 .did {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.6875rem; color: var(--norm); flex-shrink: 0;
+}
+.dev p { margin: 0 0 0.5rem; font-size: 0.875rem; }
+.dev p:last-child { margin-bottom: 0; }
+.dev .rejected { color: var(--subtle); font-size: 0.8125rem; }
+
+.scope { max-width: var(--measure); }
+.scope li { margin-bottom: 0.5rem; }
+.scope strong { color: var(--ink); font-weight: 600; }
+
+.install {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.8125rem; background: var(--fill); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 6px;
+  padding: 0.625rem 0.875rem; overflow-x: auto; margin: 0.75rem 0;
+}
+
+footer {
+  border-top: 1px solid var(--line); margin-top: 4rem;
+  padding: 1.5rem 2rem; max-width: 78rem; margin-inline: auto;
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.6875rem; color: var(--subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+html { scroll-behavior: smooth; }
+</style>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="eyebrow">Minima · Constitution · v0.4</p>
+    <h1>The Minima Charter</h1>
+    <p class="standfirst">
+      Minima is a neutral-dominant design system. This document is its constitution: the decisions that are settled, the reasoning behind each, and the process for changing them. It exists because a design system&rsquo;s cost is not building it &mdash; it is <strong>re-litigating it</strong>. Every time a token&rsquo;s meaning is inferred rather than looked up, the vocabulary drifts, and drift is paid for in sessions that rediscover decisions already made. This is written to be <strong>cited</strong>, not merely read.
+    </p>
+    <dl class="status-grid">
+      <div class="status-cell"><dt>Normative</dt><dd>Binding. Changing it needs Article&nbsp;9.</dd></div>
+      <div class="status-cell"><dt>Rationale</dt><dd>Explains a decision. Arguable.</dd></div>
+      <div class="status-cell"><dt>Deviation</dt><dd>A known departure. Settled.</dd></div>
+      <div class="status-cell"><dt>Rendered in</dt><dd>Minima&rsquo;s own tokens</dd></div>
+    </dl>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="rail" aria-label="Articles">
+    <p class="rail-title">Articles</p>
+    <ol>
+      <li><a href="#a1"><span class="n">1</span><span>The colour thesis</span></a></li>
+      <li><a href="#a2"><span class="n">2</span><span>Token layers</span></a></li>
+      <li><a href="#a3"><span class="n">3</span><span>The scale</span></a></li>
+      <li><a href="#a4"><span class="n">4</span><span>Canvas and surface</span></a></li>
+      <li><a href="#a5"><span class="n">5</span><span>Geometry</span></a></li>
+      <li><a href="#a6"><span class="n">6</span><span>Density</span></a></li>
+      <li><a href="#a7"><span class="n">7</span><span>Typography and prose</span></a></li>
+      <li><a href="#a8"><span class="n">8</span><span>Contrast floors</span></a></li>
+      <li><a href="#a9"><span class="n">9</span><span>Generation</span></a></li>
+      <li><a href="#a10"><span class="n">10</span><span>Amendment</span></a></li>
+    </ol>
+    <div class="rail-sep"></div>
+    <ol>
+      <li><a href="#dev"><span class="n">D</span><span>Documented deviations</span></a></li>
+      <li><a href="#scope"><span class="n">&mdash;</span><span>Not yet in scope</span></a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section class="article" id="a1">
+      <div class="article-head"><span class="article-n">Art. 1</span><h2>The colour thesis</h2></div>
+
+      <div class="clause">
+        <div class="clause-id">1.1</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>Neutral carries structure, hierarchy and weight. Colour is spent on exactly three jobs.</p>
+          <div class="tw"><table>
+            <thead><tr><th>Job</th><th>What it covers</th></tr></thead>
+            <tbody>
+              <tr><td>State</td><td>success &middot; warning &middot; danger &middot; info</td></tr>
+              <tr><td>Identity</td><td>one hue &mdash; links, focus rings, selection, active item</td></tr>
+              <tr><td>Data</td><td>the categorical chart ramp</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">1.2</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>If a colour is not doing one of those three jobs, it is neutral. There is no fourth job, and &ldquo;brand expression&rdquo; is not one.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">1.3</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>The primary action is neutral &mdash; <code>--primary</code> resolves to <code>gray-12</code>. A coloured primary button is a violation.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">1.4</div>
+        <div class="clause-body"><p><span class="tag tag-rat">Rationale</span>Restraint is what makes the accent legible. A system where five things are coloured has no accent; it has decoration. The discipline is not aesthetic preference &mdash; colour retains meaning only if it is scarce.</p></div>
+      </div>
+          <div class="clause">
+        <div class="clause-id">1.5</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Glow &mdash; a coloured bloom behind an element &mdash; is admitted to the DATA job only. It may appear on a chart line, bar, meter, sparkline endpoint or a live status dot: things that encode a value. It may never appear on a button, card, border, focus ring, panel, or any other chrome. Glow is an intensity channel for marks, not a surface treatment.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">1.6</div>
+        <div class="clause-body"><p><span class="tag tag-rat">Rationale</span>Glow reads as premium precisely because it is rare and it means something. On chrome it is decoration, which 1.2 forbids. On a value it is a second encoding channel alongside hue &mdash; and it is how a light-mode mark can read deep and radiant at the same time, which no single ramp step achieves.</p></div>
+      </div>
+
+    </section>
+    <section class="article" id="a2">
+      <div class="article-head"><span class="article-n">Art. 2</span><h2>Token layers</h2></div>
+
+      <div class="clause">
+        <div class="clause-id">2.1</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>There are exactly three layers, and the boundary between them is the whole discipline.</p>
+          <div class="tw"><table>
+            <thead><tr><th>Layer</th><th>Shape</th><th>Answers</th><th>Lives in</th></tr></thead>
+            <tbody>
+              <tr><td>Primitive</td><td><code>--{hue}-{1..12}</code></td><td>what a colour <strong>is</strong></td><td><code>scales.css</code></td></tr>
+              <tr><td>Semantic</td><td><code>--{role}</code></td><td>what a colour is <strong>for</strong></td><td><code>tokens.css</code></td></tr>
+              <tr><td>Component</td><td><code>--{component}-{prop}</code></td><td>only what semantic cannot express</td><td>the component</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">2.2</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Components read the semantic layer. A component that references a primitive token is a bug, without exception. The same applies to hand-written CSS in <code>globals.css</code>.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">2.3</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>A semantic token is named for its <strong>role</strong>, never its appearance. <code>--border-strong</code> is legal; <code>--border-gray-7</code> is not, and neither is <code>--border-dark</code> &mdash; the second breaks the moment the theme flips.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">2.4</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>The semantic layer is mode-independent. Both themes read the same declarations; only the ramps beneath them change. A literal colour value in the semantic layer is a bug. The single exception is <a href="#dev">D3</a>.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">2.5</div>
+        <div class="clause-body"><p><span class="tag tag-rat">Rationale</span>This is the property that makes dark mode structural rather than a second design. Nothing is &ldquo;re-derived by hand for dark&rdquo; because nothing in the semantic layer knows which theme it is in.</p></div>
+      </div>
+    </section>
+    <section class="article" id="a3">
+      <div class="article-head"><span class="article-n">Art. 3</span><h2>The scale</h2></div>
+
+      <div class="clause">
+        <div class="clause-id">3.1</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>Thirteen ramps &mdash; <code>gray</code> plus twelve hues. Twelve steps each, numbered 1&ndash;12. Below is the live scale, rendered from the same generator that produces the system.</p>
+          <div class="ramp-wrap"><div class="ramp-grid" id="ramp-grid"></div></div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">3.2</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>Step semantics are Radix&rsquo;s, adopted verbatim.</p>
+          <div class="tw"><table>
+            <thead><tr><th>Step</th><th>Meaning</th><th>Step</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><td class="num">1</td><td>App background</td><td class="num">7</td><td>Element border / focus ring</td></tr>
+              <tr><td class="num">2</td><td>Subtle background</td><td class="num">8</td><td>Hovered element border</td></tr>
+              <tr><td class="num">3</td><td>Element background</td><td class="num">9</td><td><strong>Solid</strong></td></tr>
+              <tr><td class="num">4</td><td>Hovered element background</td><td class="num">10</td><td>Hovered solid</td></tr>
+              <tr><td class="num">5</td><td>Active / selected background</td><td class="num">11</td><td>Low-contrast text</td></tr>
+              <tr><td class="num">6</td><td>Subtle border</td><td class="num">12</td><td>High-contrast text</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">3.3</div>
+        <div class="clause-body"><p><span class="tag tag-rat">Rationale</span>Adopted, not invented. A shared vocabulary is only worth having if it is the one everyone else already speaks, and the alternatives fail that test: Tailwind&rsquo;s 50&ndash;950 is a <em>utility</em> palette where no step means &ldquo;border&rdquo;, and Base UI is headless and ships no palette at all. The twelve-step model also carries published per-step contrast contracts, which turns accessibility into a property of the scale rather than something re-measured by hand. Minima&rsquo;s own earlier ten-step attempt had to bolt three border tokens on top of the scale; here they are steps 6, 7 and 8.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">3.4</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>Every semantic token resolves to a step.</p>
+          <div class="tw"><table>
+            <thead><tr><th>Step</th><th>Roles</th></tr></thead>
+            <tbody>
+              <tr><td class="num">1</td><td><code>--surface</code> (flat), <code>--canvas</code> (dark raised), <code>--primary-foreground</code></td></tr>
+              <tr><td class="num">2</td><td><code>--canvas</code> (light raised), <code>--surface</code> (dark raised)</td></tr>
+              <tr><td class="num">3</td><td><code>--fill</code>, <code>--muted</code>, <code>--secondary</code>, <code>{tone}-subtle</code>, <code>--accent-hue-subtle</code></td></tr>
+              <tr><td class="num">4</td><td><code>--fill-hover</code>, <code>--accent</code></td></tr>
+              <tr><td class="num">5</td><td><code>--fill-active</code></td></tr>
+              <tr><td class="num">6</td><td><code>--border</code>, <code>{tone}-border</code>, <code>--accent-hue-border</code></td></tr>
+              <tr><td class="num">7</td><td><code>--border-strong</code>, <code>--input</code></td></tr>
+              <tr><td class="num">8</td><td><code>--border-active</code></td></tr>
+              <tr><td class="num">9</td><td><code>{tone}</code>, <code>--accent-hue</code>, <code>--ring</code>, dark <code>--chart-*</code></td></tr>
+              <tr><td class="num">10</td><td><code>{tone}-hover</code>, <code>--subtle-foreground</code></td></tr>
+              <tr><td class="num">11</td><td><code>--muted-foreground</code>, <code>{tone}-text</code>, <code>--prose-body</code>, light <code>--chart-*</code></td></tr>
+              <tr><td class="num">12</td><td><code>--foreground</code>, <code>--primary</code>, <code>--prose-strong</code></td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">3.5</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>The scale is generated, in OKLCH, by <code>scripts/generate-scales.mjs</code>. Chroma is deliberately pushed past the sRGB boundary: saturated steps render wide on a P3 display and are gamut-mapped down elsewhere. One palette, two gamuts &mdash; there is no separate P3 palette.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">3.6</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>State tones map to hues as: success &rarr; green, warning &rarr; amber, danger &rarr; red, info &rarr; cyan. Identity is blue. A product that wants a different identity hue changes <code>--accent-hue</code> in the semantic layer, not the scale.</p></div>
+      </div>
+          <div class="clause">
+        <div class="clause-id">3.7</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>The ramps permit product-level composition; the system does not encode it. A product may map hues to categories in its own domain &mdash; service tiers, workstreams, environments &mdash; by composing the spectral ramp in its UI. Minima must never ship that mapping as a token, a name, or a semantic.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">3.8</div>
+        <div class="clause-body"><p><span class="tag tag-rat">Rationale</span>A named taxonomy baked into the system turns hue into a fourth colour job, which 1.2 forbids, and the moment the product&rsquo;s categories change the vocabulary is wrong everywhere at once. Composed at the UI layer, the same idea costs nothing to revise and cannot leak into the foundation. This is the single most expensive mistake available to a design system: it looks like richness and behaves like debt.</p></div>
+      </div>
+
+    </section>
+    <section class="article" id="a4">
+      <div class="article-head"><span class="article-n">Art. 4</span><h2>Canvas and surface</h2></div>
+
+      <div class="clause">
+        <div class="clause-id">4.1</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Two background tokens. <code>--canvas</code> is the page backdrop; <code>--surface</code> is what a component sits on. Components reference only these two, and no component knows which look is active.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">4.2</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>Two looks, switched by <code>data-surface</code> on <code>&lt;html&gt;</code>.</p>
+          <div class="tw"><table>
+            <thead><tr><th>Look</th><th>Behaviour</th></tr></thead>
+            <tbody>
+              <tr><td>raised <em>(default)</em></td><td>canvas and surface differ by one step</td></tr>
+              <tr><td>flat</td><td>canvas and surface are identical; hairlines carry all structure</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">4.3</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>In dark, the pair swaps role, not meaning: a raised surface sits <em>lighter</em> than its canvas. <code>--surface</code> always means &ldquo;the thing a component sits on&rdquo;, in both themes.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">4.4</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Hairline before shadow. Separation is a 1px border at <code>--border</code>. Shadow is reserved for things that genuinely float &mdash; popovers, dialogs, menus. The flat look has no shadow available to it at all, which is the test: if a layout only reads in raised, it is leaning on elevation it has not earned.</p></div>
+      </div>
+          <div class="clause">
+        <div class="clause-id">4.5</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>Interaction states that every component would otherwise reinvent belong to the system, applied at the base layer.</p>
+          <div class="tw"><table>
+            <thead><tr><th>Concern</th><th>Rule</th></tr></thead>
+            <tbody>
+              <tr><td>Disabled</td><td>one opacity token, on anything <code>[disabled]</code>, <code>[aria-disabled="true"]</code> or <code>[data-disabled]</code></td></tr>
+              <tr><td>Scrollbars</td><td>thin and neutral &mdash; chrome, never the accent</td></tr>
+              <tr><td>Autofill</td><td>repainted to the surface token, because the browser&rsquo;s default ignores every token</td></tr>
+              <tr><td>Focus</td><td>one ring, one offset, on every focusable element</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+    </section>
+    <section class="article" id="a5">
+      <div class="article-head"><span class="article-n">Art. 5</span><h2>Geometry</h2></div>
+
+      <div class="clause">
+        <div class="clause-id">5.1</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>Four radii, keyed to element size. Roundness is relative: a chip and a modal cannot share a radius and both look right.</p>
+          <div class="tw"><table>
+            <thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td><code>--radius-chip</code></td><td class="num">4px</td><td>tags, pills, inline marks</td></tr>
+              <tr><td><code>--radius-control</code></td><td class="num">6px</td><td>buttons, inputs, selects</td></tr>
+              <tr><td><code>--radius-panel</code></td><td class="num">12px</td><td>cards, panels</td></tr>
+              <tr><td><code>--radius-surface</code></td><td class="num">16px</td><td>modals, sheets, large slabs</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">5.2</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>When one rounded element sits inside another:</p>
+          <div class="install">inner = outer &minus; (padding + border)</div>
+          <p>The border counts as part of the gap, not as decoration outside it. A nested corner is not an independent radius placed inside another &mdash; it is the same corner moved inward, sharing a centre with the one outside it.</p>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">5.3</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Derivation is one level deep. With a 12px panel radius and a 16px gutter the concentric answer is already a square corner, so a chain deeper than one step has nothing left to compute. <strong>When padding exceeds the radius, a square inner corner is the rule working, not failing.</strong></p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">5.4</div>
+        <div class="clause-body"><p><span class="tag tag-rat">Rationale</span>Two curves that do not share a centre make the gap between them pinch at the corners and open along the edges. The eye reads this as an error well before it can name it, which is why it is worth a formula rather than a judgement call.</p></div>
+      </div>
+    </section>
+
+    <section class="article" id="a6">
+      <div class="article-head"><span class="article-n">Art. 6</span><h2>Density</h2></div>
+
+      <div class="clause">
+        <div class="clause-id">6.1</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Spacing inherits Tailwind&rsquo;s 4px rhythm. Minima does not define a spacing scale, because there is no reason to have two.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">6.2</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>Minima defines control geometry &mdash; <code>--control-xs|sm|md|lg</code> &mdash; and three rhythm tokens.</p>
+          <div class="tw"><table>
+            <thead><tr><th>Token</th><th>Means</th></tr></thead>
+            <tbody>
+              <tr><td><code>--gutter</code></td><td>space inside a container</td></tr>
+              <tr><td><code>--stack</code></td><td>space between sibling blocks</td></tr>
+              <tr><td><code>--section</code></td><td>space between page sections</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">6.3</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Three rhythm tokens, not a dozen. If a gap is none of these, the question to ask is whether the block belongs where it is.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">6.4</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Density is one attribute &mdash; <code>data-density</code> on <code>&lt;html&gt;</code>, one of <code>compact</code> &middot; <code>default</code> &middot; <code>comfortable</code>. Density is never a per-component prop.</p></div>
+      </div>
+          <div class="clause">
+        <div class="clause-id">6.5</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>The rhythm ladder is strictly 2&times; at every rung &mdash; <code>--gutter</code> &rarr; <code>--stack</code> &rarr; <code>--section</code>, at every density. A gap between groups must be at least twice the gap inside one, or the grouping stops reading as grouping.</p></div>
+      </div>
+
+    </section>
+    <section class="article" id="a7">
+      <div class="article-head"><span class="article-n">Art. 7</span><h2>Typography and prose</h2></div>
+
+      <div class="clause">
+        <div class="clause-id">7.1</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Two registers. <strong>UI</strong> text is small, tight and dense &mdash; 11px to 14px, tight tracking on headings. <strong>Prose</strong> is larger and looser &mdash; 16px body at relaxed leading.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">7.2</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>Three text levels, no more. A fourth is a sign the layout is doing too much; reach for spacing or a hairline instead.</p>
+          <div class="tw"><table>
+            <thead><tr><th>Token</th><th>Level</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td><code>--foreground</code></td><td>primary</td><td>headings, emphasis, values</td></tr>
+              <tr><td><code>--muted-foreground</code></td><td>secondary</td><td>body copy, descriptions</td></tr>
+              <tr><td><code>--subtle-foreground</code></td><td>tertiary</td><td>meta, eyebrows, captions</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">7.3</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Numbers are always mono and tabular, at every size, via the <code>data-numeric</code> attribute. Columns must align and changing digits must not reflow. This is not negotiable per-context.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">7.4</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Prose body sits at <code>--muted-foreground</code> in both themes, and <code>&lt;strong&gt;</code> jumps to <code>--foreground</code> &mdash; black on a light ground, white on a dark one. A page of long-form text reads calm; emphasis is then the strongest signal on the page rather than one of several.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">7.5</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Prose measure is capped at <code>68ch</code>, not a pixel width, so it tracks the font rather than the viewport.</p></div>
+      </div>
+          <div class="clause">
+        <div class="clause-id">7.6</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>Two registers of type, not one. A sentence set in the signal register is a violation &mdash; the register exists to make a thing findable, not legible.</p>
+          <div class="tw"><table>
+            <thead><tr><th>Register</th><th>Form</th><th>For</th></tr></thead>
+            <tbody>
+              <tr><td>Signal</td><td>mono, uppercase, tracked</td><td>text that is <strong>scanned</strong> &mdash; eyebrows, column headers, token names, metadata, keys, every numeral</td></tr>
+              <tr><td>Read</td><td>sans, sentence case</td><td>text that is <strong>read</strong> &mdash; everything else</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">7.7</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Smaller signal sizes take more tracking, because uppercase letterforms crowd as they shrink: 10px/0.14em, 11px/0.10em, 12px/0.07em.</p></div>
+      </div>
+
+          <div class="clause">
+        <div class="clause-id">7.8</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Code is always the mono register, applied at the base layer to <code>code</code>, <code>kbd</code>, <code>samp</code> and <code>pre</code> so it cannot be forgotten. Code is never coloured by Minima: syntax highlighting is a product concern, and a system that tints code has spent colour on a fourth job.</p></div>
+      </div>
+
+    </section>
+    <section class="article" id="a8">
+      <div class="article-head"><span class="article-n">Art. 8</span><h2>Contrast floors</h2></div>
+
+      <div class="clause">
+        <div class="clause-id">8.1</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>These are floors, not targets, and they are verified by an automated audit rather than by eye.</p>
+          <div class="tw"><table>
+            <thead><tr><th>Pairing</th><th>Floor</th></tr></thead>
+            <tbody>
+              <tr><td><code>--foreground</code> on canvas or surface</td><td class="num">7:1</td></tr>
+              <tr><td><code>--muted-foreground</code>; <code>{tone}-text</code> on its subtle fill</td><td class="num">4.5:1</td></tr>
+              <tr><td><code>--subtle-foreground</code> on canvas or surface</td><td class="num">3:1</td></tr>
+              <tr><td>a data mark on the surface behind it</td><td class="num">3:1</td></tr>
+              <tr><td><code>--border</code> against its background</td><td class="num">1.15:1</td></tr>
+              <tr><td><code>--fill</code> against both canvas and surface</td><td class="num">1.06:1</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">8.2</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>A change that drops any pairing below its floor is not shipped, regardless of how it looks.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">8.3</div>
+        <div class="clause-body"><p><span class="tag tag-rat">Rationale</span>The last two rows exist because of a real regression: an early version had <code>--muted</code> at 1.03:1 against the light canvas, which made every tab list and secondary button vanish in light mode while looking correct in dark. Structural contrast needs a floor exactly as much as text does.</p></div>
+      </div>
+    </section>
+    <section class="article" id="a9">
+      <div class="article-head"><span class="article-n">Art. 9</span><h2>Generation</h2></div>
+
+      <div class="clause">
+        <div class="clause-id">9.1</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>Generated files are never hand-edited.</p>
+          <div class="tw"><table>
+            <thead><tr><th>File</th><th>Owner</th></tr></thead>
+            <tbody>
+              <tr><td><code>src/app/scales.css</code></td><td><code>scripts/generate-scales.mjs</code></td></tr>
+              <tr><td><code>src/app/tokens.css</code></td><td><code>scripts/build-tokens.mjs</code></td></tr>
+              <tr><td><code>registry.json</code></td><td><code>scripts/build-tokens.mjs</code></td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">9.2</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>The app&rsquo;s token layer and the registry&rsquo;s token layer are two renderings of one object graph in <code>build-tokens.mjs</code>. They cannot drift, because there is nothing to keep in sync.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">9.3</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>Minima is distributed as a GitHub-hosted shadcn registry. The repository <em>is</em> the registry.</p>
+          <div class="install">npx shadcn@latest add phugadev/minima/minima</div>
+          <p>Pin with <code>#ref</code> &mdash; branch, tag or SHA. Private access uses <code>GH_TOKEN</code> with Contents: Read-only.</p>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">9.4</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Minima builds on shadcn/ui, whose current default style (<code>base-nova</code>) is itself built on Base UI. These are one choice, not two: taking shadcn/ui takes Base UI underneath it.</p></div>
+      </div>
+    </section>
+    <section class="article" id="a10">
+      <div class="article-head"><span class="article-n">Art. 10</span><h2>Amendment</h2></div>
+
+      <div class="clause">
+        <div class="clause-id">10.1</div>
+        <div class="clause-body">
+          <p><span class="tag tag-norm">Normative</span>A change to anything Normative is an amendment. It requires all four:</p>
+          <div class="tw"><table>
+            <thead><tr><th>#</th><th>Requirement</th></tr></thead>
+            <tbody>
+              <tr><td class="num">1</td><td>The rule being changed, cited by clause number.</td></tr>
+              <tr><td class="num">2</td><td>What breaks if it stays &mdash; a concrete failure, not a preference.</td></tr>
+              <tr><td class="num">3</td><td>The contrast audit re-run, with no pairing below its Article&nbsp;8 floor.</td></tr>
+              <tr><td class="num">4</td><td>This document, updated in the same change.</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">10.2</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>A change that does not meet 10.1 is a preference, and preferences do not move the charter. Build the thing you want at the component layer instead.</p></div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">10.3</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Adding a documented deviation is an amendment. Removing one is also an amendment &mdash; they are settled, and their settledness is the point.</p></div>
+      </div>
+    </section>
+
+    <!-- ── Deviations ───────────────────────────────────────────────── -->
+    <section class="article" id="dev">
+      <div class="article-head"><span class="article-n">Dev.</span><h2>Documented deviations</h2></div>
+      <p style="max-width: var(--measure); margin: 0 0 1.5rem;">Places Minima knowingly departs from its own rule. Each is settled. Each is here so that nobody has to rediscover why.</p>
+
+      <div class="dev">
+        <h3><span class="did">D1</span> A third text level, sourced from step 10</h3>
+        <p>Clause 7.2 requires three text levels; the scale defines only two text steps, 11 and 12. <code>--subtle-foreground</code> is therefore drawn from step 10, which the scale calls &ldquo;hovered solid&rdquo;. It clears the 3:1 floor in both themes and is never used for body copy.</p>
+        <p class="rejected"><strong>Rejected:</strong> dropping to two text levels, which loses the distinction between body copy and meta.</p>
+      </div>
+
+      <div class="dev">
+        <h3><span class="did">D2</span> Steps 9 and 10 carry a per-hue lightness bias</h3>
+        <p>Steps 1&ndash;8 and 11&ndash;12 sit on one shared lightness track, so a border or a text colour weighs the same in every hue. Steps 9 and 10 do not: warm hues are lightened, because a hue cannot stay itself at an arbitrary lightness &mdash; amber at blue&rsquo;s lightness is brown. Radix&rsquo;s own step 9 varies in lightness by hue for the same reason.</p>
+        <p>The bias is zero at steps 11 and 12, so accessible amber text is &mdash; correctly &mdash; brown.</p>
+      </div>
+
+      <div class="dev">
+        <h3><span class="did">D3</span> Data is the one mode-dependent semantic</h3>
+        <p>Clause 2.4 requires the semantic layer to be mode-independent. <code>--chart-*</code> is the exception: light uses step 11, dark uses step 9. No single step clears the 3:1 floor in both themes &mdash; amber measures <span class="num">2.56:1</span> at step 10 on a light surface. Step 11&rsquo;s published contract is &ge;4.5:1, so the light ramp inherits a guarantee rather than a measurement.</p>
+        <p class="rejected"><strong>Rejected:</strong> a per-hue step choice, which would make the chart ramp un-reasonable-about.</p>
+      </div>
+
+      <div class="dev">
+        <h3><span class="did">D5</span> The nesting formula is offset by one optical pixel</h3>
+        <p>Clause 5.2 gives the concentric result; <code>--nest-optical</code> then adds 1px back. At small radii a strictly concentric inner corner reads tight, because the eye weighs the visible arc rather than the geometric centre. The formula gets you to concentric and the eye takes it the rest of the way &mdash; mathematically wrong, visibly right.</p>
+      </div>
+
+      <div class="dev">
+        <h3><span class="did">D4</span> Tailwind&rsquo;s numeric palette is cleared</h3>
+        <p><code>--color-{hue}-{50..950}</code> is set to <code>initial</code> in <code>@theme</code>, so only Minima&rsquo;s 1&ndash;12 vocabulary exists for those hues. Two scales sharing one hue name is precisely how vocabulary drift starts.</p>
+      </div>
+    </section>
+
+    <!-- ── Scope ────────────────────────────────────────────────────── -->
+    <section class="article" id="scope">
+      <div class="article-head"><span class="article-n">&mdash;</span><h2>Not yet in scope</h2></div>
+      <p style="max-width: var(--measure); margin: 0 0 1rem;">Named here so their absence reads as a decision rather than an oversight.</p>
+      <ul class="scope">
+        <li><strong>Motion</strong> &mdash; duration and easing tokens exist; named transitions do not.</li>
+        <li><strong>Glow</strong> &mdash; the boundary is settled in 1.5, but nothing implements it yet. There are no chart components for it to live on.</li>
+        <li><strong>Components beyond the four originals</strong> &mdash; <code>Status</code>, <code>Note</code>, <code>Kbd</code>, <code>Stat</code>. Everything else is stock shadcn/ui, re-tuned entirely through tokens.</li>
+        <li><strong>A <code>registry:font</code> item</strong> &mdash; fonts are wired in <code>layout.tsx</code> only, so registry consumers currently fall back to the system stack.</li>
+      </ul>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <span>The Minima Charter &middot; v0.4</span>
+  <span>github.com/phugadev/minima</span>
+</footer>
+
+
+<script>
+(function () {
+  var hues = ["gray","red","orange","amber","yellow","lime","green","teal","cyan","blue","indigo","purple","pink"];
+  var steps = [1,2,3,4,5,6,7,8,9,10,11,12];
+  var grid = document.getElementById("ramp-grid");
+  if (!grid) return;
+  var html = '<div></div>';
+  steps.forEach(function (s) { html += '<div class="ramp-head">' + s + '</div>'; });
+  hues.forEach(function (h) {
+    html += '<div class="ramp-name">' + h + '</div>';
+    steps.forEach(function (s) {
+      html += '<div class="sw" title="--' + h + '-' + s + '" style="background: var(--' + h + '-' + s + ')"></div>';
+    });
+  });
+  grid.innerHTML = html;
+})();
+</script>

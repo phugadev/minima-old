@@ -24,9 +24,19 @@
   html {
     font-family: var(--font-sans);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    /* Smoothing is set once, at the root, and never per-component. */
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
+
+  /* Underlines that sit off the baseline and break around descenders. */
+  a {
+    text-underline-position: from-font;
+    text-decoration-skip-ink: auto;
+  }
+
+  p { text-wrap: pretty; }
 
   body {
     background: var(--background);
@@ -53,6 +63,52 @@
     text-wrap: balance;
   }
 
+  /* Code is always the mono register, everywhere, without a class. */
+  code, kbd, samp, pre {
+    font-family: var(--font-mono);
+    font-feature-settings: "tnum", "zero";
+  }
+
+  /* One disabled treatment, so no component invents its own. */
+  [disabled],
+  [aria-disabled="true"],
+  [data-disabled] {
+    opacity: var(--disabled-opacity);
+    cursor: not-allowed;
+  }
+
+  /* Chrome paints autofilled inputs a fixed yellow that survives both themes
+     and ignores every token. The inset shadow is the only way to repaint it. */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-text-fill-color: var(--foreground);
+    -webkit-box-shadow: 0 0 0 1000px var(--surface) inset;
+    caret-color: var(--foreground);
+    transition: background-color 10000s ease-in-out 0s;
+  }
+
+  /* Scrollbars are chrome, so they are neutral and thin — never the accent. */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+  }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border: 3px solid transparent;
+    border-radius: var(--radius-full);
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-corner { background: transparent; }
+
   /* Numbers are always mono + tabular. Non-negotiable. */
   [data-numeric] {
     font-family: var(--font-mono);
@@ -77,23 +133,111 @@
   .hairline-l { border-left: 1px solid var(--border); }
   .hairline-r { border-right: 1px solid var(--border); }
 
-  .label-eyebrow {
-    font-size: var(--text-2xs);
+  /* ── The signal register ────────────────────────────────────────────────
+     Mono, uppercase, tracked. Reserved for text that is SCANNED rather than
+     READ: eyebrows, column headers, token names, metadata, keys. The moment
+     a sentence needs it, it is the wrong register. */
+  .label-xs,
+  .label-sm,
+  .label-md {
+    font-family: var(--font-mono);
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: var(--tracking-widest);
+    color: var(--subtle-foreground);
+  }
+  .label-xs { font-size: var(--text-label-xs); line-height: var(--text-label-xs--line-height); letter-spacing: var(--tracking-label-xs); }
+  .label-sm { font-size: var(--text-label-sm); line-height: var(--text-label-sm--line-height); letter-spacing: var(--tracking-label-sm); }
+  .label-md { font-size: var(--text-label-md); line-height: var(--text-label-md--line-height); letter-spacing: var(--tracking-label-md); }
+
+  /* Section eyebrow — the most common use of the register. */
+  .label-eyebrow {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: var(--text-label-sm);
+    line-height: var(--text-label-sm--line-height);
+    letter-spacing: var(--tracking-label-sm);
     color: var(--subtle-foreground);
   }
 
-  .numeric {
+  /* ── Code ───────────────────────────────────────────────────────────────
+     One treatment, used in both registers. Never coloured: syntax
+     highlighting is a product concern, and a system that tints code has
+     quietly spent colour on a fourth job. */
+  .code {
     font-family: var(--font-mono);
-    font-variant-numeric: tabular-nums;
+    font-size: 0.875em;
+    color: var(--code-foreground);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: var(--radius-chip);
+    padding: 0.1em 0.35em;
+    white-space: nowrap;
   }
 
-  /* Deltas — colour here is doing the DATA job, so it is allowed */
-  .delta-up   { color: var(--success-text); }
-  .delta-down { color: var(--danger-text); }
-  .delta-flat { color: var(--subtle-foreground); }
+  .code-block {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    color: var(--code-foreground);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: var(--radius-panel);
+    padding: var(--gutter);
+    overflow-x: auto;
+    tab-size: 2;
+  }
+
+  /* ── Link ───────────────────────────────────────────────────────────────
+     The identity hue, in UI context. Prose links get their own treatment. */
+  .link {
+    color: var(--accent-hue-text);
+    text-decoration: underline;
+    text-decoration-color: var(--accent-hue-border);
+    text-underline-offset: 0.2em;
+  }
+  .link:hover { text-decoration-color: currentColor; }
+
+  /* A link that reads as body text until you reach for it. */
+  .link-quiet {
+    color: inherit;
+    text-decoration: none;
+  }
+  .link-quiet:hover { color: var(--foreground); }
+
+  /* ── Concentric nesting ─────────────────────────────────────────────────
+     A nested corner is not an independent radius placed inside another — it
+     is the same corner moved inward by the gap:
+
+         inner = outer - (padding + border)
+
+     The parent declares its radius and padding; the child derives. One level
+     only, deliberately: with a 12px panel radius and a 16px gutter the
+     concentric answer is already a square corner, so a chain deeper than one
+     step has nothing left to compute. When padding exceeds the radius, a
+     square inner corner IS the rule working.
+
+     `--nest-optical` adds back the pixel the eye wants at small radii, where
+     a strictly concentric corner reads tight. */
+  .nest {
+    --nest-border: 1px;
+    --nest-optical: 1px;
+    border-radius: var(--nest-r);
+    padding: var(--nest-p);
+  }
+  .nest-surface { --nest-r: var(--radius-surface); --nest-p: var(--gutter); }
+  .nest-panel   { --nest-r: var(--radius-panel);   --nest-p: var(--gutter); }
+  .nest-control { --nest-r: var(--radius-control); --nest-p: 0.5rem; }
+  /* Tight inset — a list or well sitting just inside a panel's edge. This is
+     the case where the derived radius is actually visible. */
+  .nest-inset   { --nest-r: var(--radius-surface); --nest-p: 0.25rem; }
+
+  .nested {
+    border-radius: max(
+      2px,
+      calc(var(--nest-r) - var(--nest-p) - var(--nest-border) + var(--nest-optical))
+    );
+  }
 
   .grid-field {
     background-image:
@@ -149,23 +293,23 @@
   .prose a:hover { text-decoration-color: currentColor; }
 
   .prose code {
-    color: var(--prose-code);
-    background: var(--fill);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
+    color: var(--code-foreground);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: var(--radius-chip);
     padding: 0.1em 0.35em;
-    font-family: var(--font-mono);
     font-size: 0.875em;
   }
 
   .prose pre {
-    background: var(--fill);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: var(--radius-panel);
     padding: var(--gutter);
     overflow-x: auto;
     font-size: var(--text-sm);
     line-height: var(--leading-normal);
+    tab-size: 2;
   }
   .prose pre code { background: none; border: 0; padding: 0; font-size: inherit; }
 

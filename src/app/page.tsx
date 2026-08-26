@@ -45,6 +45,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Code, CodeBlock } from "@/components/minima/code"
 import { Kbd } from "@/components/minima/kbd"
 import { Note, NoteTitle } from "@/components/minima/note"
 import { Stat, StatDelta, StatLabel, StatValue } from "@/components/minima/stat"
@@ -213,6 +214,8 @@ export default function Page() {
             <a className="hover:text-foreground" href="#surfaces">Surfaces</a>
             <a className="hover:text-foreground" href="#density">Density</a>
             <a className="hover:text-foreground" href="#type">Type</a>
+            <a className="hover:text-foreground" href="#geometry">Geometry</a>
+            <a className="hover:text-foreground" href="#inline">Inline</a>
             <a className="hover:text-foreground" href="#state">State</a>
             <a className="hover:text-foreground" href="#identity">Identity</a>
             <a className="hover:text-foreground" href="#data">Data</a>
@@ -453,10 +456,10 @@ export default function Page() {
 
             <div>
               <p className="label-eyebrow mb-3">Fills above the surface</p>
-              <div className="rounded-xl border border-border bg-surface p-3">
-                <div className="rounded-lg border border-border bg-fill p-3">
-                  <div className="rounded-md border border-border bg-fill-hover p-3">
-                    <div className="rounded-sm border border-border bg-fill-active p-3 text-2xs text-muted-foreground">
+              <div className="nest nest-panel border border-border bg-surface">
+                <div className="nested border border-border bg-fill p-3">
+                  <div className="rounded-xs border border-border bg-fill-hover p-3">
+                    <div className="rounded-xs border border-border bg-fill-active p-3 text-2xs text-muted-foreground">
                       fill-active
                     </div>
                     <p className="mt-2 text-2xs text-subtle-foreground">fill-hover</p>
@@ -623,6 +626,26 @@ export default function Page() {
                 Numbers are always mono and tabular, at every size, via{" "}
                 <code className="text-2xs">data-numeric</code>.
               </p>
+
+              <p className="label-eyebrow mt-6 mb-3">Signal register</p>
+              <Panel className="divide-y divide-border">
+                <div className="flex items-baseline justify-between gap-3 px-3 py-2.5">
+                  <span className="label-xs">Label xs</span>
+                  <code className="text-2xs text-subtle-foreground">10 · 0.14em</code>
+                </div>
+                <div className="flex items-baseline justify-between gap-3 px-3 py-2.5">
+                  <span className="label-sm">Label sm</span>
+                  <code className="text-2xs text-subtle-foreground">11 · 0.10em</code>
+                </div>
+                <div className="flex items-baseline justify-between gap-3 px-3 py-2.5">
+                  <span className="label-md">Label md</span>
+                  <code className="text-2xs text-subtle-foreground">12 · 0.07em</code>
+                </div>
+              </Panel>
+              <p className="mt-3 text-xs text-muted-foreground">
+                Smaller sizes take more tracking, because uppercase letterforms
+                crowd as they shrink.
+              </p>
             </div>
 
             <div>
@@ -655,7 +678,225 @@ export default function Page() {
                   </p>
                 </article>
               </Panel>
+
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <Panel className="p-4">
+                  <p className="label-xs mb-2">Register &mdash; scanned</p>
+                  <p className="text-xs text-muted-foreground">
+                    Mono, uppercase, tracked. Eyebrows, column headers, token
+                    names, metadata, keys, every numeral. Text the reader{" "}
+                    <em>scans</em>.
+                  </p>
+                </Panel>
+                <Panel className="p-4">
+                  <p className="mb-2 text-xs font-medium text-foreground">
+                    Register — read
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    Sans, sentence case. Everything the reader actually{" "}
+                    <em>reads</em>. The moment a sentence wants the mono
+                    register, the register is wrong.
+                  </p>
+                </Panel>
+              </div>
             </div>
+          </div>
+        </Section>
+
+        {/* ── Geometry ─────────────────────────────────────────────────── */}
+        <Section
+          id="geometry"
+          eyebrow="Foundation"
+          title="Geometry"
+          intro="Roundness is relative — a chip and a modal cannot share a radius and both look right. Four radii, keyed to element size, and one rule for what happens when they nest."
+        >
+          <div className="grid gap-6 md:grid-cols-2">
+            <div>
+              <p className="label-eyebrow mb-3">Radius by element size</p>
+              <Panel className="divide-y divide-border">
+                {(
+                  [
+                    ["chip", "--radius-chip", "4px", "tags, pills, inline marks"],
+                    ["control", "--radius-control", "6px", "buttons, inputs, selects"],
+                    ["panel", "--radius-panel", "12px", "cards, panels"],
+                    ["surface", "--radius-surface", "16px", "modals, sheets, slabs"],
+                  ] as const
+                ).map(([k, token, px, use]) => (
+                  <div key={k} className="flex items-center gap-3 p-3">
+                    <div
+                      className="size-9 shrink-0 border border-border-strong bg-fill"
+                      style={{ borderRadius: `var(${token})` }}
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm">{k}</p>
+                      <p className="text-2xs text-subtle-foreground">{use}</p>
+                    </div>
+                    <code
+                      className="text-2xs text-subtle-foreground"
+                      data-numeric=""
+                    >
+                      {px}
+                    </code>
+                  </div>
+                ))}
+              </Panel>
+            </div>
+
+            <div>
+              <p className="label-eyebrow mb-3">The nesting rule</p>
+              <Panel className="p-5">
+                <p className="mb-4 font-mono text-xs text-foreground">
+                  inner = outer &minus; (padding + border)
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  A nested corner is not an independent radius placed inside
+                  another — it is the same corner moved inward by the gap. The
+                  two curves have to share a centre, or the eye reads the inner
+                  one as a mistake even when it cannot say why.
+                </p>
+                <p className="mt-3 text-xs text-muted-foreground">
+                  The border counts as part of the gap, not as decoration
+                  outside it.
+                </p>
+              </Panel>
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <p className="label-eyebrow mb-3">What the rule fixes</p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <div className="rounded-[16px] border border-border bg-surface p-1">
+                  <div className="rounded-[16px] border border-border bg-fill p-3">
+                    <p className="text-2xs text-muted-foreground">
+                      inner radius 16px — same as the parent
+                    </p>
+                  </div>
+                </div>
+                <p className="mt-2.5 text-xs text-muted-foreground">
+                  <span className="text-foreground">Naive.</span> The inner
+                  curve is rounder than the space it sits in, so the gap
+                  pinches at the corners and opens along the edges.
+                </p>
+              </div>
+
+              <div>
+                <div className="nest nest-inset border border-border bg-surface">
+                  <div className="nested border border-border bg-fill p-3">
+                    <p className="text-2xs text-muted-foreground">
+                      inner radius 12px — 16 − 4 − 1 + 1
+                    </p>
+                  </div>
+                </div>
+                <p className="mt-2.5 text-xs text-muted-foreground">
+                  <span className="text-foreground">Concentric.</span> The two
+                  curves share a centre, so the gap stays even the whole way
+                  around.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            <Note icon={<Info />}>
+              <NoteTitle>One level, deliberately.</NoteTitle>
+              With a 12px panel radius and a 16px gutter, the concentric answer
+              is already a square corner — so a chain deeper than one step has
+              nothing left to compute. A square inner corner is the rule
+              working, not failing.
+            </Note>
+            <Note icon={<Info />}>
+              <NoteTitle>The formula gets you concentric; the eye finishes it.</NoteTitle>
+              At small radii a strictly concentric corner reads a little tight,
+              so <code className="text-2xs">--nest-optical</code> adds a pixel
+              back. Mathematically wrong, visibly right.
+            </Note>
+          </div>
+        </Section>
+
+        {/* ── Text-level foundations ───────────────────────────────────── */}
+        <Section
+          id="inline"
+          eyebrow="Foundation"
+          title="Inline and interactive"
+          intro="The small things every interface needs and most systems leave to each component to reinvent — code, links, keys, disabled state, even the scrollbar."
+        >
+          <div className="grid gap-6 md:grid-cols-2">
+            <div>
+              <p className="label-eyebrow mb-3">Code</p>
+              <Panel className="p-5">
+                <p className="text-sm text-muted-foreground">
+                  Run <Code>npm run tokens</Code> to regenerate, then read{" "}
+                  <Code>src/app/tokens.css</Code> to see what changed.
+                </p>
+                <CodeBlock className="mt-4" label="scripts/build-tokens.mjs">
+{`const SEMANTIC = {
+  foreground: "var(--gray-12)",
+  border:     "var(--gray-6)",
+}`}
+                </CodeBlock>
+                <p className="mt-3 text-xs text-muted-foreground">
+                  Never coloured. Syntax highlighting is a product concern — a
+                  system that tints code has quietly spent colour on a fourth
+                  job.
+                </p>
+              </Panel>
+            </div>
+
+            <div>
+              <p className="label-eyebrow mb-3">Links and keys</p>
+              <Panel className="space-y-4 p-5">
+                <p className="text-sm text-muted-foreground">
+                  A <a className="link" href="#identity">standard link</a>{" "}
+                  carries the identity hue. A{" "}
+                  <a className="link-quiet" href="#identity">quiet link</a>{" "}
+                  reads as body text until you reach for it.
+                </p>
+                <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
+                  <Kbd>⌘</Kbd>
+                  <Kbd>K</Kbd>
+                  <span>to search</span>
+                  <Separator orientation="vertical" className="mx-1 h-4" />
+                  <Kbd>⇧</Kbd>
+                  <span>to multi-select</span>
+                </div>
+                <Separator />
+                <div>
+                  <p className="label-eyebrow mb-2">Disabled</p>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Button disabled>Primary</Button>
+                    <Button variant="outline" disabled>Outline</Button>
+                    <Input placeholder="Disabled" className="w-32" disabled />
+                  </div>
+                  <p className="mt-2.5 text-xs text-muted-foreground">
+                    One opacity token, applied at the base layer to anything
+                    disabled — so no component invents its own.
+                  </p>
+                </div>
+              </Panel>
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            {[
+              [
+                "Scrollbars are chrome",
+                "Thin, neutral, theme-aware — never the accent. The overflow below has one.",
+              ],
+              [
+                "Autofill is repainted",
+                "Chrome paints autofilled inputs a fixed yellow that ignores every token. An inset shadow is the only way to take it back.",
+              ],
+              [
+                "Code is mono without a class",
+                "code, kbd, samp and pre take the mono register at the base layer, so it can never be forgotten.",
+              ],
+            ].map(([t, d]) => (
+              <Panel key={t} className="p-4">
+                <p className="text-sm font-medium">{t}</p>
+                <p className="mt-1.5 text-xs text-muted-foreground">{d}</p>
+              </Panel>
+            ))}
           </div>
         </Section>
 
@@ -1089,9 +1330,7 @@ export default function Page() {
                 {copied ? "Copied" : "Copy"}
               </Button>
             </div>
-            <pre className="overflow-x-auto px-4 py-3 text-xs" data-numeric="">
-              {install}
-            </pre>
+            <pre className="overflow-x-auto px-4 py-3 text-xs">{install}</pre>
           </Panel>
 
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
