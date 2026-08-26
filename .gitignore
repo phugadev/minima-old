@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# TypeScript incremental build info
+*.tsbuildinfo
+
+# Local editor/agent settings
+.claude/settings.local.json

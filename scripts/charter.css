@@ -1,0 +1,262 @@
+/* Minima — Charter stylesheet.
+   Read by scripts/build-charter.mjs and inlined into docs/charter.html.
+   The ramp custom properties are injected by the renderer, not written here.
+
+   The Charter is rendered in the system it governs: every colour below is a
+   Minima token, and the type is the system's own pair. */
+
+/* ── Semantic layer — the same roles the system defines ────────────────── */
+:root {
+  --canvas: var(--gray-2);
+  --surface: var(--gray-1);
+  --fill: var(--gray-3);
+  --ink: var(--gray-12);
+  --muted: var(--gray-11);
+  --subtle: var(--gray-10);
+  --line: var(--gray-6);
+  --line-strong: var(--gray-7);
+  --accent: var(--blue-11);
+  --accent-solid: var(--blue-9);
+  --accent-subtle: var(--blue-3);
+  --accent-line: var(--blue-6);
+  --norm: var(--red-11);
+  --norm-subtle: var(--red-3);
+  --norm-line: var(--red-6);
+  --rat: var(--gray-11);
+
+  --measure: 68ch;
+  --rail: 15rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas: var(--gray-1);
+    --surface: var(--gray-2);
+  }
+}
+:root[data-theme="dark"] {
+  --canvas: var(--gray-1);
+  --surface: var(--gray-2);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--canvas);
+  color: var(--muted);
+  font-family: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+code, .mono { font-family: "Geist Mono", ui-monospace, "SF Mono", monospace; }
+
+a { color: var(--accent); text-decoration: underline; text-decoration-color: var(--accent-line); text-underline-offset: 0.2em; }
+a:hover { text-decoration-color: currentColor; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-solid); outline-offset: 3px; border-radius: 2px; }
+
+/* ── Shell ─────────────────────────────────────────────────────────────── */
+.shell {
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  gap: 3.5rem;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 0 2rem 8rem;
+}
+@media (max-width: 62rem) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .rail { position: static; border-right: 0; border-bottom: 1px solid var(--line); padding-bottom: 2rem; margin-bottom: 2rem; }
+}
+
+/* ── Masthead ──────────────────────────────────────────────────────────── */
+.masthead {
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 3.5rem;
+}
+.masthead-inner {
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 5.5rem 2rem 3rem;
+}
+.eyebrow {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--subtle);
+  margin: 0 0 1.25rem;
+}
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+}
+.standfirst {
+  max-width: var(--measure);
+  margin: 1.75rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+.standfirst strong { color: var(--ink); font-weight: 600; }
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1px;
+  margin-top: 2.75rem;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.status-cell { background: var(--surface); padding: 0.875rem 1rem; }
+.status-cell dt {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--subtle); margin: 0 0 0.35rem;
+}
+.status-cell dd { margin: 0; font-size: 0.8125rem; color: var(--ink); }
+
+/* ── Rail ──────────────────────────────────────────────────────────────── */
+.rail { position: sticky; top: 2rem; align-self: start; max-height: calc(100dvh - 4rem); overflow-y: auto; }
+.rail-title {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.625rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--subtle); margin: 0 0 0.875rem;
+}
+.rail ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.125rem; }
+.rail a {
+  display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.5rem;
+  padding: 0.3rem 0.5rem; border-radius: 5px;
+  font-size: 0.8125rem; color: var(--muted); text-decoration: none;
+}
+.rail a:hover { background: var(--fill); color: var(--ink); }
+.rail a .n { font-family: "Geist Mono", ui-monospace, monospace; font-size: 0.6875rem; color: var(--subtle); }
+.rail-sep { height: 1px; background: var(--line); margin: 0.75rem 0.5rem; }
+
+/* ── Articles ──────────────────────────────────────────────────────────── */
+.article { scroll-margin-top: 2rem; padding-block: 2.75rem; border-top: 1px solid var(--line); }
+.article:first-of-type { border-top: 0; padding-top: 0; }
+.article-head { display: flex; align-items: baseline; gap: 0.875rem; margin-bottom: 1.5rem; }
+.article-n {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.75rem; color: var(--subtle);
+  border: 1px solid var(--line); border-radius: 4px;
+  padding: 0.1rem 0.4rem; flex-shrink: 0;
+}
+.article h2 {
+  font-size: 1.375rem; font-weight: 600; letter-spacing: -0.02em;
+  color: var(--ink); margin: 0; text-wrap: balance;
+}
+
+.clause { display: grid; grid-template-columns: 3.25rem minmax(0, 1fr); gap: 1rem; margin-bottom: 1.125rem; }
+.clause-id {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.75rem; color: var(--subtle); padding-top: 0.2rem;
+  font-variant-numeric: tabular-nums;
+}
+.clause-body { max-width: var(--measure); }
+.clause-body > :first-child { margin-top: 0; }
+.clause-body > :last-child { margin-bottom: 0; }
+.clause-body p { margin: 0 0 0.75rem; }
+.clause-body strong { color: var(--ink); font-weight: 600; }
+
+.tag {
+  display: inline-block;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.5625rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.1rem 0.35rem; border-radius: 3px; border: 1px solid;
+  vertical-align: 0.15em; margin-right: 0.5rem;
+}
+.tag-norm { color: var(--norm); border-color: var(--norm-line); background: var(--norm-subtle); }
+.tag-rat { color: var(--rat); border-color: var(--line-strong); background: var(--fill); }
+
+/* ── Tables ────────────────────────────────────────────────────────────── */
+.tw { overflow-x: auto; margin: 1rem 0 1.25rem; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.8125rem; }
+th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+th {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.625rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--subtle); font-weight: 500; background: var(--fill);
+}
+td { color: var(--muted); }
+td:first-child { color: var(--ink); }
+td code, .clause-body code {
+  font-size: 0.8125em; background: var(--fill);
+  border: 1px solid var(--line); border-radius: 3px; padding: 0.05em 0.3em;
+  color: var(--ink);
+}
+.num { font-variant-numeric: tabular-nums; }
+
+/* ── Ramp ──────────────────────────────────────────────────────────────── */
+.ramp-wrap { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); padding: 1rem; margin: 1rem 0 1.25rem; overflow-x: auto; }
+.ramp-grid { display: grid; grid-template-columns: 3.25rem repeat(12, minmax(1.5rem, 1fr)); gap: 2px; min-width: 34rem; }
+.ramp-head {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.5625rem; color: var(--subtle); text-align: center;
+  font-variant-numeric: tabular-nums; padding-bottom: 0.25rem;
+}
+.ramp-name { font-size: 0.625rem; color: var(--muted); display: flex; align-items: center; padding-right: 0.5rem; }
+.sw { height: 1.375rem; border-radius: 3px; border: 1px solid color-mix(in oklch, var(--ink) 10%, transparent); }
+
+/* ── Deviations ────────────────────────────────────────────────────────── */
+.dev {
+  border: 1px solid var(--line); border-left: 2px solid var(--norm-line);
+  border-radius: 0 8px 8px 0; background: var(--surface);
+  padding: 1rem 1.25rem; margin-bottom: 0.875rem; max-width: var(--measure);
+}
+.dev h3 {
+  font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin: 0 0 0.5rem;
+  display: flex; align-items: baseline; gap: 0.625rem;
+}
+.dev h3 .did {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.6875rem; color: var(--norm); flex-shrink: 0;
+}
+.dev p { margin: 0 0 0.5rem; font-size: 0.875rem; }
+.dev p:last-child { margin-bottom: 0; }
+.dev .rejected { color: var(--subtle); font-size: 0.8125rem; }
+
+.scope { max-width: var(--measure); }
+.scope li { margin-bottom: 0.5rem; }
+.scope strong { color: var(--ink); font-weight: 600; }
+
+.install {
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.8125rem; background: var(--fill); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 6px;
+  padding: 0.625rem 0.875rem; overflow-x: auto; margin: 0.75rem 0;
+}
+
+footer {
+  border-top: 1px solid var(--line); margin-top: 4rem;
+  padding: 1.5rem 2rem; max-width: 78rem; margin-inline: auto;
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 0.6875rem; color: var(--subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+html { scroll-behavior: smooth; }
+
+/* Added for the generated structure: the deviations preamble, and the scope
+   list, which arrives from markdown as a plain <ul>. */
+.dev-intro { max-width: var(--measure); margin-bottom: 1.5rem; }
+.dev-intro p { margin: 0; }
+.dev h3 + p { margin-top: 0; }
+.scope ul { padding-left: 1.1rem; margin: 0; }
+.standfirst p { margin: 0 0 0.75rem; }
+.standfirst p:last-child { margin-bottom: 0; }
+.clause-body > .tag { float: left; margin-top: 0.3rem; }
+.clause-body > p:first-of-type { margin-top: 0; }
