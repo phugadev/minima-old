@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   verify:
-    name: types, tokens, build, contrast
+    name: verify
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
