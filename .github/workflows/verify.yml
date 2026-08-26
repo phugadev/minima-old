@@ -10,6 +10,9 @@ on:
   push:
     branches: [main]
   pull_request:
+  # Manual trigger. Runner availability occasionally leaves a run queued for
+  # long enough that re-dispatching is faster than waiting for it.
+  workflow_dispatch:
 
 # A newer push to the same branch makes the previous run irrelevant.
 concurrency:
