@@ -1,0 +1,75 @@
+# Minima — verification
+#
+# Charter 8.2 says a change that drops any pairing below its contrast floor
+# does not ship, and 9.1 says generated files are never hand-edited. Both are
+# rules, and a rule with no runner decays. This is the runner.
+
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# A newer push to the same branch makes the previous run irrelevant.
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Types
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint
+
+      # Charter 9.1: scales.css, tokens.css and registry.json are generated.
+      # Regenerating must be a no-op — if it is not, someone hand-edited an
+      # output, and the CSS and the registry have already begun to drift.
+      - name: Generated files are in sync
+        run: |
+          npm run tokens
+          npx shadcn build
+          if ! git diff --quiet; then
+            echo "::error::Generated files are out of sync with their sources."
+            echo "Run 'npm run registry' and commit the result. (Charter 9.1)"
+            git diff --stat
+            exit 1
+          fi
+
+      - name: Build
+        run: npm run build
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Start
+        run: |
+          npm start &
+          for i in $(seq 1 60); do
+            curl -sf http://localhost:3000 > /dev/null && exit 0
+            sleep 1
+          done
+          echo "::error::Server did not start within 60s"
+          exit 1
+
+      # Charter Article 8. Exits non-zero on any breach, and treats an
+      # undefined token as a failure rather than a pass.
+      - name: Contrast floors
+        run: npm run audit

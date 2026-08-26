@@ -1,6 +1,6 @@
 # The Minima Charter
 
-*v0.5 — clause numbers are stable from v0.3 onward.*
+*v0.4.0 — the Charter carries the same version as the package; they describe the same system. Clause numbers are stable from 0.3.0 onward.*
 
 Minima is a neutral-dominant design system. This document is its constitution:
 the decisions that are settled, the reasoning behind each one, and the process
@@ -372,6 +372,39 @@ move the charter. Build the thing you want at the component layer instead.
 
 **10.3** Adding a *documented deviation* is an amendment. Removing one is also an
 amendment — they are settled, and their settledness is the point.
+
+---
+
+## Article 11 — Change flow
+
+**11.1 NORMATIVE.** Changes arrive through pull requests. `main` is not written
+to directly. The amendment process in Article 10.1 needs somewhere to be
+checked, and a pull request is that place.
+
+**11.2 NORMATIVE.** Minima follows semantic versioning, and does so although it
+is not published to npm. The version is the promise the system makes to anything
+built on it, and a renamed token breaks a consumer's build exactly as hard as a
+renamed export would.
+
+| Bump | Meaning |
+| --- | --- |
+| **major** | A consumer's existing usage stops working or silently changes meaning — a token removed or renamed, a token's meaning changed, step semantics changed |
+| **minor** | New capability, nothing existing invalidated — a token, component or utility added; values retuned while every Article 8 floor still holds |
+| **patch** | Behaviour did not match the Charter and now does |
+
+**11.3 NORMATIVE.** Retuning a value is minor; changing what a token *means* is
+major. Making `--danger` a deeper red is minor — every consumer's danger button
+is still a danger button. Redefining `--danger` to mean "destructive action" and
+introducing `--error` for states is major, even though no value changed.
+
+**11.4 NORMATIVE.** A change that only fixes a mismatch between the system and
+its own Charter is a patch, however visible it is. The on-solid fix in 0.3.1
+recoloured every state solid and was still a patch, because Article 8 had always
+said what the values should be.
+
+**11.5 NORMATIVE.** Continuous integration runs the type check, the lint, the
+generated-files-in-sync check, the build and the contrast audit on every pull
+request. A rule with no runner decays; these no longer have to be remembered.
 
 ---
 
