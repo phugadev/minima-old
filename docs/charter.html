@@ -786,7 +786,7 @@ html { scroll-behavior: smooth; }
 
 <header class="masthead">
   <div class="masthead-inner">
-    <p class="eyebrow">Minima &middot; Constitution &middot; v0.6.0</p>
+    <p class="eyebrow">Minima &middot; Constitution &middot; v0.7.0</p>
     <h1>The Minima Charter</h1>
     <div class="standfirst"><p>Minima is a neutral-dominant design system. This document is its constitution:
 the decisions that are settled, the reasoning behind each one, and the process
@@ -1469,6 +1469,26 @@ nor colour is indistinguishable from the prose around it. Its hover and
 focus-visible states are what make it findable at all, and both are required.</p>
 </div>
       </div>
+
+      <div class="clause">
+        <div class="clause-id">7.10</div>
+        <div class="clause-body"><span class="tag tag-norm">Normative</span><p>Minima ships a default type pair — Geist Sans and Geist
+Mono — as <code>registry:font</code> items, rather than leaving a consumer on the system
+stack. The signal register (7.6) and every numeral (7.3) depend on a mono face
+actually being present, and a system whose rules only work after the consumer
+does something is not shipping those rules.</p>
+</div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">7.11</div>
+        <div class="clause-body"><span class="tag tag-norm">Normative</span><p>Shipping a default is a convenience, not an identity claim.
+<code>--font-sans</code> and <code>--font-mono</code> are the only tokens that name a family, so
+replacing the pair is a two-line change, and every rule in this article holds
+for any pair that includes a mono. Minima is not Geist; Minima currently
+<em>defaults</em> to Geist.</p>
+</div>
+      </div>
     </section>
 
     <section class="article" id="a8">
@@ -1839,8 +1859,6 @@ how vocabulary drift starts.</p>
 There are no chart components for it to live on.</li>
 <li><strong>Components beyond the four originals</strong> — <code>Status</code>, <code>Note</code>, <code>Kbd</code>, <code>Stat</code>.
 Everything else is stock shadcn/ui, re-tuned entirely through tokens.</li>
-<li><strong>A <code>registry:font</code> item</strong> — fonts are wired in <code>layout.tsx</code> only, so registry
-consumers currently fall back to the system stack.</li>
 </ul>
 </div>
     </section>
@@ -1848,7 +1866,7 @@ consumers currently fall back to the system stack.</li>
 </div>
 
 <footer>
-  <span>The Minima Charter &middot; v0.6.0</span>
+  <span>The Minima Charter &middot; v0.7.0</span>
   <span>github.com/phugadev/minima</span>
 </footer>
 

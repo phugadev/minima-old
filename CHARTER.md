@@ -1,6 +1,6 @@
 # The Minima Charter
 
-*v0.6.0 — the Charter carries the same version as the package; they describe the same system. Clause numbers are stable from 0.3.0 onward.*
+*v0.7.0 — the Charter carries the same version as the package; they describe the same system. Clause numbers are stable from 0.3.0 onward.*
 
 Minima is a neutral-dominant design system. This document is its constitution:
 the decisions that are settled, the reasoning behind each one, and the process
@@ -299,6 +299,18 @@ sidebar. It is forbidden in running text, where a link with neither underline
 nor colour is indistinguishable from the prose around it. Its hover and
 focus-visible states are what make it findable at all, and both are required.
 
+**7.10 NORMATIVE.** Minima ships a default type pair — Geist Sans and Geist
+Mono — as `registry:font` items, rather than leaving a consumer on the system
+stack. The signal register (7.6) and every numeral (7.3) depend on a mono face
+actually being present, and a system whose rules only work after the consumer
+does something is not shipping those rules.
+
+**7.11 NORMATIVE.** Shipping a default is a convenience, not an identity claim.
+`--font-sans` and `--font-mono` are the only tokens that name a family, so
+replacing the pair is a two-line change, and every rule in this article holds
+for any pair that includes a mono. Minima is not Geist; Minima currently
+*defaults* to Geist.
+
 ---
 
 ## Article 8 — Contrast floors
@@ -512,5 +524,4 @@ Named here so their absence reads as a decision rather than an oversight.
   There are no chart components for it to live on.
 - **Components beyond the four originals** — `Status`, `Note`, `Kbd`, `Stat`.
   Everything else is stock shadcn/ui, re-tuned entirely through tokens.
-- **A `registry:font` item** — fonts are wired in `layout.tsx` only, so registry
-  consumers currently fall back to the system stack.
+

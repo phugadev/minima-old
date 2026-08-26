@@ -5,6 +5,25 @@ All notable changes to Minima are recorded here. The format follows
 [semantic versioning](https://semver.org/) — see [CONTRIBUTING.md](CONTRIBUTING.md)
 for what each bump means for a design system.
 
+## [0.7.0] — 2026-08-26
+
+### Added
+- **Geist Sans and Geist Mono ship as `registry:font` items.** Fonts were wired
+  in `layout.tsx` only, so every registry consumer fell back to the system
+  stack — which silently disabled the signal register (7.6) and the tabular
+  numerals (7.3), two rules the Charter states unconditionally.
+- Charter 7.10 and 7.11: Minima ships a default pair, and that is a convenience
+  rather than an identity claim. `--font-sans` and `--font-mono` are the only
+  tokens naming a family, so replacing the pair is a two-line change.
+
+### Fixed
+- Both font items pin `dependency` explicitly. On Next the CLI rewrites the
+  layout to import from `next/font/google`; on every other framework it falls
+  back to an npm package whose name it derives from the *item* name. That
+  derivation produces `@fontsource-variable/geist-sans`, which does not exist —
+  the package is `@fontsource-variable/geist`. Left implicit, this would have
+  404'd on install for every non-Next consumer.
+
 ## [0.6.0] — 2026-08-26
 
 ### Added
@@ -161,6 +180,7 @@ for what each bump means for a design system.
 Initial system: neutral-dominant thesis, OKLCH ramps, the three colour jobs,
 and distribution as a GitHub-hosted shadcn registry.
 
+[0.7.0]: https://github.com/phugadev/minima/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/phugadev/minima/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/phugadev/minima/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/phugadev/minima/releases/tag/v0.4.0

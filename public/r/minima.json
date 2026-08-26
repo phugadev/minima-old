@@ -6,6 +6,8 @@
   "description": "A neutral-dominant design system. Neutral carries structure; colour is spent only on state, identity and data.",
   "registryDependencies": [
     "minima-theme",
+    "font-geist-sans",
+    "font-geist-mono",
     "status",
     "note",
     "kbd",

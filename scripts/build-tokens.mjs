@@ -630,6 +630,39 @@ const densityCss = Object.fromEntries(
     ])
 )
 
+
+/* ── Fonts ──────────────────────────────────────────────────────────────────
+   Minima ships a default pair rather than leaving consumers on the system
+   stack, because the signal register (7.6) and every numeral depend on a mono
+   face actually being present.
+
+   Shipping a default is a convenience, not an identity claim. `--font-sans`
+   and `--font-mono` are the only tokens that name a family, so replacing the
+   pair is a two-line change and every typographic rule in Article 7 holds for
+   any pair that includes a mono.                                            */
+const fontItem = (name, title, family, imported, variable, dependency) => ({
+  name,
+  type: "registry:font",
+  title,
+  description: `${family} — wired to \`${variable}\`, which \`--font-${
+    variable.includes("mono") ? "mono" : "sans"
+  }\` resolves to.`,
+  font: {
+    family,
+    provider: "google",
+    import: imported,
+    variable,
+    subsets: ["latin"],
+    /* Required, not optional in practice. On Next the CLI rewrites the layout
+       to import from next/font/google; everywhere else it falls back to an npm
+       package whose name it derives from the ITEM name. That derivation gives
+       `@fontsource-variable/geist-sans`, which does not exist — the package is
+       `@fontsource-variable/geist`. Naming it explicitly is the difference
+       between a working install and a 404 on every non-Next consumer. */
+    dependency,
+  },
+})
+
 const uiItem = (name, title, description, deps) => ({
   name,
   type: "registry:ui",
@@ -658,6 +691,8 @@ const registry = {
       },
       registryDependencies: [
         "minima-theme",
+        "font-geist-sans",
+        "font-geist-mono",
         "status", "note", "kbd", "stat", "code",
         "button", "badge", "card", "input", "label", "select",
         "separator", "table", "tabs", "progress", "avatar",
@@ -705,6 +740,8 @@ const registry = {
     uiItem("kbd", "Kbd", "A keyboard key. Always neutral — a shortcut is not a state."),
     uiItem("stat", "Stat", "A single metric. Mono tabular value, with the delta as the only coloured element."),
     uiItem("code", "Code", "Inline code and code blocks. Always mono, never coloured — syntax highlighting is a product concern."),
+    fontItem("font-geist-sans", "Geist Sans", "Geist", "Geist", "--font-geist-sans", "@fontsource-variable/geist"),
+    fontItem("font-geist-mono", "Geist Mono", "Geist Mono", "Geist_Mono", "--font-geist-mono", "@fontsource-variable/geist-mono"),
   ],
 }
 

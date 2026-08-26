@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "font-geist-sans",
+  "title": "Geist Sans",
+  "description": "Geist — wired to `--font-geist-sans`, which `--font-sans` resolves to.",
+  "type": "registry:font",
+  "font": {
+    "family": "Geist",
+    "provider": "google",
+    "import": "Geist",
+    "variable": "--font-geist-sans",
+    "subsets": [
+      "latin"
+    ],
+    "dependency": "@fontsource-variable/geist"
+  }
+}
