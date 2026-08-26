@@ -1,12 +1,12 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   MINIMA — SPECTRAL RAMP
-   GENERATED FILE — edit scripts/generate-scales.mjs and re-run:
-       node scripts/generate-scales.mjs
+     MINIMA — SPECTRAL RAMP
+     GENERATED FILE — edit scripts/generate-scales.mjs and re-run:
+         node scripts/generate-scales.mjs
 
-   Thirteen ramps × twelve steps, in OKLCH. Step semantics are Radix's,
-   adopted verbatim rather than invented:
+     Thirteen ramps × twelve steps, in OKLCH. Step semantics are Radix's,
+     adopted verbatim rather than invented:
 
-      1  app background
+        1  app background
       2  subtle background
       3  element background
       4  hovered element background
@@ -19,18 +19,18 @@
      11  low-contrast text
      12  high-contrast text
 
-   Steps 1–8 and 11–12 sit on a shared lightness track, so a border or a text
-   colour weighs the same in every hue. Steps 9–10 carry a per-hue lightness
-   bias, because amber at blue's lightness is brown.
+     Steps 1–8 and 11–12 sit on a shared lightness track, so a border or a text
+     colour weighs the same in every hue. Steps 9–10 carry a per-hue lightness
+     bias, because amber at blue's lightness is brown.
 
-   This is raw material, not a licence. Minima stays neutral-dominant: the
-   spectral ramps exist so that the state, identity and data tokens have
-   somewhere principled to come from. Reaching past those tokens into a raw
-   ramp is the exception, and it should feel like one.
-   ═══════════════════════════════════════════════════════════════════════════ */
+     This is raw material, not a licence. Minima stays neutral-dominant: the
+     spectral ramps exist so that the state, identity and data tokens have
+     somewhere principled to come from. Reaching past those tokens into a raw
+     ramp is the exception, and it should feel like one.
+     ═══════════════════════════════════════════════════════════════════════════ */
 
-:root {
-  /* ── gray ──────────────────────────────────────────────────────────── */
+  :root {
+    /* ── gray ──────────────────────────────────────────────────────────── */
   --gray-1:        oklch(0.993 0 0);
   --gray-2:        oklch(0.98 0 0);
   --gray-3:        oklch(0.956 0 0);
@@ -52,9 +52,9 @@
   --red-5:         oklch(0.914 0.049 25);
   --red-6:         oklch(0.886 0.065 25);
   --red-7:         oklch(0.848 0.0878 25);
-  --red-8:         oklch(0.79 0.1283 25);
-  --red-9:         oklch(0.6 0.2246 25);
-  --red-10:        oklch(0.552 0.2198 25);
+  --red-8:         oklch(0.776 0.1312 25);
+  --red-9:         oklch(0.53 0.2228 25);
+  --red-10:        oklch(0.482 0.2122 25);
   --red-11:        oklch(0.505 0.2024 25);
   --red-12:        oklch(0.36 0.1149 25);
   --red-on-solid: oklch(1 0 0);
@@ -162,7 +162,7 @@
   --cyan-10:       oklch(0.582 0.1622 225);
   --cyan-11:       oklch(0.505 0.1383 225);
   --cyan-12:       oklch(0.36 0.0683 225);
-  --cyan-on-solid: oklch(1 0 0);
+  --cyan-on-solid: oklch(0.18 0 0);
 
   /* ── blue ──────────────────────────────────────────────────────────── */
   --blue-1:        oklch(0.99 0.0058 258);
@@ -222,11 +222,11 @@
   --pink-10:       oklch(0.572 0.2379 353);
   --pink-11:       oklch(0.505 0.2138 353);
   --pink-12:       oklch(0.36 0.1159 353);
-  --pink-on-solid: oklch(1 0 0);
-}
+  --pink-on-solid: oklch(0.18 0 0);
+  }
 
-.dark {
-  /* ── gray ──────────────────────────────────────────────────────────── */
+  .dark {
+    /* ── gray ──────────────────────────────────────────────────────────── */
   --gray-1:        oklch(0.145 0 0);
   --gray-2:        oklch(0.185 0 0);
   --gray-3:        oklch(0.225 0 0);
@@ -248,9 +248,9 @@
   --red-5:         oklch(0.315 0.0714 25);
   --red-6:         oklch(0.36 0.0927 25);
   --red-7:         oklch(0.42 0.1219 25);
-  --red-8:         oklch(0.51 0.1677 25);
-  --red-9:         oklch(0.62 0.2236 25);
-  --red-10:        oklch(0.68 0.2075 25);
+  --red-8:         oklch(0.496 0.1662 25);
+  --red-9:         oklch(0.55 0.2242 25);
+  --red-10:        oklch(0.61 0.2152 25);
   --red-11:        oklch(0.78 0.1572 25);
   --red-12:        oklch(0.925 0.0769 25);
   --red-on-solid: oklch(1 0 0);
@@ -358,7 +358,7 @@
   --cyan-10:       oklch(0.698 0.168 225);
   --cyan-11:       oklch(0.78 0.1399 225);
   --cyan-12:       oklch(0.925 0.0786 225);
-  --cyan-on-solid: oklch(1 0 0);
+  --cyan-on-solid: oklch(0.18 0 0);
 
   /* ── blue ──────────────────────────────────────────────────────────── */
   --blue-1:        oklch(0.155 0.0127 258);
@@ -368,12 +368,12 @@
   --blue-5:        oklch(0.315 0.0809 258);
   --blue-6:        oklch(0.36 0.1044 258);
   --blue-7:        oklch(0.42 0.1359 258);
-  --blue-8:        oklch(0.509 0.1843 258);
-  --blue-9:        oklch(0.614 0.2422 258);
-  --blue-10:       oklch(0.674 0.2233 258);
+  --blue-8:        oklch(0.508 0.1842 258);
+  --blue-9:        oklch(0.61 0.2426 258);
+  --blue-10:       oklch(0.67 0.2241 258);
   --blue-11:       oklch(0.78 0.1655 258);
   --blue-12:       oklch(0.925 0.0791 258);
-  --blue-on-solid: oklch(1 0 0);
+  --blue-on-solid: oklch(0.18 0 0);
 
   /* ── indigo ────────────────────────────────────────────────────────── */
   --indigo-1:      oklch(0.155 0.0147 277);
@@ -383,9 +383,9 @@
   --indigo-5:      oklch(0.315 0.0888 277);
   --indigo-6:      oklch(0.36 0.1128 277);
   --indigo-7:      oklch(0.42 0.1441 277);
-  --indigo-8:      oklch(0.508 0.1899 277);
-  --indigo-9:      oklch(0.608 0.2424 277);
-  --indigo-10:     oklch(0.668 0.2199 277);
+  --indigo-8:      oklch(0.506 0.1899 277);
+  --indigo-9:      oklch(0.6 0.2437 277);
+  --indigo-10:     oklch(0.66 0.2219 277);
   --indigo-11:     oklch(0.78 0.1564 277);
   --indigo-12:     oklch(0.925 0.0713 277);
   --indigo-on-solid: oklch(1 0 0);
@@ -403,7 +403,7 @@
   --purple-10:     oklch(0.68 0.2378 302);
   --purple-11:     oklch(0.78 0.1759 302);
   --purple-12:     oklch(0.925 0.083 302);
-  --purple-on-solid: oklch(1 0 0);
+  --purple-on-solid: oklch(0.18 0 0);
 
   /* ── pink ──────────────────────────────────────────────────────────── */
   --pink-1:        oklch(0.155 0.0103 353);
@@ -418,5 +418,6 @@
   --pink-10:       oklch(0.692 0.2304 353);
   --pink-11:       oklch(0.78 0.1813 353);
   --pink-12:       oklch(0.925 0.0929 353);
-  --pink-on-solid: oklch(1 0 0);
-}
+  --pink-on-solid: oklch(0.18 0 0);
+  }
+  

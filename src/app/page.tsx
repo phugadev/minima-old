@@ -905,7 +905,7 @@ export default function Page() {
           id="state"
           eyebrow="Colour job 01"
           title="State"
-          intro="Each state ships a five-part contract, so a tone can be applied to a fill, a text colour, a tint or a hairline without anyone inventing an opacity on the spot."
+          intro="Each state ships a six-part contract — solid, solid-hover, on-solid, text, subtle and border — so a tone can be applied to a fill, a text colour, a tint or a hairline without anyone inventing an opacity on the spot. The on-solid value is measured, not chosen: the generator picks whichever of white or near-black actually clears 4.5:1, and refuses to build a palette where neither does."
         >
           <div className="overflow-x-auto rounded-xl border border-border">
             <Table>

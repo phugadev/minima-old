@@ -1,6 +1,6 @@
 # The Minima Charter
 
-*v0.4 — clause numbers are stable from v0.3 onward.*
+*v0.5 — clause numbers are stable from v0.3 onward.*
 
 Minima is a neutral-dominant design system. This document is its constitution:
 the decisions that are settled, the reasoning behind each one, and the process
@@ -308,7 +308,15 @@ automated audit rather than by eye:
 | `--fill` against both canvas and surface | 1.06:1 |
 
 **8.2 NORMATIVE.** A change that drops any pairing below its floor is not
-shipped, regardless of how it looks.
+shipped, regardless of how it looks. `npm run audit` is the runner; it exits
+non-zero on a breach and treats an undefined token as a failure rather than a
+pass.
+
+**8.4 NORMATIVE.** `{tone}-foreground` is chosen by measurement, not by taste:
+the generator computes whichever of white or near-black actually clears the
+floor against that tone's solid, and refuses to emit a palette where neither
+does. The guarantee covers the four state tones — the only hues the semantic
+layer pairs with text. Step 9 of any other hue is a fill, not a text surface.
 
 **8.3 RATIONALE.** 7.1's last two rows exist because of a real regression: an
 early version had `--muted` at 1.03:1 against the light canvas, which made every
@@ -394,6 +402,16 @@ the exception: light uses step 11, dark uses step 9. No single step clears the
 Step 11's published contract is ≥4.5:1, so the light ramp inherits a guarantee
 rather than a measurement. *Alternative rejected:* a per-hue step choice, which
 would make the chart ramp un-reasonable-about.
+
+**D6 — Only the state hues carry the on-solid contrast guarantee.**
+A saturated hue around L 0.60 sits in a dead zone where neither white nor
+near-black reaches 4.5:1 against it. That is a property of colour, not a bug.
+Blue, indigo, purple and pink live there, and forcing them out would cost the
+whole palette its punch to protect a pairing Minima never makes — those hues are
+links, rings, tints and data marks, none of which put small text on a step 9
+fill. They still get a best-effort `on-solid`; they do not get the guarantee.
+*Alternative rejected:* deepening every hue until it clears, which trades
+vibrancy for a promise nothing needs.
 
 **D5 — The nesting formula is offset by one optical pixel.**
 Article 5.2 gives the concentric result; `--nest-optical` then adds 1px back. At

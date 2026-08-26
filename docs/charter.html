@@ -767,7 +767,7 @@ html { scroll-behavior: smooth; }
 
 <header class="masthead">
   <div class="masthead-inner">
-    <p class="eyebrow">Minima · Constitution · v0.4</p>
+    <p class="eyebrow">Minima · Constitution · v0.5</p>
     <h1>The Minima Charter</h1>
     <p class="standfirst">
       Minima is a neutral-dominant design system. This document is its constitution: the decisions that are settled, the reasoning behind each, and the process for changing them. It exists because a design system&rsquo;s cost is not building it &mdash; it is <strong>re-litigating it</strong>. Every time a token&rsquo;s meaning is inferred rather than looked up, the vocabulary drifts, and drift is paid for in sessions that rediscover decisions already made. This is written to be <strong>cited</strong>, not merely read.
@@ -1180,6 +1180,11 @@ html { scroll-behavior: smooth; }
         <div class="clause-id">8.3</div>
         <div class="clause-body"><p><span class="tag tag-rat">Rationale</span>The last two rows exist because of a real regression: an early version had <code>--muted</code> at 1.03:1 against the light canvas, which made every tab list and secondary button vanish in light mode while looking correct in dark. Structural contrast needs a floor exactly as much as text does.</p></div>
       </div>
+          <div class="clause">
+        <div class="clause-id">8.4</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span><code>{tone}-foreground</code> is chosen by measurement, not by taste: the generator computes whichever of white or near-black actually clears the floor against that tone&rsquo;s solid, and refuses to emit a palette where neither does. The guarantee covers the four state tones &mdash; the only hues the semantic layer pairs with text. Step 9 of any other hue is a fill, not a text surface.</p></div>
+      </div>
+
     </section>
     <section class="article" id="a9">
       <div class="article-head"><span class="article-n">Art. 9</span><h2>Generation</h2></div>
@@ -1217,6 +1222,11 @@ html { scroll-behavior: smooth; }
         <div class="clause-id">9.4</div>
         <div class="clause-body"><p><span class="tag tag-norm">Normative</span>Minima builds on shadcn/ui, whose current default style (<code>base-nova</code>) is itself built on Base UI. These are one choice, not two: taking shadcn/ui takes Base UI underneath it.</p></div>
       </div>
+          <div class="clause">
+        <div class="clause-id">9.5</div>
+        <div class="clause-body"><p><span class="tag tag-norm">Normative</span>The generator asserts what it can. <code>generate-scales.mjs</code> computes the contrast of every state tone&rsquo;s solid against both candidate text colours and throws if neither clears the floor. A guarantee the build can check is worth more than one a reviewer has to remember.</p></div>
+      </div>
+
     </section>
     <section class="article" id="a10">
       <div class="article-head"><span class="article-n">Art. 10</span><h2>Amendment</h2></div>
@@ -1272,6 +1282,12 @@ html { scroll-behavior: smooth; }
       </div>
 
       <div class="dev">
+        <h3><span class="did">D6</span> Only the state hues carry the on-solid guarantee</h3>
+        <p>A saturated hue around L 0.60 sits in a dead zone where neither white nor near-black reaches 4.5:1 against it. That is a property of colour, not a bug. Blue, indigo, purple and pink live there, and forcing them out would cost the whole palette its punch to protect a pairing Minima never makes &mdash; those hues are links, rings, tints and data marks, none of which put small text on a step 9 fill. They still get a best-effort <code>on-solid</code>; they do not get the guarantee.</p>
+        <p class="rejected"><strong>Rejected:</strong> deepening every hue until it clears, which trades vibrancy for a promise nothing needs.</p>
+      </div>
+
+      <div class="dev">
         <h3><span class="did">D5</span> The nesting formula is offset by one optical pixel</h3>
         <p>Clause 5.2 gives the concentric result; <code>--nest-optical</code> then adds 1px back. At small radii a strictly concentric inner corner reads tight, because the eye weighs the visible arc rather than the geometric centre. The formula gets you to concentric and the eye takes it the rest of the way &mdash; mathematically wrong, visibly right.</p>
       </div>
@@ -1297,7 +1313,7 @@ html { scroll-behavior: smooth; }
 </div>
 
 <footer>
-  <span>The Minima Charter &middot; v0.4</span>
+  <span>The Minima Charter &middot; v0.5</span>
   <span>github.com/phugadev/minima</span>
 </footer>
 
