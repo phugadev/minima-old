@@ -19,6 +19,17 @@ version keeps meaning something.
   provenance, not a dependency. The ten components re-tuned in 0.6.0 are
   absorbed in that sense, and their divergence from the originals is the point.
 
+- The showcase links to the Charter, which until now could only be read by
+  opening a file in the repository.
+
+### Changed
+- `public/charter.html` replaces `docs/charter.html`. Next serves static files
+  from `public/` only, so for eight releases the rendered Charter was generated
+  into a directory nothing served — visible to anyone who cloned the repo and
+  to nobody else.
+- The showcase header takes its version from `package.json`. It had read
+  `v0.1.0` since 0.1.0, so the site announced a version eight releases stale.
+
 ### Fixed
 - **Charter 9.4 promised pinning that does not work the way it said.** `#ref`
   applies to the address it is written on and is not inherited by an item's

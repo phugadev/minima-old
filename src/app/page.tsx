@@ -51,6 +51,8 @@ import { Note, NoteTitle } from "@/components/minima/note"
 import { Stat, StatDelta, StatLabel, StatValue } from "@/components/minima/stat"
 import { Status } from "@/components/minima/status"
 
+import { version } from "../../package.json"
+
 /* ───────────────────────────────────────────────────────────────────────────
    Page scaffolding
    ─────────────────────────────────────────────────────────────────────── */
@@ -206,7 +208,7 @@ export default function Page() {
           <div className="flex items-baseline gap-2">
             <span className="text-sm font-semibold tracking-tight">Minima</span>
             <span className="text-2xs text-subtle-foreground" data-numeric="">
-              v0.1.0
+              v{version}
             </span>
           </div>
           <nav className="ml-4 hidden gap-4 text-xs text-muted-foreground md:flex">
@@ -221,6 +223,7 @@ export default function Page() {
             <a className="hover:text-foreground" href="#data">Data</a>
             <a className="hover:text-foreground" href="#components">Components</a>
             <a className="hover:text-foreground" href="#install">Install</a>
+            <a className="hover:text-foreground" href="/charter.html">Charter</a>
           </nav>
           <div className="ml-auto flex items-center gap-1">
             <Button

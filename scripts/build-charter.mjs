@@ -1,7 +1,7 @@
 /**
  * Minima — Charter renderer
  *
- * CHARTER.md is the source. This emits docs/charter.html from it, styled in
+ * CHARTER.md is the source. This emits public/charter.html from it, styled in
  * Minima's own tokens, with the live spectral ramp drawn from the same
  * generator that produces the system.
  *
@@ -293,11 +293,14 @@ const html = render(doc).replace(
   '<div class="ramp-wrap"><div class="ramp-grid" id="ramp-grid"></div></div>'
 )
 
-mkdirSync(here("../docs"), { recursive: true })
-writeFileSync(here("../docs/charter.html"), html)
+/* public/, not docs/: Next serves static files from public/ only, so a Charter
+   rendered anywhere else is a Charter the deployed site cannot show. It was
+   generated for eight releases into a directory nothing served. */
+mkdirSync(here("../public"), { recursive: true })
+writeFileSync(here("../public/charter.html"), html)
 
 const clauses = doc.articles.reduce((n, a) => n + a.clauses.length, 0)
 console.log(
-  `wrote docs/charter.html — ${doc.articles.length} articles, ${clauses} clauses, ` +
+  `wrote public/charter.html — ${doc.articles.length} articles, ${clauses} clauses, ` +
     `${doc.deviations.items.length} deviations`
 )
