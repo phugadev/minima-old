@@ -18,25 +18,24 @@
         "iconLibrary": "lucide"
       },
       "registryDependencies": [
-        "minima-theme",
-        "font-geist-sans",
-        "font-geist-mono",
-        "status",
-        "note",
-        "kbd",
-        "stat",
-        "code",
-        "button",
-        "badge",
-        "card",
-        "input",
-        "label",
-        "select",
-        "separator",
-        "table",
-        "tabs",
-        "progress",
-        "avatar"
+        "phugadev/minima/minima-theme",
+        "phugadev/minima/font-geist-sans",
+        "phugadev/minima/font-geist-mono",
+        "phugadev/minima/status",
+        "phugadev/minima/note",
+        "phugadev/minima/kbd",
+        "phugadev/minima/stat",
+        "phugadev/minima/code",
+        "phugadev/minima/button",
+        "phugadev/minima/badge",
+        "phugadev/minima/card",
+        "phugadev/minima/input",
+        "phugadev/minima/label",
+        "phugadev/minima/select",
+        "phugadev/minima/separator",
+        "phugadev/minima/table",
+        "phugadev/minima/tabs",
+        "phugadev/minima/progress"
       ]
     },
     {
@@ -1410,6 +1409,151 @@
         ],
         "dependency": "@fontsource-variable/geist-mono"
       }
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Button, carrying the Article 12 component signature.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Badge, carrying the Article 12 component signature.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Card, carrying the Article 12 component signature.",
+      "files": [
+        {
+          "path": "src/components/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Input, carrying the Article 12 component signature.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Label, carrying the Article 12 component signature.",
+      "files": [
+        {
+          "path": "src/components/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Select, carrying the Article 12 component signature.",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Separator, carrying the Article 12 component signature.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Table, carrying the Article 12 component signature.",
+      "files": [
+        {
+          "path": "src/components/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Tabs, carrying the Article 12 component signature.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Progress, carrying the Article 12 component signature.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 # The Minima Charter
 
-*v0.7.0 — the Charter carries the same version as the package; they describe the same system. Clause numbers are stable from 0.3.0 onward.*
+*v0.8.0 — the Charter carries the same version as the package; they describe the same system. Clause numbers are stable from 0.3.0 onward.*
 
 Minima is a neutral-dominant design system. This document is its constitution:
 the decisions that are settled, the reasoning behind each one, and the process
@@ -376,6 +376,24 @@ Contents: Read-only.
 (`base-nova`) is itself built on Base UI. These are one choice, not two: taking
 shadcn/ui takes Base UI underneath it.
 
+**9.6 NORMATIVE.** The registry ships everything the system defines, and every
+dependency between its own items is addressed to it. A `registryDependency` is
+an address, not a name: the CLI chooses a registry from the shape of the
+string, and anything shorter than `<owner>/<repo>/<item>` is fetched from
+`ui.shadcn.com`. A bare name that matches a local item therefore installs
+somebody else's component, or nothing at all.
+
+**9.7 NORMATIVE.** Being in sync is not the same as being correct. `npm run
+registry` will faithfully regenerate a registry that ships the wrong thing, and
+9.1's in-sync check will pass, because output and source agree about the same
+mistake. `npm run audit:registry` is the separate runner for what that check
+cannot see.
+
+**9.8 RATIONALE.** Both clauses above are the same failure twice. Article 12
+was enforced in the showcase and nowhere a consumer could see; the fonts, in
+0.7.0, were wired in `layout.tsx` and nowhere else. A rule the distribution does
+not carry is a rule the system only appears to have.
+
 ---
 
 ## Article 10 — Amendment
@@ -455,7 +473,11 @@ inside those containers stays in the reading register.
 **12.6 NORMATIVE.** Never `transition: all`. Name the properties that change.
 A component that animates everything animates things it has not thought about.
 
-**12.7 RATIONALE.** None of this is decoration, and that is the point. A
+**12.7 NORMATIVE.** Every component in the tree is shipped as a registry item.
+A signature is a claim about what a consumer receives, so a component the
+registry does not carry is outside the system regardless of how it is written.
+
+**12.8 RATIONALE.** None of this is decoration, and that is the point. A
 signature is not a flourish added to components — it is the same few decisions
 taken so consistently that the result reads as one hand. Every rule above was
 already implied by an earlier article; what was missing was anything making the

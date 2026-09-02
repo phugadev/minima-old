@@ -786,7 +786,7 @@ html { scroll-behavior: smooth; }
 
 <header class="masthead">
   <div class="masthead-inner">
-    <p class="eyebrow">Minima &middot; Constitution &middot; v0.7.0</p>
+    <p class="eyebrow">Minima &middot; Constitution &middot; v0.8.0</p>
     <h1>The Minima Charter</h1>
     <div class="standfirst"><p>Minima is a neutral-dominant design system. This document is its constitution:
 the decisions that are settled, the reasoning behind each one, and the process
@@ -1622,6 +1622,35 @@ Contents: Read-only.</p>
 shadcn/ui takes Base UI underneath it.</p>
 </div>
       </div>
+
+      <div class="clause">
+        <div class="clause-id">9.6</div>
+        <div class="clause-body"><span class="tag tag-norm">Normative</span><p>The registry ships everything the system defines, and every
+dependency between its own items is addressed to it. A <code>registryDependency</code> is
+an address, not a name: the CLI chooses a registry from the shape of the
+string, and anything shorter than <code>&lt;owner&gt;/&lt;repo&gt;/&lt;item&gt;</code> is fetched from
+<code>ui.shadcn.com</code>. A bare name that matches a local item therefore installs
+somebody else&#39;s component, or nothing at all.</p>
+</div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">9.7</div>
+        <div class="clause-body"><span class="tag tag-norm">Normative</span><p>Being in sync is not the same as being correct. <code>npm run registry</code> will faithfully regenerate a registry that ships the wrong thing, and
+9.1&#39;s in-sync check will pass, because output and source agree about the same
+mistake. <code>npm run audit:registry</code> is the separate runner for what that check
+cannot see.</p>
+</div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">9.8</div>
+        <div class="clause-body"><span class="tag tag-rat">Rationale</span><p>Both clauses above are the same failure twice. Article 12
+was enforced in the showcase and nowhere a consumer could see; the fonts, in
+0.7.0, were wired in <code>layout.tsx</code> and nowhere else. A rule the distribution does
+not carry is a rule the system only appears to have.</p>
+</div>
+      </div>
     </section>
 
     <section class="article" id="a10">
@@ -1772,6 +1801,14 @@ A component that animates everything animates things it has not thought about.</
 
       <div class="clause">
         <div class="clause-id">12.7</div>
+        <div class="clause-body"><span class="tag tag-norm">Normative</span><p>Every component in the tree is shipped as a registry item.
+A signature is a claim about what a consumer receives, so a component the
+registry does not carry is outside the system regardless of how it is written.</p>
+</div>
+      </div>
+
+      <div class="clause">
+        <div class="clause-id">12.8</div>
         <div class="clause-body"><span class="tag tag-rat">Rationale</span><p>None of this is decoration, and that is the point. A
 signature is not a flourish added to components — it is the same few decisions
 taken so consistently that the result reads as one hand. Every rule above was
@@ -1866,7 +1903,7 @@ Everything else is stock shadcn/ui, re-tuned entirely through tokens.</li>
 </div>
 
 <footer>
-  <span>The Minima Charter &middot; v0.7.0</span>
+  <span>The Minima Charter &middot; v0.8.0</span>
   <span>github.com/phugadev/minima</span>
 </footer>
 
