@@ -88,4 +88,4 @@ and CI will fail before that:
 | `src/app/scales.css` | `scripts/generate-scales.mjs` |
 | `src/app/tokens.css` | `scripts/build-tokens.mjs` |
 | `registry.json`, `public/r/*` | `scripts/build-tokens.mjs`, `shadcn build` |
-| `docs/charter.html` | `scripts/build-charter.mjs`, from `CHARTER.md` |
+| `public/charter.html` | `scripts/build-charter.mjs`, from `CHARTER.md` |

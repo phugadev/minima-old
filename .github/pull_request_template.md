@@ -17,7 +17,7 @@
   - [ ] The rule being changed, cited by clause number: `__`
   - [ ] What breaks if it stays — a concrete failure, not a preference
   - [ ] `npm run audit` passes with no pairing below its Article 8 floor
-  - [ ] `CHARTER.md` and `docs/charter.html` updated in this PR
+  - [ ] `CHARTER.md` and `public/charter.html` updated in this PR
 - [ ] **Adds a documented deviation.** Also an amendment — include the rejected alternative.
 
 ## Version

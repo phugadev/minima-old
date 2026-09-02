@@ -84,7 +84,7 @@ both themes; only the ramps beneath it change.
 
 [`CHARTER.md`](CHARTER.md) is the constitution — eleven articles of numbered,
 citable clauses, plus the documented deviations and the process for amending
-any of it. A rendered version lives at [`docs/charter.html`](docs/charter.html).
+any of it. A rendered version lives at [`public/charter.html`](public/charter.html).
 
 It exists because a design system's cost is not building it, it is
 re-litigating it.
@@ -110,7 +110,7 @@ Generated files are never hand-edited:
 | `src/app/scales.css` | `scripts/generate-scales.mjs` |
 | `src/app/tokens.css` | `scripts/build-tokens.mjs` |
 | `registry.json`, `public/r/*` | `scripts/build-tokens.mjs`, `shadcn build` |
-| `docs/charter.html` | `scripts/build-charter.mjs` |
+| `public/charter.html` | `scripts/build-charter.mjs` |
 
 ## Licence
 
