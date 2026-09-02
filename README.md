@@ -32,7 +32,15 @@ npx shadcn@latest add phugadev/minima/note
 npx shadcn@latest add phugadev/minima/kbd
 npx shadcn@latest add phugadev/minima/stat
 npx shadcn@latest add phugadev/minima/code
+npx shadcn@latest add phugadev/minima/button        # and badge, card, input,
+                                                    # label, select, separator,
+                                                    # table, tabs, progress
 ```
+
+The last group is shadcn/ui's components re-tuned to the Article 12 signature —
+radius keyed to element size, height from the density tokens, one interaction
+ladder, one focus ring. Minima ships its own rather than depending on the
+upstream names, because the upstream ones do not read the tokens.
 
 ## Type
 
@@ -88,6 +96,7 @@ npm install
 npm run dev        # the system, documented by demonstrating itself
 npm run registry   # regenerate tokens, docs and the registry
 npm run audit      # Charter Article 8 — contrast floors
+npm run audit:registry  # Charter 9.6 — the registry ships what the system defines
 ```
 
 Changes arrive through pull requests; `main` is protected and CI has to be

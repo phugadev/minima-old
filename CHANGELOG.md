@@ -5,6 +5,47 @@ All notable changes to Minima are recorded here. The format follows
 [semantic versioning](https://semver.org/) — see [CONTRIBUTING.md](CONTRIBUTING.md)
 for what each bump means for a design system.
 
+## [0.8.0] — 2026-09-02
+
+### Fixed
+- **`npx shadcn@latest add phugadev/minima/minima` did not work at all.** Every
+  one of the base item's `registryDependencies` was written as a bare name, and
+  a bare name is not a name — it is an address the CLI resolves against
+  `ui.shadcn.com`. Resolution failed on the first entry, `minima-theme`, so the
+  headline install in the README errored out and installed nothing. Local items
+  are now addressed `phugadev/minima/<item>`, which is the only form that
+  reaches this registry.
+- **The registry shipped stock shadcn components.** `button`, `badge`, `card`,
+  `input`, `label`, `select`, `separator`, `table`, `tabs` and `progress` were
+  listed as upstream dependencies, so a consumer received Minima's tokens and
+  then ten components that ignore them — controls fixed at one height whatever
+  `data-density` said (12.2), radii outside the four the system defines (12.1),
+  and the seven focus rings 12.4 exists to have removed. All ten differ from
+  their upstream originals; all ten now ship as registry items. This is the
+  0.7.0 font bug again: a rule enforced in the showcase and nowhere a consumer
+  could see it.
+- `avatar` is no longer a dependency of the base item. 0.5.0 deleted
+  `src/components/ui/avatar.tsx` for having no importers but left the base item
+  installing the upstream one.
+
+### Added
+- `scripts/audit-registry.mjs` and `npm run audit:registry`, in CI. The
+  generated-files check compares output against source, so it passes on a
+  registry that is faithfully generated and still ships the wrong thing —
+  which is exactly what it did for two releases. This checks the claim
+  instead: every component in the tree is shipped, every dependency between
+  local items is addressed to this registry, and every file an item names
+  exists.
+- Charter 9.6, 9.7 and 9.8 — the registry ships what the system defines, being
+  in sync is not the same as being correct, and why those are one failure.
+- Charter 12.7 — every component in the tree is shipped as a registry item.
+  The old 12.7 rationale becomes 12.8.
+
+### Changed
+- npm dependencies for every component item are read out of the source's own
+  import statements rather than listed by hand, so the two cannot disagree.
+  React and React DOM are excluded as peers.
+
 ## [0.7.0] — 2026-08-26
 
 ### Added
@@ -180,6 +221,7 @@ for what each bump means for a design system.
 Initial system: neutral-dominant thesis, OKLCH ramps, the three colour jobs,
 and distribution as a GitHub-hosted shadcn registry.
 
+[0.8.0]: https://github.com/phugadev/minima/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/phugadev/minima/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/phugadev/minima/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/phugadev/minima/compare/v0.4.0...v0.5.0

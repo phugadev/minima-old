@@ -13,7 +13,7 @@
  * Run: node scripts/build-tokens.mjs
  */
 
-import { writeFileSync } from "node:fs"
+import { readFileSync, writeFileSync } from "node:fs"
 
 import { rampVars, HUES, STEPS } from "./generate-scales.mjs"
 
@@ -663,14 +663,88 @@ const fontItem = (name, title, family, imported, variable, dependency) => ({
   },
 })
 
-const uiItem = (name, title, description, deps) => ({
-  name,
-  type: "registry:ui",
-  title,
-  description,
-  ...(deps ? { dependencies: deps } : {}),
-  files: [{ path: `src/components/minima/${name}.tsx`, type: "registry:ui" }],
-})
+const uiItem = (name, title, description) => {
+  const path = `src/components/minima/${name}.tsx`
+  const dependencies = npmDeps(path)
+  return {
+    name,
+    type: "registry:ui",
+    title,
+    description,
+    ...(dependencies.length ? { dependencies } : {}),
+    files: [{ path, type: "registry:ui" }],
+  }
+}
+
+/* ── Addressing ─────────────────────────────────────────────────────────────
+   A registryDependency is an ADDRESS, not a name, and the CLI decides which
+   registry to ask from the shape of the string. Fewer than three slash-
+   separated segments is the `shadcn` scheme: the item is fetched from
+   `ui.shadcn.com/r/styles/<style>/<name>.json`. Only `<owner>/<repo>/<item>`
+   reaches this registry.
+
+   Every dependency of the base item was written bare, so `minima-theme`,
+   `status`, `note`, `kbd`, `stat` and `code` were all being requested from
+   upstream, where they do not exist — `npx shadcn add phugadev/minima/minima`
+   failed on the first one and installed nothing. Qualifying is not a
+   refinement; it is the difference between the headline install working and
+   erroring out.                                                             */
+const local = (name) => `${OWNER}/${REPO}/${name}`
+
+/* ── The component layer ────────────────────────────────────────────────────
+   Article 12 is a claim about components, so the registry has to ship the
+   components. These are shadcn/ui's base-nova components re-tuned to obey it:
+   radius keyed to element size (12.1), height from the density tokens (12.2),
+   one interaction ladder (12.3), one focus ring (12.4), the signal register on
+   chrome (12.5) and no `transition: all` (12.6). Every one of them differs
+   from its upstream original.
+
+   Depending on the upstream names instead — which is what this item did —
+   ships the tokens and then a set of components that ignore them: controls
+   fixed at one height whatever `data-density` says, radii off the four the
+   system defines, and the seven focus rings 12.4 exists to have removed. The
+   Charter would be enforced in the showcase and nowhere a consumer can see.  */
+const SIGNATURE = [
+  ["button", "Button"],
+  ["badge", "Badge"],
+  ["card", "Card"],
+  ["input", "Input"],
+  ["label", "Label"],
+  ["select", "Select"],
+  ["separator", "Separator"],
+  ["table", "Table"],
+  ["tabs", "Tabs"],
+  ["progress", "Progress"],
+]
+
+/* npm dependencies are read out of the source rather than listed here, because
+   a hand-kept list is a second source of truth for something the import
+   statements already state. `@/...` is the consumer's own alias, not a
+   package; everything else bare is one, scoped names keeping two segments.  */
+const PEERS = new Set(["react", "react-dom"])
+
+const npmDeps = (path) => {
+  const src = readFileSync(new URL(`../${path}`, import.meta.url), "utf8")
+  const specifiers = [...src.matchAll(/from\s+"([^"]+)"/g)].map((m) => m[1])
+  const packages = specifiers
+    .filter((spec) => !spec.startsWith("@/") && !spec.startsWith("."))
+    .map((spec) => spec.split("/").slice(0, spec.startsWith("@") ? 2 : 1).join("/"))
+    .filter((pkg) => !PEERS.has(pkg))
+  return [...new Set(packages)].sort()
+}
+
+const signatureItem = (name, title) => {
+  const path = `src/components/ui/${name}.tsx`
+  const dependencies = npmDeps(path)
+  return {
+    name,
+    type: "registry:ui",
+    title,
+    description: `${title}, carrying the Article 12 component signature.`,
+    ...(dependencies.length ? { dependencies } : {}),
+    files: [{ path, type: "registry:ui" }],
+  }
+}
 
 const registry = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
@@ -694,9 +768,8 @@ const registry = {
         "font-geist-sans",
         "font-geist-mono",
         "status", "note", "kbd", "stat", "code",
-        "button", "badge", "card", "input", "label", "select",
-        "separator", "table", "tabs", "progress", "avatar",
-      ],
+        ...SIGNATURE.map(([name]) => name),
+      ].map(local),
     },
     {
       name: "minima-theme",
@@ -735,13 +808,14 @@ const registry = {
         "@layer components": PROSE,
       },
     },
-    uiItem("status", "Status", "Status pill and dot. The canonical carrier of the state colour job.", ["class-variance-authority"]),
-    uiItem("note", "Note", "A bordered callout that defaults to neutral and escalates to a state tone only when the message reports state.", ["class-variance-authority"]),
+    uiItem("status", "Status", "Status pill and dot. The canonical carrier of the state colour job."),
+    uiItem("note", "Note", "A bordered callout that defaults to neutral and escalates to a state tone only when the message reports state."),
     uiItem("kbd", "Kbd", "A keyboard key. Always neutral — a shortcut is not a state."),
     uiItem("stat", "Stat", "A single metric. Mono tabular value, with the delta as the only coloured element."),
     uiItem("code", "Code", "Inline code and code blocks. Always mono, never coloured — syntax highlighting is a product concern."),
     fontItem("font-geist-sans", "Geist Sans", "Geist", "Geist", "--font-geist-sans", "@fontsource-variable/geist"),
     fontItem("font-geist-mono", "Geist Mono", "Geist Mono", "Geist_Mono", "--font-geist-mono", "@fontsource-variable/geist-mono"),
+    ...SIGNATURE.map(([name, title]) => signatureItem(name, title)),
   ],
 }
 

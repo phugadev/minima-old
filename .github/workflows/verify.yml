@@ -56,6 +56,11 @@ jobs:
             exit 1
           fi
 
+      # Charter 9.7: the in-sync check above cannot see a registry that is
+      # faithfully generated and still ships the wrong thing. This can.
+      - name: Registry ships what the system defines
+        run: npm run audit:registry
+
       # Charter 11.2: the version is the promise the system makes. A bump with
       # no changelog entry is a promise nobody can read.
       - name: Version and changelog agree
