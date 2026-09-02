@@ -369,8 +369,18 @@ repository *is* the registry:
 npx shadcn@latest add phugadev/minima/minima
 ```
 
-Pin with `#ref` (branch, tag or SHA). Private access uses `GH_TOKEN` with
-Contents: Read-only.
+An item is pinned by appending `#ref` — a branch, tag or SHA — to its address.
+The pin applies to the address it is written on and is *not* inherited by that
+item's `registryDependencies`, so pinning the base item pins the base item and
+resolves everything it depends on from the default branch. Pin the individual
+items where a pin has to hold. Private access uses `GH_TOKEN` with Contents:
+Read-only.
+
+This is a property of the CLI's resolver, not a choice Minima makes, and it
+matters less than it appears: a shadcn registry is copy-in. The CLI reads it
+once and writes files into the consumer's repository, and nothing re-resolves
+afterwards. A ref selects which snapshot is copied on the day the command is
+run; it is not a dependency that stays live.
 
 **9.5 NORMATIVE.** Minima builds on shadcn/ui, whose current default style
 (`base-nova`) is itself built on Base UI. These are one choice, not two: taking
@@ -440,9 +450,12 @@ its own Charter is a patch, however visible it is. The on-solid fix in 0.3.1
 recoloured every state solid and was still a patch, because Article 8 had always
 said what the values should be.
 
-**11.5 NORMATIVE.** Continuous integration runs the type check, the lint, the
-generated-files-in-sync check, the build and the contrast audit on every pull
-request. A rule with no runner decays; these no longer have to be remembered.
+**11.5 NORMATIVE.** Continuous integration runs, on every pull request: the type
+check, the lint, the generated-files-in-sync check (9.1), the registry audit
+(9.6, 9.7), the version-and-changelog agreement check (11.2), the build, and the
+contrast audit (Article 8). A rule with no runner decays; these no longer have
+to be remembered. This list is itself normative — a runner added to CI without
+being named here leaves the Charter describing a system that no longer exists.
 
 ---
 
@@ -482,6 +495,14 @@ signature is not a flourish added to components — it is the same few decisions
 taken so consistently that the result reads as one hand. Every rule above was
 already implied by an earlier article; what was missing was anything making the
 components obey them.
+
+**12.9 NORMATIVE.** A component absorbed from shadcn/ui is Minima's. Upstream is
+where it came from, not something it depends on: the registry ships Minima's
+copy (12.7), and an upstream change reaches this system only when someone
+decides it should. The ten components re-tuned in 0.6.0 are absorbed in this
+sense, and the divergence is the point — a component that could be replaced by
+its upstream original without anyone noticing is a component carrying no
+signature.
 
 ---
 

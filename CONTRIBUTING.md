@@ -49,13 +49,30 @@ should be.
 
 ## Releasing
 
+Work accumulates under `## [Unreleased]` in the changelog. A release turns that
+heading into a version — which means most pull requests do not touch the
+version at all, and the number keeps meaning something.
+
+The bump belongs **in the pull request**, because CI checks that
+`package.json` and `CHANGELOG.md` agree and `main` takes no direct commits
+(Article 11.1):
+
 ```
-# on main, after the PR merges
+# in the release PR
 npm version <major|minor|patch> --no-git-tag-version
-# update CHANGELOG.md — move Unreleased into the new version
+# CHANGELOG.md — rename [Unreleased] to [<version>] — <date>, add a fresh
+# [Unreleased] above it, and update the link refs at the bottom
 git commit -am "release: v<version>"
+```
+
+Only the tag is applied afterwards, on `main`, once the PR has merged — a tag
+is not a commit, so this does not write to `main`:
+
+```
+git checkout main && git pull
 git tag -a v<version> -m "v<version>"
-git push --follow-tags
+git push origin v<version>
+gh release create v<version> --notes-from-tag
 ```
 
 `CHARTER.md` carries the same version as the package. They describe the same

@@ -114,4 +114,4 @@ Generated files are never hand-edited:
 
 ## Licence
 
-MIT
+MIT — see [`LICENSE`](LICENSE).

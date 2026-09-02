@@ -5,6 +5,37 @@ All notable changes to Minima are recorded here. The format follows
 [semantic versioning](https://semver.org/) — see [CONTRIBUTING.md](CONTRIBUTING.md)
 for what each bump means for a design system.
 
+## [Unreleased]
+
+Nothing here changes the system. Documentation that had drifted from what the
+code and the CLI actually do, corrected in place — held unreleased so the
+version keeps meaning something.
+
+### Added
+- `LICENSE`. The README had said MIT since the beginning and no file said it,
+  so GitHub reported the repository as unlicensed — a stated licence with
+  nothing behind it grants nobody anything.
+- Charter 12.9 — a component absorbed from shadcn/ui is Minima's. Upstream is
+  provenance, not a dependency. The ten components re-tuned in 0.6.0 are
+  absorbed in that sense, and their divergence from the originals is the point.
+
+### Fixed
+- **Charter 9.4 promised pinning that does not work the way it said.** `#ref`
+  applies to the address it is written on and is not inherited by an item's
+  `registryDependencies`, so pinning the base item resolved all eighteen of its
+  dependencies from the default branch. The clause now says so, and says why it
+  matters less than it looks: a shadcn registry is copy-in, so a ref chooses
+  which snapshot is copied, not a dependency that stays live.
+- **Charter 11.5 misdescribed its own CI.** It named five checks; the workflow
+  runs eight. It had been missing the version-and-changelog check since 0.4.0
+  and the registry audit since 0.8.0. The clause now enumerates them and makes
+  the list itself normative, so adding a runner without naming it is a breach.
+- **`CONTRIBUTING.md` documented a release procedure that Article 11.1
+  forbids** — `git commit` directly on `main` — and referenced an `Unreleased`
+  changelog section that did not exist. The procedure now matches what CI
+  enforces and what 0.8.0 actually did: the bump and the changelog move land in
+  the pull request, and only the tag is applied on `main` afterwards.
+
 ## [0.8.0] — 2026-09-02
 
 ### Fixed
@@ -221,6 +252,7 @@ for what each bump means for a design system.
 Initial system: neutral-dominant thesis, OKLCH ramps, the three colour jobs,
 and distribution as a GitHub-hosted shadcn registry.
 
+[Unreleased]: https://github.com/phugadev/minima/compare/v0.8.0...HEAD
 [0.8.0]: https://github.com/phugadev/minima/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/phugadev/minima/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/phugadev/minima/compare/v0.5.0...v0.6.0
