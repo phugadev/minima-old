@@ -21,6 +21,12 @@ version keeps meaning something.
 
 - The showcase links to the Charter, which until now could only be read by
   opening a file in the repository.
+- "How we work" rules 6 and 7 — read the source of truth before writing against
+  it, and never restate what the repo already knows — with
+  `npm run verify:literals` in CI as the runner for 7. Both rules are failures
+  that happened after the first five were written: the registry's bare
+  dependency addresses came from recollection of the shadcn CLI rather than its
+  resolver, and a hardcoded `v0.1.0` survived eight releases in two places.
 - `CONTRIBUTING.md` gains a "How we work" section — five rules learned by
   breaking them across the first eight releases, and `CLAUDE.md` now imports it
   so they are read rather than re-derived. Deliberately not a Charter article:
