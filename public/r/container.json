@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "container",
+  "title": "Container",
+  "description": "The horizontal frame — a measure, centred, with the gutter. Widths are typographic; the gutter moves with density.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "src/components/minima/container.tsx",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Container — the horizontal frame: a measure, centred, with the gutter.\n *\n * The gutter is `--gutter`, so it moves with `data-density` like everything\n * else. The widths do not: a measure is a typographic decision, not a density\n * one. `prose` is the reading measure and exists because a column of body copy\n * stops being readable long before it stops fitting.\n */\n\nconst containerVariants = cva(\"mx-auto w-full px-gutter\", {\n  variants: {\n    size: {\n      prose: \"max-w-2xl\",\n      default: \"max-w-5xl\",\n      wide: \"max-w-7xl\",\n      full: \"max-w-none\",\n    },\n  },\n  defaultVariants: { size: \"default\" },\n})\n\nfunction Container({\n  className,\n  size,\n  ...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof containerVariants>) {\n  return (\n    <div\n      data-slot=\"container\"\n      className={cn(containerVariants({ size }), className)}\n      {...props}\n    />\n  )\n}\n\nexport { Container, containerVariants }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

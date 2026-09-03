@@ -12,6 +12,20 @@ code and the CLI actually do, corrected in place — held unreleased so the
 version keeps meaning something.
 
 ### Added
+- **`Container` and `Section`, the first layout primitives.** The rhythm ladder
+  had existed as tokens since 0.3.0 — `--gutter`, `--stack`, `--section`, each
+  twice the one below it, all three scaling with `data-density` — and nothing
+  consumed the top two rungs. The showcase spaced its own regions with `py-14`
+  and `py-20` literals, so `data-density` resized every control on the page and
+  left the rhythm between regions exactly where it was. Density was half-real
+  in the same way controls were before 0.6.0.
+
+  `Section` takes its vertical space from `--section` and `Container` its
+  gutter from `--gutter`, so density now moves the page: sections measure
+  48 / 64 / 80px and gutters 12 / 16 / 20px across compact, default and
+  comfortable. `SectionHeader` is separate, because a heading block is content
+  and fusing it with layout is what made the showcase's previous local
+  `Section` unusable anywhere else.
 - `LICENSE`. The README had said MIT since the beginning and no file said it,
   so GitHub reported the repository as unlicensed — a stated licence with
   nothing behind it grants nobody anything.

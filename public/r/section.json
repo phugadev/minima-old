@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section",
+  "title": "Section",
+  "description": "A region of the page, carrying the top rung of the rhythm ladder, plus an optional header on the reading measure.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "files": [
+    {
+      "path": "src/components/minima/section.tsx",
+      "content": "import { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Section — a region of the page, carrying the top rung of the rhythm ladder.\n *\n * Vertical space comes from `--section`, so density moves the page and not\n * just its controls. Before this existed the showcase spaced its own sections\n * with literals, which meant `data-density` resized every button on the page\n * and left the rhythm between regions exactly where it was.\n *\n * It is layout only. A heading block is content — pair it with `SectionHeader`\n * when a region needs one, and leave it out when it does not. Fusing the two\n * is what made the previous version unusable anywhere but the page it was\n * written for.\n */\n\nconst sectionVariants = cva(\"\", {\n  variants: {\n    space: {\n      none: \"\",\n      section: \"py-section\",\n      stack: \"py-stack\",\n    },\n    divided: {\n      true: \"border-t border-border\",\n      false: \"\",\n    },\n  },\n  defaultVariants: { space: \"section\", divided: false },\n})\n\nfunction Section({\n  className,\n  space,\n  divided,\n  ...props\n}: React.ComponentProps<\"section\"> & VariantProps<typeof sectionVariants>) {\n  return (\n    <section\n      data-slot=\"section\"\n      className={cn(sectionVariants({ space, divided }), className)}\n      {...props}\n    />\n  )\n}\n\n/**\n * SectionHeader — eyebrow, title and an optional lead, on the reading measure.\n *\n * The eyebrow is the signal register (Charter 7.6): it is scanned, not read.\n */\nfunction SectionHeader({\n  className,\n  eyebrow,\n  title,\n  lead,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  eyebrow?: React.ReactNode\n  title: React.ReactNode\n  lead?: React.ReactNode\n}) {\n  return (\n    <div\n      data-slot=\"section-header\"\n      className={cn(\"mb-stack max-w-2xl\", className)}\n      {...props}\n    >\n      {eyebrow ? <p className=\"label-eyebrow\">{eyebrow}</p> : null}\n      <h2 className=\"mt-2 text-lg\">{title}</h2>\n      {lead ? (\n        <p className=\"mt-2 text-sm text-muted-foreground\">{lead}</p>\n      ) : null}\n    </div>\n  )\n}\n\nexport { Section, SectionHeader, sectionVariants }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
