@@ -61,6 +61,20 @@ jobs:
       - name: Registry ships what the system defines
         run: npm run audit:registry
 
+      # "How we work" rule 7: never restate what the repo already knows. The
+      # showcase carried a literal v0.1.0 for eight releases, in two places,
+      # and shipped a blank version to production once the first was "fixed".
+      - name: No hardcoded version literals
+        run: |
+          HITS=$(grep -rEn "[0-9]+\.[0-9]+\.[0-9]+" src --include="*.tsx" --include="*.ts" \
+                 | grep -v "^src/lib/version.ts" || true)
+          if [ -n "$HITS" ]; then
+            echo "::error::A version literal is hardcoded in src/. Import VERSION from @/lib/version."
+            echo "$HITS"
+            exit 1
+          fi
+          echo "no version literals in src/"
+
       # Charter 11.2: the version is the promise the system makes. A bump with
       # no changelog entry is a promise nobody can read.
       - name: Version and changelog agree

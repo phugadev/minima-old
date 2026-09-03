@@ -33,6 +33,22 @@ gap surfaced by looking at another project, not by hitting it.
 requests bump nothing. Eight minor versions in eight days, most of them fixing
 things that had never worked in released form, is churn that reads as drift.
 
+**6. Read the source of truth before writing against it.** Not your memory of a
+library — the library. `AGENTS.md` already says this about Next: the docs in
+`node_modules` win over training data. It applies to every dependency. The
+registry shipped bare `registryDependencies` for two releases, making the
+documented install command fail outright, because they were written from
+recollection of how the shadcn CLI resolves addresses instead of from its
+resolver. Reading it took ten minutes and would have cost nothing to do first.
+
+**7. Never restate what the repo already knows.** If a value exists somewhere
+in the tree, derive it. The showcase header carried a literal `v0.1.0` through
+eight releases and a second one hid in the footer — in a repository where the
+tokens, the registry, the scales and the Charter are all generated precisely so
+nothing has to be kept in sync by hand. A literal that duplicates a fact is a
+bug with a delay on it. `npm run verify:literals` in CI is the runner for this
+one.
+
 This is working practice, not constitution. It carries no clause numbers, it is
 not NORMATIVE, and changing it needs no amendment — which is the point. The
 Charter governs the system; this governs how the system gets built, and the two
