@@ -50,6 +50,8 @@ import { Kbd } from "@/components/minima/kbd"
 import { Note, NoteTitle } from "@/components/minima/note"
 import { Stat, StatDelta, StatLabel, StatValue } from "@/components/minima/stat"
 import { Status } from "@/components/minima/status"
+import { Container } from "@/components/minima/container"
+import { Section, SectionHeader } from "@/components/minima/section"
 
 import { VERSION } from "@/lib/version"
 
@@ -57,7 +59,7 @@ import { VERSION } from "@/lib/version"
    Page scaffolding
    ─────────────────────────────────────────────────────────────────────── */
 
-function Section({
+function Showcase({
   id,
   eyebrow,
   title,
@@ -71,16 +73,10 @@ function Section({
   children: React.ReactNode
 }) {
   return (
-    <section id={id} className="scroll-mt-20 border-t border-border py-14">
-      <div className="mb-8 max-w-2xl">
-        <p className="label-eyebrow">{eyebrow}</p>
-        <h2 className="mt-2 text-lg">{title}</h2>
-        {intro ? (
-          <p className="mt-2 text-sm text-muted-foreground">{intro}</p>
-        ) : null}
-      </div>
+    <Section id={id} divided className="scroll-mt-20">
+      <SectionHeader eyebrow={eyebrow} title={title} lead={intro} />
       {children}
-    </section>
+    </Section>
   )
 }
 
@@ -204,7 +200,7 @@ export default function Page() {
     <div className="min-h-dvh bg-background">
       {/* ── Nav ────────────────────────────────────────────────────────── */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
-        <div className="mx-auto flex h-14 max-w-5xl items-center gap-4 px-6">
+        <Container className="flex h-14 items-center gap-4">
           <div className="flex items-baseline gap-2">
             <span className="text-sm font-semibold tracking-tight">Minima</span>
             <span className="text-2xs text-subtle-foreground" data-numeric="">
@@ -243,10 +239,11 @@ export default function Page() {
               {dark ? <Sun /> : <Moon />}
             </Button>
           </div>
-        </div>
+        </Container>
       </header>
 
-      <main className="mx-auto max-w-5xl px-6 pb-24">
+      <main className="pb-24">
+        <Container>
         {/* ── Hero ─────────────────────────────────────────────────────── */}
         <div className="relative py-20">
           <div className="pointer-events-none absolute inset-0 grid-field opacity-60" />
@@ -293,7 +290,7 @@ export default function Page() {
 
         {/* ── Neutral ──────────────────────────────────────────────────── */}
         {/* ── Spectral ramp ───────────────────────────────────────────── */}
-        <Section
+        <Showcase
           id="ramp"
           eyebrow="Foundation"
           title="The spectral ramp"
@@ -400,10 +397,10 @@ export default function Page() {
               3:1 and is never used for body copy.
             </p>
           </div>
-        </Section>
+        </Showcase>
 
         {/* ── Surfaces ─────────────────────────────────────────────────── */}
-        <Section
+        <Showcase
           id="surfaces"
           eyebrow="Foundation"
           title="Canvas and surface"
@@ -496,10 +493,10 @@ export default function Page() {
               </div>
             </Panel>
           </div>
-        </Section>
+        </Showcase>
 
         {/* ── Density ──────────────────────────────────────────────────── */}
-        <Section
+        <Showcase
           id="density"
           eyebrow="Foundation"
           title="Density"
@@ -584,10 +581,10 @@ export default function Page() {
               <Status tone="success">Operational</Status>
             </Panel>
           </div>
-        </Section>
+        </Showcase>
 
         {/* ── Typography ───────────────────────────────────────────────── */}
-        <Section
+        <Showcase
           id="type"
           eyebrow="Foundation"
           title="Typography"
@@ -704,10 +701,10 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </Section>
+        </Showcase>
 
         {/* ── Geometry ─────────────────────────────────────────────────── */}
-        <Section
+        <Showcase
           id="geometry"
           eyebrow="Foundation"
           title="Geometry"
@@ -815,10 +812,10 @@ export default function Page() {
               back. Mathematically wrong, visibly right.
             </Note>
           </div>
-        </Section>
+        </Showcase>
 
         {/* ── Text-level foundations ───────────────────────────────────── */}
-        <Section
+        <Showcase
           id="inline"
           eyebrow="Foundation"
           title="Inline and interactive"
@@ -901,10 +898,10 @@ export default function Page() {
               </Panel>
             ))}
           </div>
-        </Section>
+        </Showcase>
 
         {/* ── State ────────────────────────────────────────────────────── */}
-        <Section
+        <Showcase
           id="state"
           eyebrow="Colour job 01"
           title="State"
@@ -1001,10 +998,10 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </Section>
+        </Showcase>
 
         {/* ── Identity ─────────────────────────────────────────────────── */}
-        <Section
+        <Showcase
           id="identity"
           eyebrow="Colour job 02"
           title="Identity"
@@ -1054,10 +1051,10 @@ export default function Page() {
               </div>
             </Panel>
           </div>
-        </Section>
+        </Showcase>
 
         {/* ── Data ─────────────────────────────────────────────────────── */}
-        <Section
+        <Showcase
           id="data"
           eyebrow="Colour job 03"
           title="Data"
@@ -1171,10 +1168,10 @@ export default function Page() {
               </Table>
             </CardContent>
           </Card>
-        </Section>
+        </Showcase>
 
         {/* ── Components ───────────────────────────────────────────────── */}
-        <Section
+        <Showcase
           id="components"
           eyebrow="Surface"
           title="Components"
@@ -1314,10 +1311,10 @@ export default function Page() {
               </div>
             </TabsContent>
           </Tabs>
-        </Section>
+        </Showcase>
 
         {/* ── Install ──────────────────────────────────────────────────── */}
-        <Section
+        <Showcase
           id="install"
           eyebrow="Distribution"
           title="Install"
@@ -1381,10 +1378,10 @@ export default function Page() {
             <code className="text-2xs">scripts/build-registry.mjs</code>, which
             regenerates <code className="text-2xs">registry.json</code>.
           </Note>
-        </Section>
+        </Showcase>
 
         {/* ── Rules ────────────────────────────────────────────────────── */}
-        <Section
+        <Showcase
           id="rules"
           eyebrow="Constitution"
           title="The rules"
@@ -1423,14 +1420,15 @@ export default function Page() {
               </Panel>
             ))}
           </div>
-        </Section>
+        </Showcase>
+        </Container>
       </main>
 
       <footer className="border-t border-border">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6 text-2xs text-subtle-foreground">
+        <Container className="flex items-center justify-between py-6 text-2xs text-subtle-foreground">
           <span>Minima — a neutral-dominant design system</span>
           <span data-numeric="">v{VERSION}</span>
-        </div>
+        </Container>
       </footer>
     </div>
   )

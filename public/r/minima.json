@@ -13,6 +13,8 @@
     "phugadev/minima/kbd",
     "phugadev/minima/stat",
     "phugadev/minima/code",
+    "phugadev/minima/container",
+    "phugadev/minima/section",
     "phugadev/minima/button",
     "phugadev/minima/badge",
     "phugadev/minima/card",

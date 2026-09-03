@@ -26,6 +26,8 @@
         "phugadev/minima/kbd",
         "phugadev/minima/stat",
         "phugadev/minima/code",
+        "phugadev/minima/container",
+        "phugadev/minima/section",
         "phugadev/minima/button",
         "phugadev/minima/badge",
         "phugadev/minima/card",
@@ -1374,6 +1376,36 @@
       "files": [
         {
           "path": "src/components/minima/code.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "container",
+      "type": "registry:ui",
+      "title": "Container",
+      "description": "The horizontal frame — a measure, centred, with the gutter. Widths are typographic; the gutter moves with density.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "src/components/minima/container.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "section",
+      "type": "registry:ui",
+      "title": "Section",
+      "description": "A region of the page, carrying the top rung of the rhythm ladder, plus an optional header on the reading measure.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "src/components/minima/section.tsx",
           "type": "registry:ui"
         }
       ]
