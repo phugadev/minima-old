@@ -109,6 +109,7 @@ Generated files are never hand-edited:
 | --- | --- |
 | `src/app/scales.css` | `scripts/generate-scales.mjs` |
 | `src/app/tokens.css` | `scripts/build-tokens.mjs` |
+| `src/lib/version.ts` | `scripts/build-tokens.mjs` |
 | `registry.json`, `public/r/*` | `scripts/build-tokens.mjs`, `shadcn build` |
 | `public/charter.html` | `scripts/build-charter.mjs` |
 

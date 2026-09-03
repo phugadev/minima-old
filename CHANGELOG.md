@@ -27,6 +27,18 @@ version keeps meaning something.
   it governs how the system gets built, not the system, and it changes without
   an amendment.
 
+### Fixed
+- **The deployed showcase rendered no version at all.** 0.8.0 replaced the
+  hardcoded `v0.1.0` in the header with a named import from `package.json`,
+  which resolves under `next dev` and comes back undefined in the production
+  client bundle — so the live site shipped a header reading `v` with nothing
+  after it. The version is now generated as `src/lib/version.ts`, an ordinary
+  string module with no bundler-dependent behaviour, covered by the same
+  in-sync check as every other generated file. Verified against a production
+  build rather than the dev server, which is how the first fix passed review
+  while being broken.
+- A second hardcoded `v0.1.0`, in the footer, missed when the header was fixed.
+
 ### Changed
 - `public/charter.html` replaces `docs/charter.html`. Next serves static files
   from `public/` only, so for eight releases the rendered Charter was generated

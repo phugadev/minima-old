@@ -51,7 +51,7 @@ import { Note, NoteTitle } from "@/components/minima/note"
 import { Stat, StatDelta, StatLabel, StatValue } from "@/components/minima/stat"
 import { Status } from "@/components/minima/status"
 
-import { version } from "../../package.json"
+import { VERSION } from "@/lib/version"
 
 /* ───────────────────────────────────────────────────────────────────────────
    Page scaffolding
@@ -208,7 +208,7 @@ export default function Page() {
           <div className="flex items-baseline gap-2">
             <span className="text-sm font-semibold tracking-tight">Minima</span>
             <span className="text-2xs text-subtle-foreground" data-numeric="">
-              v{version}
+              v{VERSION}
             </span>
           </div>
           <nav className="ml-4 hidden gap-4 text-xs text-muted-foreground md:flex">
@@ -1429,7 +1429,7 @@ export default function Page() {
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6 text-2xs text-subtle-foreground">
           <span>Minima — a neutral-dominant design system</span>
-          <span data-numeric="">v0.1.0</span>
+          <span data-numeric="">v{VERSION}</span>
         </div>
       </footer>
     </div>
