@@ -354,6 +354,7 @@ dark. Structural contrast needs a floor exactly as much as text does.
 | `src/app/scales.css` | `scripts/generate-scales.mjs` |
 | `src/app/tokens.css` | `scripts/build-tokens.mjs` |
 | `registry.json` | `scripts/build-tokens.mjs` |
+| `src/lib/version.ts` | `scripts/build-tokens.mjs` |
 
 **9.2 NORMATIVE.** The app's token layer and the registry's token layer are two
 renderings of one object graph in `scripts/build-tokens.mjs`. They cannot drift,
