@@ -21,6 +21,11 @@ version keeps meaning something.
 
 - The showcase links to the Charter, which until now could only be read by
   opening a file in the repository.
+- `CONTRIBUTING.md` gains a "How we work" section — five rules learned by
+  breaking them across the first eight releases, and `CLAUDE.md` now imports it
+  so they are read rather than re-derived. Deliberately not a Charter article:
+  it governs how the system gets built, not the system, and it changes without
+  an amendment.
 
 ### Changed
 - `public/charter.html` replaces `docs/charter.html`. Next serves static files

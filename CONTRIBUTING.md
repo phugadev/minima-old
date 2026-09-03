@@ -1,5 +1,43 @@
 # Contributing to Minima
 
+## How we work
+
+Five rules, learned by breaking them. Minima spent its first eight releases
+discovering that a design system fails in a particular way: it becomes correct
+internally, and tells nobody. The registry shipped components it did not
+contain. The fonts existed in one app and no install. The Charter was rendered
+into a folder nothing served. Each was found by inspection, months of releases
+after it started being false.
+
+**1. Rules come after the thing they govern.** Write a clause when a decision
+has already been made under pressure and you want it to stop being re-argued.
+A clause written in advance is a claim nobody has tested — Article 12 was
+written in 0.6.0 and was true only inside the showcase until 0.8.0.
+
+**2. No claim without a runner.** If a statement in `CHARTER.md`, `README.md`
+or a pull request can be checked, ship the thing that checks it in the same
+change. `audit-contrast.mjs` and `audit-registry.mjs` are what this looks like.
+Prefer deriving a value over restating one: the version in the showcase header
+reads from `package.json` because for eight releases it read `v0.1.0`.
+
+**3. Distribution is exercised, not assumed.** The registry is the product. A
+change to it is not done until it has been installed somewhere — a scratch
+project is enough. The documented install command was broken for two releases
+because nobody ran it.
+
+**4. Something has to use it.** A design system cannot discover what it is
+missing on its own. Layout primitives were absent for eight releases and the
+gap surfaced by looking at another project, not by hitting it.
+
+**5. Versions are earned.** Work accumulates under `[Unreleased]`. Most pull
+requests bump nothing. Eight minor versions in eight days, most of them fixing
+things that had never worked in released form, is churn that reads as drift.
+
+This is working practice, not constitution. It carries no clause numbers, it is
+not NORMATIVE, and changing it needs no amendment — which is the point. The
+Charter governs the system; this governs how the system gets built, and the two
+should not be the same document.
+
 ## Change flow
 
 `main` is protected by convention: changes arrive through pull requests, not
